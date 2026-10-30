@@ -13,3 +13,6 @@ Proyecto: skill `guia-aprendizaje-sena` (Guías de Aprendizaje SENA, formato GFP
 ## Probar cambios
 1. `python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos <json> --programa <programa.json>`
 2. `python skills/guia-aprendizaje-sena/scripts/generar_guia.py --datos <json> --salida salidas/prueba.docx`
+
+## Historial
+Historial y pendientes: ver @docs/HISTORIAL.md

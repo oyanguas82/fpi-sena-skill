@@ -1,0 +1,682 @@
+[
+ {
+  "codigo": "723402",
+  "version": "1",
+  "denominacion": "ACUICULTURA",
+  "nivel": "Tecnologo",
+  "archivo": "programas/723402_v1.json",
+  "fuente": "ACUICULTURA VR 01.pdf",
+  "competencias": 11,
+  "advertencias": 2
+ },
+ {
+  "codigo": "936161",
+  "version": "1",
+  "denominacion": "AGROINDUSTRIA ALIMENTARIA",
+  "nivel": "Tecnologo",
+  "archivo": "programas/936161_v1.json",
+  "fuente": "AGROINDUSTRIA ALIMENTARIA.pdf",
+  "competencias": 6,
+  "advertencias": 1
+ },
+ {
+  "codigo": "232100",
+  "version": "1",
+  "denominacion": "AGROTRONICA",
+  "nivel": "Tecnico",
+  "archivo": "programas/232100_v1.json",
+  "fuente": "AGROTRONICA.pdf",
+  "competencias": 14,
+  "advertencias": 3
+ },
+ {
+  "codigo": "228118",
+  "version": "1",
+  "denominacion": "ANALISIS Y DESARROLLO DE SOFTWARE",
+  "nivel": "Tecnologo",
+  "archivo": "programas/228118_v1.json",
+  "fuente": "ANALISIS Y DESARROLLO DE SOFTWARE..pdf",
+  "competencias": 20,
+  "advertencias": 11
+ },
+ {
+  "codigo": "524703",
+  "version": "1",
+  "denominacion": "ANIMACION 3D",
+  "nivel": "Tecnologo",
+  "archivo": "programas/524703_v1.json",
+  "fuente": "ANIMACION 3D..pdf",
+  "competencias": 17,
+  "advertencias": 2
+ },
+ {
+  "codigo": "134508",
+  "version": "1",
+  "denominacion": "APOYO ADMINISTRATIVO EN SALUD",
+  "nivel": "Tecnico",
+  "archivo": "programas/134508_v1.json",
+  "fuente": "APOYO ADMINISTRATIVO EN SALUD..pdf",
+  "competencias": 14,
+  "advertencias": 4
+ },
+ {
+  "codigo": "134101",
+  "version": "3",
+  "denominacion": "ASISTENCIA ADMINISTRATIVA",
+  "nivel": "Tecnico",
+  "archivo": "programas/134101_v3.json",
+  "fuente": "ASISTENCIA ADMINISTRATIVA VERSION 03..pdf",
+  "competencias": 15,
+  "advertencias": 1
+ },
+ {
+  "codigo": "134400",
+  "version": "2",
+  "denominacion": "ASISTENCIA EN ORGANIZACION DE ARCHIVOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/134400_v2.json",
+  "fuente": "ASISTENCIA EN ORGANIZACION DE ARCHIVOS . vr. 2.pdf",
+  "competencias": 16,
+  "advertencias": 4
+ },
+ {
+  "codigo": "134104",
+  "version": "1",
+  "denominacion": "ASISTENCIA PARA LA INTELIGENCIA EMPRESARIAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/134104_v1.json",
+  "fuente": "ASISTENCIA PARA LA INTELIGENCIA EMPRESARIAL..pdf",
+  "competencias": 15,
+  "advertencias": 3
+ },
+ {
+  "codigo": "637200",
+  "version": "1",
+  "denominacion": "ATENCION INTEGRAL A LA PRIMERA INFANCIA",
+  "nivel": "Tecnico",
+  "archivo": "programas/637200_v1.json",
+  "fuente": ".ATENCION INTEGRAL A LA PRIMERA INFANCIA..pdf",
+  "competencias": 12,
+  "advertencias": 1
+ },
+ {
+  "codigo": "635503",
+  "version": "103",
+  "denominacion": "COCINA",
+  "nivel": "Tecnico",
+  "archivo": "programas/635503_v103.json",
+  "fuente": "COCINA. Vr 103.pdf",
+  "competencias": 14,
+  "advertencias": 3
+ },
+ {
+  "codigo": "836138",
+  "version": "1",
+  "denominacion": "CONSTRUCCION DE EDIFICACIONES",
+  "nivel": "Tecnico",
+  "archivo": "programas/836138_v1.json",
+  "fuente": "CONSTRUCCION DE EDIFICACIONES..pdf",
+  "competencias": 15,
+  "advertencias": 2
+ },
+ {
+  "codigo": "836141",
+  "version": "1",
+  "denominacion": "CONSTRUCCION INDUSTRIALIZADA EN SECO",
+  "nivel": "Operario",
+  "archivo": "programas/836141_v1.json",
+  "fuente": "CONSTRUCCION INDUSTRIALIZADA EN SECO.pdf",
+  "competencias": 9,
+  "advertencias": 1
+ },
+ {
+  "codigo": "133100",
+  "version": "2",
+  "denominacion": "CONTABILIZACION DE OPERACIONES COMERCIALES Y FINANCIERAS",
+  "nivel": "Tecnico",
+  "archivo": "programas/133100_v2.json",
+  "fuente": "CONTABILIZACION DE OPERACIONES COMERCIALES Y FINANCIERAS vr. 2.pdf",
+  "competencias": 13,
+  "advertencias": 3
+ },
+ {
+  "codigo": "733174",
+  "version": "2",
+  "denominacion": "CULTIVOS AGRICOLAS",
+  "nivel": "Tecnico",
+  "archivo": "programas/733174_v2.json",
+  "fuente": "CULTIVOS AGRÍCOLAS V2.pdf",
+  "competencias": 8,
+  "advertencias": 1
+ },
+ {
+  "codigo": "124101",
+  "version": "1",
+  "denominacion": "DESARROLLO DE PROCESOS DE MERCADEO",
+  "nivel": "Tecnologo",
+  "archivo": "programas/124101_v1.json",
+  "fuente": "DESARROLLO DE PROCESOS DE MERCADEO VR 01.pdf",
+  "competencias": 18,
+  "advertencias": 3
+ },
+ {
+  "codigo": "635100",
+  "version": "1",
+  "denominacion": "DESPOSTE, PORCIONADO Y EXHIBICION DE CARNES",
+  "nivel": "Tecnico",
+  "archivo": "programas/635100_v1.json",
+  "fuente": "DESPOSTE, PORCIONADO Y EXHIBICION DE CARNESSS.pdf",
+  "competencias": 12,
+  "advertencias": 2
+ },
+ {
+  "codigo": "664209",
+  "version": "1",
+  "denominacion": "EJECUCION DE EVENTOS DEPORTIVOS Y RECREATIVOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/664209_v1.json",
+  "fuente": "EJECUCION DE EVENTOS DEPORTIVOS Y RECREATIVOS V1_.pdf",
+  "competencias": 7,
+  "advertencias": 3
+ },
+ {
+  "codigo": "532100",
+  "version": "1",
+  "denominacion": "EJECUCION DE LA DANZA",
+  "nivel": "Tecnico",
+  "archivo": "programas/532100_v1.json",
+  "fuente": "EJECUCION DE LA DANZA..pdf",
+  "competencias": 12,
+  "advertencias": 4
+ },
+ {
+  "codigo": "664212",
+  "version": "1",
+  "denominacion": "EJECUCION DE PROGRAMAS DEPORTIVOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/664212_v1.json",
+  "fuente": "EJECUCION DE PROGRAMAS DEPORTIVOS..pdf",
+  "competencias": 12,
+  "advertencias": 3
+ },
+ {
+  "codigo": "832204",
+  "version": "1",
+  "denominacion": "ELECTRICIDAD RESIDENCIAL, COMERCIAL Y DE SISTEMAS FOTOVOLTAICOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/832204_v1.json",
+  "fuente": "ELECTRICIDAD RESIDENCIAL, COMERCIAL Y DE SISTEMAS FOTOVOLTAICOS VR 1.pdf",
+  "competencias": 15,
+  "advertencias": 6
+ },
+ {
+  "codigo": "134102",
+  "version": "1",
+  "denominacion": "EMPRENDIMIENTO Y FOMENTO EMPRESARIAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/134102_v1.json",
+  "fuente": "EMPRENDIMIENTO Y FOMENTO EMPRESARIAL.pdf",
+  "competencias": 17,
+  "advertencias": 2
+ },
+ {
+  "codigo": "331120",
+  "version": "3",
+  "denominacion": "ENFERMERIA",
+  "nivel": "Tecnico",
+  "archivo": "programas/331120_v3.json",
+  "fuente": "ENFERMERIA. vr. 3.pdf",
+  "competencias": 17,
+  "advertencias": 3
+ },
+ {
+  "codigo": "525203",
+  "version": "100",
+  "denominacion": "ENTRENAMIENTO DEPORTIVO",
+  "nivel": "Tecnologo",
+  "archivo": "programas/525203_v100.json",
+  "fuente": "ENTRENAMIENTO DEPORTIVO. vr 100.pdf",
+  "competencias": 3,
+  "advertencias": 5
+ },
+ {
+  "codigo": "123102",
+  "version": "1",
+  "denominacion": "GESTION CONTABLE Y FINANCIERA",
+  "nivel": "Tecnologo",
+  "archivo": "programas/123102_v1.json",
+  "fuente": "GESTION CONTABLE Y FINANCIERA..pdf",
+  "competencias": 14,
+  "advertencias": 20
+ },
+ {
+  "codigo": "122901",
+  "version": "1",
+  "denominacion": "GESTION DOCUMENTAL",
+  "nivel": "Tecnologo",
+  "archivo": "programas/122901_v1.json",
+  "fuente": "GESTION DOCUMENTAL ..pdf",
+  "competencias": 22,
+  "advertencias": 10
+ },
+ {
+  "codigo": "723105",
+  "version": "102",
+  "denominacion": "GESTIÓN DE EMPRESAS AGROPECUARIAS",
+  "nivel": "Tecnologo",
+  "archivo": "programas/723105_v102.json",
+  "fuente": "GESTIÓN DE EMPRESAS AGROPECUARIAS. Vr 102.pdf",
+  "competencias": 13,
+  "advertencias": 8
+ },
+ {
+  "codigo": "112005",
+  "version": "100",
+  "denominacion": "GESTIÓN DEL TALENTO HUMANO",
+  "nivel": "Tecnologo",
+  "archivo": "programas/112005_v100.json",
+  "fuente": "GESTIÓN DEL TALENTO HUMANO. version 100.pdf",
+  "competencias": 25,
+  "advertencias": 15
+ },
+ {
+  "codigo": "621201",
+  "version": "102",
+  "denominacion": "GESTIÓN EMPRESARIAL",
+  "nivel": "Tecnologo",
+  "archivo": "programas/621201_v102.json",
+  "fuente": "GESTIÓN EMPRESARIAL. version 102.pdf",
+  "competencias": 12,
+  "advertencias": 15
+ },
+ {
+  "codigo": "832202",
+  "version": "2",
+  "denominacion": "INSTALACION DE SISTEMAS ELECTRICOS RESIDENCIALES Y COMERCIALES",
+  "nivel": "Tecnico",
+  "archivo": "programas/832202_v2.json",
+  "fuente": "INSTALACION DE SISTEMAS ELECTRICOS RESIDENCIALES Y COMERCIALES Vr 2.pdf",
+  "competencias": 16,
+  "advertencias": 2
+ },
+ {
+  "codigo": "531200",
+  "version": "2",
+  "denominacion": "INTERPRETACION DE INSTRUMENTOS MUSICALES",
+  "nivel": "Tecnico",
+  "archivo": "programas/531200_v2.json",
+  "fuente": "INTERPRETACION DE INSTRUMENTOS MUSICALES. vr 2.pdf",
+  "competencias": 14,
+  "advertencias": 1
+ },
+ {
+  "codigo": "733105",
+  "version": "1",
+  "denominacion": "MANEJO DE LA PRODUCCION AGROECOLOGICA",
+  "nivel": "Tecnico",
+  "archivo": "programas/733105_v1.json",
+  "fuente": "MANEJO DE LA PRODUCCION AGROECOLOGICA.pdf",
+  "competencias": 15,
+  "advertencias": 2
+ },
+ {
+  "codigo": "837501",
+  "version": "2",
+  "denominacion": "MANTENIMIENTO DE EQUIPOS DE AIRE ACONDICIONADO Y REFRIGERACION",
+  "nivel": "Tecnico",
+  "archivo": "programas/837501_v2.json",
+  "fuente": "MANTENIMIENTO DE EQUIPOS DE AIRE ACONDICIONADO Y REFRIGERACION.pdf",
+  "competencias": 20,
+  "advertencias": 4
+ },
+ {
+  "codigo": "233105",
+  "version": "2",
+  "denominacion": "MANTENIMIENTO DE EQUIPOS DE COMPUTO",
+  "nivel": "Tecnico",
+  "archivo": "programas/233105_v2.json",
+  "fuente": "MANTENIMIENTO DE EQUIPOS DE COMPUTO. version 2.pdf",
+  "competencias": 13,
+  "advertencias": 4
+ },
+ {
+  "codigo": "838318",
+  "version": "1",
+  "denominacion": "MANTENIMIENTO DE MOTOCICLETAS Y MOTOCARROS",
+  "nivel": "Tecnico",
+  "archivo": "programas/838318_v1.json",
+  "fuente": "MANTENIMIENTO DE MOTOCICLETAS Y MOTOCARROS..pdf",
+  "competencias": 17,
+  "advertencias": 2
+ },
+ {
+  "codigo": "832333",
+  "version": "1",
+  "denominacion": "MANTENIMIENTO E INSTALACION DE SISTEMAS SOLARES FOTOVOLTAICOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/832333_v1.json",
+  "fuente": "MANTENIMIENTO E INSTALACION DE SISTEMAS SOLARES FOTOVOLTAICOS.pdf",
+  "competencias": 10,
+  "advertencias": 1
+ },
+ {
+  "codigo": "838200",
+  "version": "1",
+  "denominacion": "MANTENIMIENTO ELECTRICO Y CONTROL ELECTRONICO DE AUTOMOTORES",
+  "nivel": "Tecnico",
+  "archivo": "programas/838200_v1.json",
+  "fuente": "MANTENIMIENTO ELECTRICO Y CONTROL ELECTRONICO DE AUTOMOTORES..pdf",
+  "competencias": 16,
+  "advertencias": 1
+ },
+ {
+  "codigo": "733403",
+  "version": "1",
+  "denominacion": "MAYORDOMIA DE LA EMPRESA GANADERA SOSTENIBLE",
+  "nivel": "Tecnico",
+  "archivo": "programas/733403_v1.json",
+  "fuente": "MAYORDOMIA DE LA EMPRESA GANADERA SOSTENIBLE.pdf",
+  "competencias": 20,
+  "advertencias": 6
+ },
+ {
+  "codigo": "633100",
+  "version": "1",
+  "denominacion": "OPERACION TURISTICA LOCAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/633100_v1.json",
+  "fuente": "OPERACION TURISTICA LOCAL.pdf",
+  "competencias": 13,
+  "advertencias": 2
+ },
+ {
+  "codigo": "632105",
+  "version": "100",
+  "denominacion": "OPERACIONES COMERCIALES",
+  "nivel": "Tecnico",
+  "archivo": "programas/632105_v100.json",
+  "fuente": "OPERACIONES COMERCIALES.pdf",
+  "competencias": 8,
+  "advertencias": 3
+ },
+ {
+  "codigo": "632305",
+  "version": "100",
+  "denominacion": "OPERACIONES DE CAJA Y SERVICIOS EN ALMACENES DE CADENA",
+  "nivel": "Tecnico",
+  "archivo": "programas/632305_v100.json",
+  "fuente": "OPERACIONES DE CAJA Y SERVICIOS EN ALMACENES DE CADENA..pdf",
+  "competencias": 4,
+  "advertencias": 1
+ },
+ {
+  "codigo": "635236",
+  "version": "1",
+  "denominacion": "PANADERIA",
+  "nivel": "Tecnico",
+  "archivo": "programas/635236_v1.json",
+  "fuente": "PANADERIA.pdf",
+  "competencias": 6,
+  "advertencias": 2
+ },
+ {
+  "codigo": "635201",
+  "version": "1",
+  "denominacion": "PASTELERIA",
+  "nivel": "Tecnico",
+  "archivo": "programas/635201_v1.json",
+  "fuente": "PASTELERIA.pdf",
+  "competencias": 16,
+  "advertencias": 4
+ },
+ {
+  "codigo": "761513",
+  "version": "2",
+  "denominacion": "PISCICULTURA",
+  "nivel": "Operario",
+  "archivo": "programas/761513_v2.json",
+  "fuente": "PISCICULTURA. V2.pdf",
+  "competencias": 7,
+  "advertencias": 4
+ },
+ {
+  "codigo": "921321",
+  "version": "1",
+  "denominacion": "PROCESAMIENTO DE ALIMENTOS",
+  "nivel": "Tecnologo",
+  "archivo": "programas/921321_v1.json",
+  "fuente": "PROCESAMIENTO DE ALIMENTOS VR 01.pdf",
+  "competencias": 9,
+  "advertencias": 1
+ },
+ {
+  "codigo": "936187",
+  "version": "1",
+  "denominacion": "PROCESAMIENTO DE CARNES",
+  "nivel": "Tecnico",
+  "archivo": "programas/936187_v1.json",
+  "fuente": "PROCESAMIENTO DE CARNES.pdf",
+  "competencias": 17,
+  "advertencias": 4
+ },
+ {
+  "codigo": "233112",
+  "version": "1",
+  "denominacion": "PROCESAMIENTO DE DATOS PARA MODELOS DE INTELIGENCIA ARTIFICIAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/233112_v1.json",
+  "fuente": "PROCESAMIENTO DE DATOS PARA MODELOS DE INTELIGENCIA ARTIFICIAL..pdf",
+  "competencias": 13,
+  "advertencias": 2
+ },
+ {
+  "codigo": "936181",
+  "version": "1",
+  "denominacion": "PROCESAMIENTO DE LACTEOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/936181_v1.json",
+  "fuente": "PROCESAMIENTO DE LACTEOS.pdf",
+  "competencias": 6,
+  "advertencias": 0
+ },
+ {
+  "codigo": "961520",
+  "version": "1",
+  "denominacion": "PROCESOS DE PANADERIA",
+  "nivel": "Operario",
+  "archivo": "programas/961520_v1.json",
+  "fuente": "961520 PROCESOS DE PANADERIA.pdf",
+  "competencias": 4,
+  "advertencias": 1
+ },
+ {
+  "codigo": "734201",
+  "version": "1",
+  "denominacion": "PRODUCCION ACUICOLA",
+  "nivel": "Tecnico",
+  "archivo": "programas/734201_v1.json",
+  "fuente": "PRODUCCION ACUICOLA.pdf",
+  "competencias": 15,
+  "advertencias": 2
+ },
+ {
+  "codigo": "733454",
+  "version": "1",
+  "denominacion": "PRODUCCION ANIMAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/733454_v1.json",
+  "fuente": "PRODUCCION ANIMAL.pdf",
+  "competencias": 19,
+  "advertencias": 2
+ },
+ {
+  "codigo": "961521",
+  "version": "1",
+  "denominacion": "PRODUCCION DE LECHES HIGIENIZADAS",
+  "nivel": "Operario",
+  "archivo": "programas/961521_v1.json",
+  "fuente": "PRODUCCION DE LECHES HIGIENIZADAS.pdf",
+  "competencias": 14,
+  "advertencias": 1
+ },
+ {
+  "codigo": "761322",
+  "version": "1",
+  "denominacion": "PRODUCCION DE POLLO DE ENGORDE",
+  "nivel": "Operario",
+  "archivo": "programas/761322_v1.json",
+  "fuente": "PRODUCCION DE POLLO DE ENGORDE..pdf",
+  "competencias": 5,
+  "advertencias": 2
+ },
+ {
+  "codigo": "733292",
+  "version": "1",
+  "denominacion": "PRODUCCION EQUINA",
+  "nivel": "Tecnico",
+  "archivo": "programas/733292_v1.json",
+  "fuente": "PRODUCCION EQUINA..pdf",
+  "competencias": 10,
+  "advertencias": 1
+ },
+ {
+  "codigo": "733290",
+  "version": "1",
+  "denominacion": "PRODUCCION PECUARIA",
+  "nivel": "Tecnico",
+  "archivo": "programas/733290_v1.json",
+  "fuente": "PRODUCCION PECUARIA..pdf",
+  "competencias": 11,
+  "advertencias": 3
+ },
+ {
+  "codigo": "733291",
+  "version": "1",
+  "denominacion": "PRODUCCION PORCINA",
+  "nivel": "Tecnico",
+  "archivo": "programas/733291_v1.json",
+  "fuente": "PRODUCCION PORCINA..pdf",
+  "competencias": 9,
+  "advertencias": 2
+ },
+ {
+  "codigo": "723107",
+  "version": "100",
+  "denominacion": "PRODUCCIÓN DE ESPECIES MENORES",
+  "nivel": "Tecnologo",
+  "archivo": "programas/723107_v100.json",
+  "fuente": "PRODUCCIÓN DE ESPECIES MENORES..pdf",
+  "competencias": 10,
+  "advertencias": 0
+ },
+ {
+  "codigo": "733510",
+  "version": "100",
+  "denominacion": "PRODUCCIÓN DE HUEVO E INCUBACIÓN ARTIFICIAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/733510_v100.json",
+  "fuente": "PRODUCCIÓN DE HUEVO E INCUBACIÓN ARTIFICIAL.pdf",
+  "competencias": 7,
+  "advertencias": 1
+ },
+ {
+  "codigo": "723106",
+  "version": "102",
+  "denominacion": "PRODUCCIÓN GANADERA",
+  "nivel": "Tecnologo",
+  "archivo": "programas/723106_v102.json",
+  "fuente": "PRODUCCIÓN GANADERA vr 102.pdf",
+  "competencias": 11,
+  "advertencias": 0
+ },
+ {
+  "codigo": "331318",
+  "version": "1",
+  "denominacion": "PROMOTOR DE SALUD",
+  "nivel": "Auxiliar",
+  "archivo": "programas/331318_v1.json",
+  "fuente": "PROMOTOR DE SALUD.pdf",
+  "competencias": 6,
+  "advertencias": 1
+ },
+ {
+  "codigo": "421149",
+  "version": "1",
+  "denominacion": "PROMOTORIA SOCIOAMBIENTAL EN GRUPOS ETNICOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/421149_v1.json",
+  "fuente": "PROMOTORIA SOCIOAMBIENTAL EN GRUPOS ETNICOS.pdf",
+  "competencias": 9,
+  "advertencias": 2
+ },
+ {
+  "codigo": "134200",
+  "version": "2",
+  "denominacion": "RECURSOS HUMANOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/134200_v2.json",
+  "fuente": "RECURSOS HUMANOS V2.pdf",
+  "competencias": 16,
+  "advertencias": 5
+ },
+ {
+  "codigo": "331308",
+  "version": "3",
+  "denominacion": "SALUD PUBLICA",
+  "nivel": "Tecnico",
+  "archivo": "programas/331308_v3.json",
+  "fuente": "SALUD PUBLICA.pdf",
+  "competencias": 18,
+  "advertencias": 4
+ },
+ {
+  "codigo": "231100",
+  "version": "1",
+  "denominacion": "SANEAMIENTO Y SALUD AMBIENTAL",
+  "nivel": "Tecnico",
+  "archivo": "programas/231100_v1.json",
+  "fuente": "SANEAMIENTO Y SALUD AMBIENTAL.pdf",
+  "competencias": 15,
+  "advertencias": 7
+ },
+ {
+  "codigo": "331505",
+  "version": "2",
+  "denominacion": "SERVICIOS FARMACEUTICOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/331505_v2.json",
+  "fuente": "SERVICIOS FARMACEUTICOS. vr 2.pdf",
+  "competencias": 15,
+  "advertencias": 3
+ },
+ {
+  "codigo": "733193",
+  "version": "1",
+  "denominacion": "SISTEMAS AGROPECUARIOS ECOLOGICOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/733193_v1.json",
+  "fuente": "SISTEMAS AGROPECUARIOS ECOLOGICOS..pdf",
+  "competencias": 8,
+  "advertencias": 2
+ },
+ {
+  "codigo": "233108",
+  "version": "1",
+  "denominacion": "SISTEMAS TELEINFORMÁTICOS",
+  "nivel": "Tecnico",
+  "archivo": "programas/233108_v1.json",
+  "fuente": "SISTEMAS TELEINFORMÁTICOS..pdf",
+  "competencias": 12,
+  "advertencias": 2
+ },
+ {
+  "codigo": "834258",
+  "version": "1",
+  "denominacion": "SOLDADURA DE PRODUCTOS METALICOS EN PLATINA",
+  "nivel": "Tecnico",
+  "archivo": "programas/834258_v1.json",
+  "fuente": "SOLDADURA DE PRODUCTOS METALICOS EN PLATINA..pdf",
+  "competencias": 15,
+  "advertencias": 4
+ }
+]

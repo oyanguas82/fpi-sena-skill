@@ -7,3 +7,4 @@ salidas/
 *.pdf
 .DS_Store
 Thumbs.db
+.claude/skills/

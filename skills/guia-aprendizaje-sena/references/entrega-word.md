@@ -24,18 +24,18 @@ Todos los campos son opcionales; los omitidos producen un borrador marcado como 
     "actividad_proyecto": "",
     "competencia": "",
     "resultados": "",
-    "duracion": "48 horas (32 directas y 16 de trabajo independiente)"
+    "duracion": "56 horas\nTécnico: 48 horas\nClaves: 8 horas"
   },
   "presentacion": ["Párrafo 1", "Párrafo 2", "Párrafo 3", "Párrafo 4"],
   "contexto_actividades": "",
   "actividades": {
     "3.1": [{"descripcion": "", "ambiente": "", "estrategias": "", "materiales": "", "apoyo": "", "duracion": ""}],
     "3.2": [{"descripcion": "", "ambiente": "", "estrategias": "", "materiales": "", "apoyo": "", "duracion": ""}],
-    "3.3": [{"descripcion": "", "ambiente": "", "estrategias": "", "materiales": "", "apoyo": "", "evidencias": "", "instrumentos": "", "duracion": ""}],
-    "3.4": [{"descripcion": "", "ambiente": "", "estrategias": "", "materiales": "", "apoyo": "", "evidencias": "", "instrumentos": "", "duracion": ""}]
+    "3.3": [{"titulo": "", "descripcion": "", "ambiente": "", "estrategias": "", "materiales": "", "apoyo": "", "evidencias": "", "entrega": "", "instrumentos": "", "duracion": ""}],
+    "3.4": [{"titulo": "", "descripcion": "", "ambiente": "", "estrategias": "", "materiales": "", "apoyo": "", "evidencias": "", "entrega": "", "instrumentos": "", "duracion": ""}]
   },
   "evidencias": [["Fase", "Actividad del proyecto", "Actividad de aprendizaje", "Evidencia", "Criterio oficial", "Técnica e instrumento"]],
-  "glosario": ["Término: definición"],
+  "glosario": ["Término: definición. Importancia: …"],
   "bibliografia": ["Referencia verificada"],
   "control_documento": [["Nombre", "Cargo", "Dependencia", "Fecha"]],
   "cambios": []
@@ -54,12 +54,17 @@ El generador da formato al contenido; no uses Markdown (`**`, `#`, viñetas) den
 - `titulo` de actividad en negrita, con espacio antes; párrafos de presentación y contexto justificados.
 - Glosario: escribe `Término: definición` (el término sale en negrita).
 - Bibliografía: sangría francesa APA.
-- Tabla 4: columna de evidencia con el código `AA1 - <nombre> - EV1` en negrita (antes de `:`); criterios separados por `;` van en párrafos aparte; en la última columna escribe `Técnica: … Instrumento: …` (cada etiqueta en negrita y en su línea).
+- Códigos oficiales (`GA1-…-AA1`, `GA1-…-EV01`, `IE-GA1-…`) en negrita dondequiera que aparezcan.
+- Identificación con varias líneas: `Técnicas:`, `Claves:` y el código inicial de cada competencia o RA en negrita.
+- `entrega`: una línea por rótulo (`Producto: …`, `Formato: …`, `Extensión: …`, `Envío: …`); el rótulo sale en negrita.
+- Glosario: `Término: definición. Importancia: …` (término e «Importancia» en negrita, en dos renglones).
+- Tabla 4: criterios separados por `;` van en párrafos aparte; en la última columna escribe `Técnica: … Instrumento: …` (cada etiqueta en negrita y en su línea).
 
 ## Convenciones de contenido
-- `identificacion.competencia`: `código – denominación` literal.
-- `identificacion.resultados`: un RA por línea (`\n`), literal.
-- Cada actividad acepta `titulo` opcional (línea antes de sus campos). En 3.3 y 3.4 úsalo para `AA<n> - <texto literal de la planeación>`; en `descripcion` inicia con la numeración `3.3.x …`.
+- `identificacion.competencia`: `código – denominación` literal; con varias competencias, bloques `Técnicas:` / `Claves:` y una competencia por línea.
+- `identificacion.resultados`: un RA por línea (`\n`), literal, con código y horas: `220501092-02. Realizar … (248 H)`.
+- `identificacion.actividad_proyecto`: `AP2-<nombre>`.
+- Cada actividad acepta `titulo` opcional (línea antes de sus campos). En 3.3 y 3.4 úsalo para `GA1-<competencia>-AA<n>: <texto literal de la planeación>`; en `descripcion` inicia con la numeración `3.3.x …`.
 - Codificación GA/AA/EV/IE y nombres de archivo: ver [evaluacion.md](evaluacion.md).
 - `duracion` de cada actividad: `X horas directas y Y horas de trabajo independiente`.
 - En 3.1 y 3.2 omite `evidencias` e `instrumentos` (no se evalúan).

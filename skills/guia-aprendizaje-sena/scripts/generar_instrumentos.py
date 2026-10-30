@@ -112,13 +112,21 @@ def lista_textos(inst, clave, minimo=1):
     return valores if len(valores) >= minimo else [PENDIENTE]
 
 
+def de_la_competencia(texto, codigo):
+    """En guías con varias competencias, deja solo las líneas de la competencia del instrumento."""
+    lineas = [l for l in val(texto).split("\n") if codigo and codigo in l]
+    return "\n".join(lineas) if lineas else val(texto)
+
+
 def identificacion(ident, inst, nombre, tecnica):
+    m = re.search(r"GA\s*\d+\s*-\s*(\d{9})", str(inst.get("codigo", "")))
+    comp = m.group(1) if m else None
     filas = [
         ("Guía de aprendizaje", val(ident.get("guia"))),
         ("Programa de formación", " – ".join(x for x in (val(ident.get("codigo"), True), val(ident.get("programa"))) if x)),
         ("Ficha", val(ident.get("ficha"), True)),
-        ("Competencia", val(ident.get("competencia"))),
-        ("Resultado(s) de aprendizaje", val(ident.get("resultados"))),
+        ("Competencia", de_la_competencia(ident.get("competencia"), comp)),
+        ("Resultado(s) de aprendizaje", de_la_competencia(ident.get("resultados"), comp)),
         ("Actividad de aprendizaje", val(inst.get("actividad"))),
         ("Evidencia", val(inst.get("evidencia"))),
         ("Técnica", val(inst.get("tecnica") or tecnica)),

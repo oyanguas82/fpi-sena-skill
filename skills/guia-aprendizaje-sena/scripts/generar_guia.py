@@ -21,6 +21,7 @@ CAMPOS = [
     ("materiales", "Materiales de formación: "),
     ("apoyo", "Material de apoyo: "),
     ("evidencias", "Evidencias de aprendizaje: "),
+    ("entrega", "Lineamientos para la entrega: "),
     ("instrumentos", "Instrumentos de evaluación: "),
     ("duracion", "Duración de la actividad (horas): "),
 ]
@@ -183,10 +184,54 @@ def texto_cuerpo(valor):
     return item([(val(valor), False)], jc="both", after=120, ind=(0, 0))
 
 
-def etiqueta_valor(etiqueta, valor, **fmt):
-    """«Etiqueta: valor» con la etiqueta en negrita (valores multilínea → párrafos siguientes)."""
+# Códigos oficiales: GA1-220501092-AA1, GA1-220501092-AA1-EV01, IE-GA1-220501092-AA1-EV01.
+CODIGO_RX = re.compile(r"(?:IE\s*-\s*)?GA\s*\d+\s*-\s*\d{9}\s*-\s*AA\s*\d+(?:\s*-\s*EV\s*\d{1,2})?", re.I)
+# Encabezados de bloque en la identificación («Técnicas:», «Claves:», «Técnico: 248 horas»).
+BLOQUE_RX = re.compile(r"^(T[ée]cnic[oa]s?|Claves?|Transversales?)\s*:", re.I)
+
+
+def rico(texto, etiquetas=False, base=False):
+    """Segmentos [(texto, negrita)] con los códigos oficiales en negrita.
+    etiquetas=True pone en negrita el rótulo inicial de cada línea («Formato: …»)."""
+    out = []
+    for i, linea in enumerate(str(texto).split("\n")):
+        pre = "\n" if i else ""
+        m = re.match(r"^([^:\n]{2,40}:)(\s*)(.*)$", linea) if etiquetas else None
+        if m and not CODIGO_RX.match(m.group(1)):
+            out.append((pre + m.group(1) + m.group(2), True))
+            linea, pre = m.group(3), ""
+        pos = 0
+        for c in CODIGO_RX.finditer(linea):
+            if c.start() > pos or pre:
+                out.append((pre + linea[pos:c.start()], base))
+                pre = ""
+            out.append((c.group(0), True))
+            pos = c.end()
+        if linea[pos:] or pre:
+            out.append((pre + linea[pos:], base))
+    return out
+
+
+def segmentos_identificacion(label, valor):
+    """Ítem del apartado 1. Si el valor tiene varias líneas (competencias técnicas y claves, varios RA),
+    cada una va en su renglón; «Técnicas:», «Claves:» y los códigos iniciales (220501092-02.) en negrita."""
+    texto = val(valor)
+    lineas_v = texto.split("\n")
+    segs = [(label + " ", True)]
+    for i, linea in enumerate(lineas_v):
+        pre = "\n" if i or len(lineas_v) > 1 else ""
+        m = BLOQUE_RX.match(linea) or re.match(r"^\d{9}(?:\s*-\s*\d{1,2})?\s*[.\-–]?", linea)
+        if m and m.end():
+            segs += [(pre + linea[:m.end()], True), (linea[m.end():], False)]
+        else:
+            segs.append((pre + linea, False))
+    return segs
+
+
+def etiqueta_valor(etiqueta, valor, etiquetas=False, **fmt):
+    """«Etiqueta: valor» con la etiqueta y los códigos en negrita (valores multilínea → párrafos siguientes)."""
     fmt = {"jc": "both", "after": 80, "ind": (0, 0)} | fmt
-    return item([(etiqueta, True), (val(valor), False)], **fmt)
+    return item([(etiqueta, True)] + rico(val(valor), etiquetas=etiquetas), **fmt)
 
 
 # Tabla 4: más ancho para evidencia, criterio e instrumento (suma = ancho original 9629).
@@ -234,15 +279,12 @@ def parrafos_celda(valor, col):
             if re.fullmatch(r"T[ée]cnica\s*:|Instrumentos?\s*:", x.strip()):
                 out.append([(x.strip() + " ", True)])  # cada etiqueta abre un párrafo
             elif out and len(out[-1]) == 1 and out[-1][0][1]:
-                out[-1].append((x.strip(), False))
+                out[-1].extend(rico(x.strip()))
             else:
-                out.append([(x.strip(), False)])
+                out.append(rico(x.strip()))
         return out
-    # Evidencia: el código «AA1 - <nombre> - EV1» en negrita y la descripción después de «:».
-    m = re.match(r"^(AA\s*\d+\s*-\s*.+?\s*-\s*EV\s*\d+)\s*:?\s*(.*)$", valor, re.S)
-    if col == 3 and m:
-        return [[(m.group(1) + (": " if m.group(2) else ""), True), (m.group(2), False)]]
-    return [[(l, False)] for l in valor.split("\n") if l.strip()] or [[("", False)]]
+    # Evidencias y actividades: una línea por párrafo, códigos oficiales en negrita.
+    return [rico(l.strip()) for l in valor.split("\n") if l.strip()] or [[("", False)]]
 
 
 def llenar_celda(cell, primero, parrafos):
@@ -255,10 +297,15 @@ def llenar_celda(cell, primero, parrafos):
 
 
 def termino(entrada):
-    """Glosario: «Término: definición» con el término en negrita."""
+    """Glosario: «Término: definición\\nImportancia: …» con el término y «Importancia:» en negrita."""
     if ":" in entrada and entrada.index(":") < 60:
         t, d = entrada.split(":", 1)
-        return item([(t.strip() + ": ", True), (d.strip(), False)], jc="both", after=120, ind=(0, 0))
+        m = re.search(r"\s*Importancia\s*:\s*", d)
+        d, imp = (d[:m.start()], d[m.end():]) if m else (d, "")
+        segs = [(t.strip() + ": ", True), (d.strip(), False)]
+        if imp.strip():
+            segs += [("\nImportancia: ", True), (imp.strip(), False)]
+        return item(segs, jc="both", after=120, ind=(0, 0))
     return texto_cuerpo(entrada)
 
 def string_list(data, key):
@@ -317,8 +364,9 @@ def generate(data, output):
         if p is None or p is h["2."]:
             raise ValueError("La estructura de identificación no coincide con la plantilla.")
         label = text(p).rstrip()
-        put_rich(p, [(label + " ", True), (val(ids.get(key)), False)])
-        formato(p, jc="both", after=60)
+        put_rich(p, segmentos_identificacion(label, ids.get(key)))
+        # Con saltos de línea manuales, justificar estira las palabras: se alinea a la izquierda.
+        formato(p, jc="left" if "\n" in val(ids.get(key)) else "both", after=60)
         p = p.nextSibling
     presentation = string_list(data, "presentacion")
     if "presentacion" in data and len(presentation) != 4:
@@ -345,10 +393,12 @@ def generate(data, output):
             for key, label in CAMPOS:
                 if key in {"evidencias", "instrumentos"} and section in {"3.1", "3.2"} and key not in activity:
                     continue
+                if key == "entrega" and key not in activity:  # opcional: solo si el instructor la define
+                    continue
                 valor = activity.get(key)
                 if key == "instrumentos" and isinstance(valor, str):
                     valor = re.sub(r"\s*;\s*", "\n", valor.strip())  # un instrumento por línea
-                values.append(etiqueta_valor(label, valor,
+                values.append(etiqueta_valor(label, valor, etiquetas=key == "entrega",
                                              before=160 if not titulo and index > 1 and key == "descripcion" else None))
         replace_between(h[section], h[following], values)
     replace_between(h["5."], h["6."], [termino(g) for g in string_list(data, "glosario")])

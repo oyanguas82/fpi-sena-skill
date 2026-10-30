@@ -22,7 +22,7 @@ Competencias, resultados de aprendizaje (RA), conocimientos, criterios de evalua
 4. Sin catálogo ni PDF: pide que pegue competencia, RA, conocimientos y criterios.
 
 ### Paso 2. Seleccionar competencia y resultados
-Lista las competencias del programa (`--programa <código> --competencias`) y, una vez elegida, sus RA, conocimientos y criterios (`--competencia <código>`). El instructor escoge uno o varios RA para la guía.
+Lista las competencias del programa (`--programa <código> --competencias`) y, una vez elegida, sus RA, conocimientos y criterios (`--competencia <código>`). El instructor escoge uno o varios RA para la guía. Una guía suele integrar **varias competencias**: la técnica del proyecto y competencias claves o transversales; repite la consulta por cada una.
 - Si el RA trae sus propios conocimientos y criterios, usa esos; si no, selecciona de la competencia y muestra la selección.
 - Si algún texto que vas a usar figura en `advertencias` del programa (posible truncado del PDF), pide al instructor confirmarlo.
 
@@ -42,6 +42,7 @@ Lee antes de redactar:
 - [estrategias-didacticas.md](references/estrategias-didacticas.md): estrategias por momento.
 - [bloom.md](references/bloom.md): verbos por nivel cognitivo.
 - [apa7.md](references/apa7.md): referencias bibliográficas.
+- [ejemplos-guias.md](references/ejemplos-guias.md): patrones de guías reales (codificación, estructura, entrega).
 
 Reglas de alineación curricular:
 - Cada **conocimiento de saber** y **de proceso** de los RA elegidos debe quedar cubierto por al menos una actividad (3.2–3.4). Incluye al final del chat una matriz breve conocimiento → actividad.
@@ -51,7 +52,7 @@ Reglas de alineación curricular:
 
 ### Paso 5. Generar el Word
 Sigue [entrega-word.md](references/entrega-word.md): arma el JSON y ejecuta
-`python scripts/generar_guia.py --datos datos.json --salida <ruta>/GA<n>-<competencia>_<nombre_corto>.docx` (codificación GA/AA/EV/IE en [evaluacion.md](references/evaluacion.md)).
+`python scripts/generar_guia.py --datos datos.json --salida <ruta>/GA1-<competencia técnica>_<nombre_corto>.docx` (codificación oficial GA/AA/EV/IE en [evaluacion.md](references/evaluacion.md)).
 Luego valida: `python scripts/validar_guia.py --datos datos.json --programa <json_del_programa>`.
 Corrige todo error reportado antes de entregar.
 

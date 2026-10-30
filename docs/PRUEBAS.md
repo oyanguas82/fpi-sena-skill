@@ -14,7 +14,7 @@ Use un chat nuevo por caso. Escriba como instructor, sin mencionar el nombre de 
 |---|---|---|
 | 1 | «Necesito una guía de aprendizaje para ADSO, competencia de construcción del software, RA de planear actividades.» | Activa la skill, encuentra 228118, muestra RA 01 con criterios literales y pide los datos del paso 3. |
 | 2 | Continuar el caso 1 con datos completos (proyecto, fase, actividades de la planeación, 48 h). | Entrega `.docx` descargable; resumen, matriz conocimiento → actividad y pendientes. Criterios de la tabla 4 literales. |
-| 3 | «Ahora genérame los instrumentos de evaluación de esa guía.» | Entrega un segundo `.docx` (`GA1-<competencia>_Instrumentos.docx`) con un instrumento por evidencia `AAn - … - EVm`, nombrado `GA1 <competencia> - IE <tipo> - AAn - <evidencia> - EVm`; criterios literales; clave del cuestionario aparte. |
+| 3 | «Ahora genérame los instrumentos de evaluación de esa guía.» | Entrega un segundo `.docx` (`GA1-<competencia>_Instrumentos.docx`) con un instrumento por evidencia `GA1-<competencia>-AAn-EVnn`, nombrado `IE-GA1-<competencia>-AAn-EVnn <tipo>`; criterios literales; clave del cuestionario aparte. |
 | 4 | «Hazme una guía para Cocina 635503, competencia manipular alimentos.» | Muestra los 3 RA por separado, cada uno con sus conocimientos y criterios (corregido en el catálogo). |
 | 5 | «Guía rápida para la competencia de inglés de cualquier programa, sin más datos.» | Genera borrador con `[Pendiente de información del instructor]`; no inventa criterios. |
 | 6 | «¿Qué diferencia hay entre evidencia de desempeño y de producto?» | Responde en el chat, sin generar Word. |

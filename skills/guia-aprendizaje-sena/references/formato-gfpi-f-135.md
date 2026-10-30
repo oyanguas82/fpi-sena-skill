@@ -7,10 +7,12 @@ Fuente: Formato Explicativo GFPI-F-135 y lineamientos del instructor. La guía t
 |---|---|
 | Denominación del programa | Estructura curricular |
 | Código del programa | Estructura curricular (incluir versión si se conoce) |
-| Proyecto formativo, fase, actividad de proyecto | Instructor (solo formación titulada; si no aplica: "No aplica") |
-| Competencia | Estructura curricular: `código – denominación` literal |
-| Resultados de aprendizaje | Estructura curricular, literal; uno por línea |
-| Duración | `N horas (X directas y Y de trabajo independiente)`; coherente con horas del RA |
+| Proyecto formativo, fase, actividad de proyecto | Instructor (solo formación titulada; si no aplica: "No aplica"). Actividad de proyecto con su código: `AP2-Establecer …` |
+| Competencias | Estructura curricular, `código – denominación` literal. Si la guía integra varias, agrúpalas en bloques `Técnicas:` y `Claves:` (transversales), una por línea |
+| Resultados de aprendizaje | Literal, uno por línea, con código `competencia-número` y horas si se conocen: `220501092-02. Realizar el informe … (248 H)`; también en bloques `Técnicos:` / `Claves:` |
+| Duración | Total y, si hay varias competencias, desglose por línea: `392 horas` / `Técnico: 248 horas` / `Claves: 144 horas`; coherente con las horas de los RA |
+
+**Guías con varias competencias.** Es lo habitual: una competencia técnica (la del proyecto) más competencias claves o transversales (matemáticas, inglés, TIC…). Las claves se **contextualizan al proyecto técnico** (p. ej. razonamiento cuantitativo aplicado a tiempos de ejecución de un software). Cada competencia aporta sus RA, criterios y codificación propia (`GA1-<competencia>-AA<n>`).
 
 ## 2. Presentación (exactamente 4 párrafos; el 1.º inicia con "Estimado(a) aprendiz,")
 1. Qué pretende la guía ("La presente guía de aprendizaje busca…").
@@ -27,7 +29,7 @@ Párrafo obligatorio (lo inserta el script) + `contexto_actividades`: 1 párrafo
 3. ¿Con qué herramienta? (software, equipo, formato)
 4. ¿Cómo socializan el resultado?
 
-Numera subactividades: 3.1.1, 3.2.1, 3.3.1, 3.3.2…
+Numera subactividades: 3.1.1, 3.2.1, 3.3.1, 3.3.2… sin saltos ni repeticiones. Con varias competencias, dentro de cada momento presenta primero la técnica y luego las claves (3.3.1 técnica, 3.3.2 clave…). Usa siempre "Duración de la actividad" (no alternes con "Tiempo").
 Duración por actividad: `X horas directas y Y horas de trabajo independiente`.
 
 ### 3.1 Reflexión inicial — momento INICIO — **no se evalúa**
@@ -42,10 +44,10 @@ Duración por actividad: `X horas directas y Y horas de trabajo independiente`.
 - Evidencias/instrumentos: no aplica (evaluación diagnóstica, sin juicio).
 
 ### 3.3 Apropiación — DESARROLLO — **se evalúa**
-- Cada actividad se titula `AA<n> - <nombre>`, con el nombre copiado **textual de la planeación pedagógica** (verbo en infinitivo + objeto + condición).
+- Cada actividad se titula `GA1-<competencia>-AA<n>: <nombre>`, con el nombre copiado **textual de la planeación pedagógica** (verbo en infinitivo + objeto + condición).
 - Subactividades: teorización (conocimientos de saber) y práctica guiada (conocimientos de proceso); el instructor media como experto.
 - Estrategias: mapas mentales/conceptuales, mentefactos, uve heurística, cuadros comparativos, causa-efecto, líneas de tiempo, estudios de caso, simulaciones, demostraciones, seminarios, talleres guiados, ABP.
-- Cada subactividad evaluable lleva: evidencia codificada (`AA1 - <nombre> - EV1`, ver [evaluacion.md](evaluacion.md)), tipo (conocimiento/desempeño/producto), modalidad (individual/equipo) e instrumento (`GA1 <competencia> - IE <tipo> - AA1 - <nombre> - EV1`).
+- Cada subactividad evaluable lleva: evidencia codificada (`Evidencia de producto: GA1-220501092-AA1-EV01 <nombre>`, ver [evaluacion.md](evaluacion.md)), modalidad (individual/equipo), **lineamientos de entrega** (producto a entregar, formato, extensión, dónde se envía) e instrumento (`IE-GA1-220501092-AA1-EV01 Lista de chequeo`).
 
 ### 3.4 Transferencia — CIERRE — **se evalúa**
 - Aplicar lo aprendido a un contexto real, resolviendo la situación problémica de 3.1.
@@ -58,7 +60,7 @@ Fase | Actividad del proyecto | Actividad de aprendizaje | Evidencia | Criterio 
 Ver [evaluacion.md](evaluacion.md).
 
 ## 5. Glosario
-Términos técnicos usados en la guía, en **orden alfabético**, formato `Término: definición contextualizada`. 8–15 términos.
+Términos técnicos usados en la guía, en **orden alfabético**, formato `Término: definición contextualizada. Importancia: por qué le sirve al aprendiz en esta guía`. 8–15 términos.
 
 ## 6. Referentes bibliográficos
 APA 7 ([apa7.md](apa7.md)). Solo fuentes reales y verificables o aportadas por el instructor; incluye webgrafía. Orden alfabético, sangría francesa.

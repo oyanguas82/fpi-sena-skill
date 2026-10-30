@@ -1,19 +1,19 @@
 {
   "identificacion": {
-    "guia": "GA1 220501096",
+    "guia": "GA1",
     "programa": "Análisis y Desarrollo de Software",
     "codigo": "228118 v1",
     "ficha": "",
-    "competencia": "220501096 – Desarrollar la solución de software de acuerdo con el diseño y metodologías de desarrollo",
-    "resultados": "Planear actividades de construcción del software de acuerdo con el diseño establecido.",
+    "competencia": "Técnicas:\n220501096 – Desarrollar la solución de software de acuerdo con el diseño y metodologías de desarrollo\nClaves:\n240201528 – Razonar cuantitativamente frente a situaciones susceptibles de ser abordadas de manera matemática en contextos laborales, sociales y personales",
+    "resultados": "220501096-01. Planear actividades de construcción del software de acuerdo con el diseño establecido.\n240201528-02. Plantear problemas matemáticos a partir de situaciones generadas en el contexto social y productivo.",
     "instructor": "Instructor de prueba"
   },
   "instrumentos": [
     {
-      "codigo": "GA1 220501096 - IE Cuestionario - AA1 - Cuestionario - EV1",
+      "codigo": "IE-GA1-220501096-AA1-EV01 Cuestionario",
       "tipo": "cuestionario",
-      "evidencia": "AA1 - Cuestionario - EV1: Evidencia de conocimiento – Individual",
-      "actividad": "AA1 - Interpretar el informe de diseño del software.",
+      "evidencia": "Evidencia de conocimiento: GA1-220501096-AA1-EV01 cuestionario sobre el informe de diseño",
+      "actividad": "GA1-220501096-AA1: Interpretar el informe de diseño del software.",
       "criterios": [
         "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."
       ],
@@ -44,10 +44,10 @@
       ]
     },
     {
-      "codigo": "GA1 220501096 - IE Lista de verificación - AA1 - Mapa mental - EV2",
+      "codigo": "IE-GA1-220501096-AA1-EV02 Lista de verificación",
       "tipo": "lista_verificacion",
-      "evidencia": "AA1 - Mapa mental - EV2: Evidencia de producto – Individual",
-      "actividad": "AA1 - Interpretar el informe de diseño del software.",
+      "evidencia": "Evidencia de producto: GA1-220501096-AA1-EV02 mapa mental del plan de construcción",
+      "actividad": "GA1-220501096-AA1: Interpretar el informe de diseño del software.",
       "criterios": [
         "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."
       ],
@@ -61,10 +61,10 @@
       ]
     },
     {
-      "codigo": "GA1 220501096 - IE Lista de chequeo - AA2 - Configuración del entorno - EV1",
+      "codigo": "IE-GA1-220501096-AA2-EV01 Lista de chequeo",
       "tipo": "lista_chequeo",
-      "evidencia": "AA2 - Configuración del entorno - EV1: Evidencia de desempeño – Individual",
-      "actividad": "AA2 - Configurar herramientas de desarrollo y versionamiento.",
+      "evidencia": "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno",
+      "actividad": "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento.",
       "criterios": [
         "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.",
         "Selecciona y configura herramientas de versionamiento para el control de cambios en el código."
@@ -80,10 +80,28 @@
       ]
     },
     {
-      "codigo": "GA1 220501096 - IE Rúbrica - AA3 - Documento de estándares - EV1",
+      "codigo": "IE-GA1-240201528-AA1-EV01 Lista de verificación",
+      "tipo": "lista_verificacion",
+      "evidencia": "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo",
+      "actividad": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software.",
+      "criterios": [
+        "Define el problema a resolver de acuerdo con las necesidades de su entorno.",
+        "Plantea ecuaciones o sistemas de ecuaciones de acuerdo con la relación entre las variables."
+      ],
+      "aprobacion": "Cumple la totalidad de los indicadores.",
+      "indicadores": [
+        "El informe describe el problema de eficiencia del software y sus variables.",
+        "El informe registra los tiempos de ejecución en una tabla ordenada por tamaño de entrada.",
+        "El informe plantea la ecuación que relaciona tamaño de entrada y tiempo de ejecución.",
+        "El informe presenta gráficos con títulos, ejes y unidades.",
+        "Las conclusiones responden al problema planteado con base en los resultados."
+      ]
+    },
+    {
+      "codigo": "IE-GA1-220501096-AA3-EV01 Rúbrica",
       "tipo": "rubrica",
-      "evidencia": "AA3 - Documento de estándares - EV1: Evidencia de producto – Equipo",
-      "actividad": "AA3 - Definir los estándares de codificación del proyecto.",
+      "evidencia": "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación",
+      "actividad": "GA1-220501096-AA3: Definir los estándares de codificación del proyecto.",
       "criterios": [
         "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada."
       ],

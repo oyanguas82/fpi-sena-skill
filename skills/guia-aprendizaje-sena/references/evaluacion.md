@@ -24,18 +24,20 @@ Relación con el currículo:
 - Conocimientos de **proceso** → evidencias de desempeño y producto.
 - **Criterios de evaluación** → columna 5 (literal) y base de los indicadores del instrumento.
 
-## Codificación (GA, AA, EV, IE)
+## Codificación oficial (GA, AA, EV, IE)
 | Sigla | Significa | Formato | Ejemplo |
 |---|---|---|---|
-| GA | Guía de Aprendizaje | `GA<n> <código competencia>` (n = número de la guía en la competencia) | `GA1 220501121` |
-| AA | Actividad de Aprendizaje | `AA<n> - <nombre de la actividad>` | `AA1 - Identificar las herramientas ofimáticas…` |
-| EV | Evidencia de Aprendizaje | `AA<n> - <nombre de la evidencia> - EV<m>` (EV **reinicia en cada AA**) | `AA1 - Mapa mental - EV1`, `AA1 - Exposición - EV2`, `AA2 - Taller - EV1` |
-| IE | Instrumento de Evaluación | `GA<n> <competencia> - IE <tipo> - AA<n> - <evidencia> - EV<m>` | `GA1 220501121 - IE Lista de chequeo - AA1 - Mapa mental - EV1` |
+| GA | Guía de Aprendizaje | `GA<n>` (número de la guía en el proyecto o la ficha) | `GA1` |
+| AP | Actividad de Proyecto | `AP<n>-<nombre>` | `AP2-Establecer las especificaciones funcionales del software` |
+| AA | Actividad de Aprendizaje | `GA<n>-<competencia>-AA<n>` | `GA1-220501092-AA1` |
+| EV | Evidencia de Aprendizaje | `GA<n>-<competencia>-AA<n>-EV<nn>` (dos dígitos; **reinicia en cada AA**) | `GA1-220501092-AA1-EV01`, `GA1-220501092-AA1-EV02`, `GA1-220501092-AA2-EV01` |
+| IE | Instrumento de Evaluación | `IE-` + código de la evidencia + tipo | `IE-GA1-220501092-AA1-EV01 Lista de chequeo` |
 
-- Las AA se numeran en orden en 3.3 y 3.4 (3.1 y 3.2 no llevan AA porque no se evalúan).
-- Texto de la evidencia en 3.3/3.4 y en la tabla 4: `AA1 - Mapa mental - EV1: Evidencia de conocimiento – Individual|Equipo`.
+- Cada competencia de la guía (técnica o clave) numera sus propias AA: `GA1-220501092-AA1` y `GA1-240201528-AA1` pueden coexistir.
+- Título de la actividad en 3.3/3.4: `GA1-220501092-AA1: <nombre literal de la planeación>`.
+- Texto de la evidencia (actividad y tabla 4): `Evidencia de producto: GA1-220501092-AA1-EV03 mapa de procesos del software a construir` (tipo, código, nombre en minúscula).
 - Tipos de IE: `Lista de chequeo`, `Lista de verificación`, `Rúbrica`, `Cuestionario`.
-- Archivos: guía `GA1-220501121_<nombre corto>.docx`; instrumentos `GA1-220501121_Instrumentos.docx`.
+- Archivos: guía `GA1-<competencia técnica>_<nombre corto>.docx`; instrumentos `GA1-<competencia técnica>_Instrumentos.docx`.
 
 ## Indicadores (metodología NSCL)
 - Desempeño: tercera persona, presente, afirmativo, **verbo + objeto + condición**. Ej.: "Configura el servidor web según la documentación técnica del proveedor."
@@ -45,7 +47,7 @@ Relación con el currículo:
 ## Fila tipo del apartado 4
 | Fase | Actividad del proyecto | Actividad de aprendizaje | Evidencia | Criterio | Técnica e instrumento |
 |---|---|---|---|---|---|
-| Análisis | Identificar requisitos… | AA1 - Identificar… | AA1 - Cuestionario - EV1: Evidencia de conocimiento – Individual | (texto literal del criterio) | Técnica: formulación de preguntas. Instrumento: GA1 220501121 - IE Cuestionario - AA1 - Cuestionario - EV1 |
+| Análisis | AP2-Establecer las especificaciones… | GA1-220501092-AA1: Elaborar diagramas de procesos… | Evidencia de conocimiento: GA1-220501092-AA1-EV01 infografía sobre la teoría general de sistemas | (texto literal del criterio) | Técnica: formulación de preguntas. Instrumento: IE-GA1-220501092-AA1-EV01 Lista de chequeo |
 
 Una evidencia puede cubrir varios criterios: escríbelos separados por punto y coma o en filas adicionales.
 

@@ -3,7 +3,7 @@
 Léelo cuando el instructor pida los instrumentos (lista de chequeo, lista de verificación, rúbrica o cuestionario) de una guía.
 
 ## Reglas
-- Un instrumento por evidencia de la tabla 4. El `codigo` es el nombre IE que figura en la columna «Técnica e instrumento»: `GA1 220501121 - IE Lista de chequeo - AA1 - Mapa mental - EV1` (ver codificación en [evaluacion.md](evaluacion.md)). `identificacion.guia` lleva el código de la guía (`GA1 220501121`).
+- Un instrumento por evidencia de la tabla 4. El `codigo` es el IE que figura en la columna «Técnica e instrumento»: `IE-GA1-220501092-AA1-EV01 Lista de chequeo` (ver codificación en [evaluacion.md](evaluacion.md)). `identificacion.guia` lleva el número de guía (`GA1`). Con varias competencias, cada instrumento muestra solo la competencia y los RA de su código.
 - `criterios`: copia literal de los criterios oficiales de esa evidencia (los mismos de la tabla 4).
 - Indicadores derivados del criterio, uno por aspecto observable, con la sintaxis de [evaluacion.md](evaluacion.md) (desempeño: verbo + objeto + condición; producto: objeto + verbo + condición). Listas: 4–8 indicadores. Rúbrica: 3–8 indicadores.
 - Tipo según la evidencia: desempeño → `lista_chequeo` o `rubrica`; producto → `lista_verificacion` o `rubrica`; conocimiento → `cuestionario` o `rubrica`.
@@ -12,25 +12,25 @@ Léelo cuando el instructor pida los instrumentos (lista de chequeo, lista de ve
 
 ## Comandos
 ```
-python scripts/generar_instrumentos.py --datos instrumentos.json --salida <ruta>/GA1-<competencia>_Instrumentos.docx
+python scripts/generar_instrumentos.py --datos instrumentos.json --salida <ruta>/GA1-<competencia técnica>_Instrumentos.docx
 python scripts/validar_guia.py --datos datos.json --instrumentos instrumentos.json --programa <json_del_programa>
 ```
-El validador comprueba criterios oficiales, el formato del código IE, que la GA corresponda a la competencia, que cada `AA - EV` exista en la tabla 4, coherencia de nombres, número de indicadores, descriptores de rúbrica y clave del cuestionario. Corrige los errores antes de entregar.
+El validador comprueba criterios oficiales, el formato del código IE, el número de guía, que la competencia del código esté en la guía, que cada evidencia exista en la tabla 4, coherencia de nombres, número de indicadores, descriptores de rúbrica y clave del cuestionario. Corrige los errores antes de entregar.
 
 ## JSON
 ```json
 {
-  "identificacion": {"guia": "GA1 220501121", "programa": "", "codigo": "", "ficha": "", "competencia": "", "resultados": "", "instructor": ""},
+  "identificacion": {"guia": "GA1", "programa": "", "codigo": "", "ficha": "", "competencia": "", "resultados": "", "instructor": ""},
   "instrumentos": [
-    {"codigo": "GA1 220501121 - IE Lista de chequeo - AA2 - Configuración del equipo - EV1", "tipo": "lista_chequeo",
-     "evidencia": "AA2 - Configuración del equipo - EV1: Evidencia de desempeño – Individual", "actividad": "AA2 - …",
+    {"codigo": "IE-GA1-220501092-AA2-EV01 Lista de chequeo", "tipo": "lista_chequeo",
+     "evidencia": "Evidencia de desempeño: GA1-220501092-AA2-EV01 …", "actividad": "GA1-220501092-AA2: …",
      "criterios": ["criterio literal"], "aprobacion": "",
      "indicadores": ["Indicador 1", "Indicador 2"]},
-    {"codigo": "GA1 220501121 - IE Rúbrica - AA3 - Informe técnico - EV1", "tipo": "rubrica", "evidencia": "", "actividad": "",
+    {"codigo": "IE-GA1-220501092-AA3-EV01 Rúbrica", "tipo": "rubrica", "evidencia": "", "actividad": "",
      "criterios": [""], "aprobacion": "",
      "niveles": ["Excelente", "Bueno", "Aceptable", "Insuficiente"],
      "rubrica": [{"indicador": "", "descriptores": ["", "", "", ""]}]},
-    {"codigo": "GA1 220501121 - IE Cuestionario - AA1 - Cuestionario - EV1", "tipo": "cuestionario", "evidencia": "", "actividad": "",
+    {"codigo": "IE-GA1-220501092-AA1-EV01 Cuestionario", "tipo": "cuestionario", "evidencia": "", "actividad": "",
      "criterios": [""], "aprobacion": "",
      "preguntas": [{"enunciado": "", "opciones": ["", "", ""], "respuesta": "b"},
                    {"enunciado": "Pregunta abierta", "respuesta": "respuesta esperada (opcional)"}]}

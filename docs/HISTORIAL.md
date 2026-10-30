@@ -25,7 +25,8 @@
 ## Reglas pedagógicas clave (Formato Explicativo)
 - 3.1 y 3.2 no se evalúan; 3.3 copia textual la planeación pedagógica (verbo infinitivo + objeto + condición) y se evalúa; 3.4 transfiere y se evalúa.
 - Descripción de actividad: individual/colaborativa, qué hacen, con qué herramienta, cómo socializan.
-- Codificación (definida por el instructor, 2026-10-30): guía `GA1 <competencia>`; actividad `AA1 - <nombre>`; evidencia `AA1 - <nombre> - EV1` (EV reinicia en cada AA); instrumento `GA1 <competencia> - IE <tipo> - AA1 - <evidencia> - EV1`; archivos `GA1-<competencia>_<nombre>.docx` y `GA1-<competencia>_Instrumentos.docx`. Reemplaza la anterior `EA1`.
+- Codificación oficial (de guías SENA reales, confirmada por el instructor 2026-10-30): actividad `GA1-220501092-AA1`; evidencia `GA1-220501092-AA1-EV01` (dos dígitos, reinicia por AA); instrumento `IE-GA1-220501092-AA1-EV01 Lista de chequeo`; actividad de proyecto `AP2-…`; archivos `GA1-<competencia técnica>_<nombre>.docx` y `_Instrumentos.docx`.
+- Guías con varias competencias: técnica + claves (transversales), RA `220501092-02. … (248 H)`, duración total con desglose Técnico/Claves.
 - Duración: "X horas directas y Y de trabajo independiente".
 
 ## Sesiones en Claude Code
@@ -40,6 +41,7 @@
 
 - 2026-10-30: formato del Word de la guía. `generar_guia.py` pone etiquetas en negrita, justifica el texto, separa actividades y apartados, quita la negrita heredada del párrafo objetivo, aplica sangría francesa a la bibliografía y fija anchos de la tabla 4 (diseño fijo, encabezado repetido, títulos de tabla unidos a su tabla). Revisado en Word (PDF). Convenciones en `references/entrega-word.md`.
 - 2026-10-30: codificación GA/AA/EV/IE. Referencias (`evaluacion.md`, `formato-gfpi-f-135.md`, `entrega-word.md`, `instrumentos.md`, SKILL.md) actualizadas; `validar_guia.py` valida formato AA/EV/IE, numeración EV por actividad, GA vs competencia y avisa si queda `EA<n>`; `generar_instrumentos.py` muestra la guía (`identificacion.guia`); `generar_guia.py` pone en negrita el código de evidencia y separa instrumentos por línea. Pruebas ADSO actualizadas (incluye AA1 con EV1 y EV2).
+- 2026-10-30: aprendizaje de dos guías reales (228128 V04 presencial y 228118 V01 virtual). Codificación oficial (reemplaza GA/AA/EV con espacios del mismo día), guías multicompetencia (validador por unión de competencias; instrumentos muestran solo su competencia), lineamientos de entrega (`entrega`), código AP, glosario con importancia, `references/ejemplos-guias.md`. Pruebas ADSO con 220501096 + 240201528.
 
 ## Pendiente / ideas
 - Confirmar instalación real: marketplace en Claude Code, `codex plugin marketplace add oyanguas82/fpi-sena-skill`, subida del zip en claude.ai y ChatGPT.

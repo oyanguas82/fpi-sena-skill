@@ -12,6 +12,8 @@ La licencia MIT de este repositorio (ver `LICENSE`) cubre únicamente la obra de
 | Lineamientos del Formato Explicativo GFPI-F-135 y del Instructivo APA 7 del SENA, resumidos | `references/formato-gfpi-f-135.md`, `references/apa7.md` | SENA |
 | Estrategias didácticas resumidas de Pimienta, J. (2012), *Estrategias de enseñanza-aprendizaje* (Pearson), y del *Manual de Estrategias Didácticas* | `references/estrategias-didacticas.md` | Sus autores y editoriales |
 
-Estos materiales se incluyen solo como referencia para el diseño de guías de aprendizaje en el marco de la Formación Profesional Integral del SENA. Quien los reutilice fuera de ese fin debe verificar los permisos con sus titulares.
+Los materiales del SENA (plantilla, lineamientos y diseños curriculares) son documentos institucionales públicos, de libre consulta y uso por los instructores del SENA en Colombia; se incluyen para facilitar el diseño de guías de aprendizaje en el marco de la Formación Profesional Integral. Su publicación no implica cesión de derechos: el SENA conserva la titularidad y su marca. Los resúmenes de obras de terceros se incluyen como apoyo pedagógico citando la fuente.
 
-Este proyecto no es un producto oficial del SENA.
+Quien reutilice estos materiales fuera del SENA o con otro fin debe verificar los permisos con sus titulares.
+
+Este proyecto es una herramienta de apoyo para instructores; no es un producto oficial del SENA.

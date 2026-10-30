@@ -30,10 +30,13 @@
 
 ## Sesiones en Claude Code
 - 2026-10-29: continuación del desarrollo en Claude Code (VS Code). `CLAUDE.md` importa este historial con `@docs/HISTORIAL.md`, así que se carga en cada sesión. Historial versionado en el commit `3058e44`.
+- 2026-10-29 (v1.1): instrumentos de evaluación como anexo Word.
+  - `generar_instrumentos.py`: lista de chequeo, lista de verificación, rúbrica (2–5 niveles) y cuestionario con clave de respuestas en página aparte. Reutiliza logo, estilos y márgenes de la plantilla (sin modificarla); pie propio «Anexo: instrumentos de evaluación…».
+  - `validar_guia.py --instrumentos`: criterios oficiales, EAn presente en tabla 4, nombre del instrumento igual al de la tabla, 4–8 indicadores, descriptores por nivel, clave del cuestionario e instrumentos de la tabla sin generar. `--datos` ahora es opcional.
+  - `references/instrumentos.md` con reglas y JSON; `pruebas/` con guía e instrumentos de ejemplo (ADSO 220501096). Revisado visualmente en Word (PDF).
 
 ## Pendiente / ideas
 - Probar la skill instalada en Claude y en ChatGPT con casos reales.
 - Revisar los ítems truncados de los programas más usados.
-- Generar instrumentos de evaluación (lista de chequeo, rúbrica) como anexo .docx.
 - Mejorar heurística de unión de líneas en formato A (listas sin viñetas).
 - Guía de prueba: `../entregables/Guia_prueba_ADSO_220501096.docx`.

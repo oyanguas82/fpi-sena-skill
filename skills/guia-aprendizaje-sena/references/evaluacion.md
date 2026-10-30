@@ -42,4 +42,4 @@ Relación con el currículo:
 Una evidencia puede cubrir varios criterios: escríbelos separados por punto y coma o en filas adicionales.
 
 ## Instrumentos opcionales
-Si el instructor lo pide, entrega los instrumentos (lista de chequeo, rúbrica, cuestionario) como anexo en archivo aparte, con: datos de identificación, criterio oficial, indicadores, escala (Cumple / No cumple o niveles de rúbrica), observaciones y juicio (Aprobado / No aprobado).
+Si el instructor lo pide, entrega los instrumentos (lista de chequeo, lista de verificación, rúbrica, cuestionario) como anexo Word aparte con `scripts/generar_instrumentos.py`. Detalle y JSON en [instrumentos.md](instrumentos.md).

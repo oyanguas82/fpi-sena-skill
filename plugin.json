@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fpi-sena",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Guías de aprendizaje SENA GFPI-F-135 V04 desde la estructura curricular",
   "author": {
     "name": "OSCAR E YANGUAS A"

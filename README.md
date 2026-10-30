@@ -8,9 +8,10 @@ plugin.json, .codex-plugin/      Manifiestos del plugin ChatGPT
 skills/guia-aprendizaje-sena/
   SKILL.md                       Instrucciones y flujo
   references/                    Reglas del formato, evaluación, estrategias, Bloom, APA
-  scripts/                       generar_guia, validar_guia, buscar_programa, extraer_estructura
+  scripts/                       generar_guia, generar_instrumentos, validar_guia, buscar_programa, extraer_estructura
   data/                          Catálogo curricular (68 programas)
   assets/                        Plantilla GFPI-F-135
+pruebas/                         JSON de prueba (guía e instrumentos)
 ```
 
 ## Comandos
@@ -20,6 +21,8 @@ python skills/guia-aprendizaje-sena/scripts/buscar_programa.py --buscar "softwar
 python skills/guia-aprendizaje-sena/scripts/extraer_estructura.py <carpeta_pdfs> --salida skills/guia-aprendizaje-sena/data/programas
 python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json --programa skills/guia-aprendizaje-sena/data/programas/228118_v1.json
 python skills/guia-aprendizaje-sena/scripts/generar_guia.py --datos datos.json --salida salidas/guia.docx
+python skills/guia-aprendizaje-sena/scripts/generar_instrumentos.py --datos instrumentos.json --salida salidas/instrumentos.docx
+python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json --instrumentos instrumentos.json --programa <programa.json>
 ```
 
 ## Empaquetar

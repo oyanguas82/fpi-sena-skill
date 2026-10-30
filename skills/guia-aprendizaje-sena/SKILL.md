@@ -55,8 +55,10 @@ Sigue [entrega-word.md](references/entrega-word.md): arma el JSON y ejecuta
 Luego valida: `python scripts/validar_guia.py --datos datos.json --programa <json_del_programa>`.
 Corrige todo error reportado antes de entregar.
 
+Si el instructor pide los instrumentos de evaluación, genéralos como anexo Word siguiendo [instrumentos.md](references/instrumentos.md).
+
 ### Paso 6. Entregar
-Adjunta el `.docx` real (enlace descargable) y en el chat: resumen de 3–5 líneas, matriz de cobertura y lista de pendientes. No afirmes revisión visual si no la hiciste.
+Adjunta el `.docx` real (enlace descargable; también el de instrumentos, si se generó) y en el chat: resumen de 3–5 líneas, matriz de cobertura y lista de pendientes. No afirmes revisión visual si no la hiciste.
 
 ## Cuándo entregar Word
 - Crear, completar o modificar la guía → siempre entrega el `.docx` actualizado, conservando lo ya validado.

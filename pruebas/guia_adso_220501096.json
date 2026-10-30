@@ -1,0 +1,32 @@
+{
+  "identificacion": {
+    "programa": "Análisis y Desarrollo de Software",
+    "codigo": "228118 v1",
+    "proyecto": "Sistema de información para la gestión de inventarios",
+    "fase": "Ejecución",
+    "actividad_proyecto": "Planear la construcción del software",
+    "competencia": "220501096 – Desarrollar la solución de software de acuerdo con el diseño y metodologías de desarrollo",
+    "resultados": "Planear actividades de construcción del software de acuerdo con el diseño establecido.",
+    "duracion": "40 horas directas y 8 horas de trabajo independiente"
+  },
+  "presentacion": ["Párrafo 1.", "Párrafo 2.", "Párrafo 3.", "Párrafo 4."],
+  "contexto_actividades": "Contexto de prueba.",
+  "actividades": {
+    "3.1": [{"descripcion": "Reflexión inicial.", "ambiente": "Aula", "estrategias": "Lluvia de ideas", "materiales": "Tablero", "apoyo": "Video", "duracion": "2 horas directas y 0 horas de trabajo independiente"}],
+    "3.2": [{"descripcion": "Contextualización.", "ambiente": "Aula", "estrategias": "Preguntas guía", "materiales": "Tablero", "apoyo": "Lectura", "duracion": "2 horas directas y 0 horas de trabajo independiente"}],
+    "3.3": [
+      {"titulo": "Actividad de Aprendizaje 1: Interpretar el informe de diseño del software.", "descripcion": "3.3.1 Cuestionario sobre el informe de diseño.", "ambiente": "Aula", "estrategias": "Estudio de caso", "materiales": "Informe de diseño", "apoyo": "Guía", "evidencias": "EA1: Evidencia de conocimiento: cuestionario sobre interpretación del informe de diseño (Sesión 1 – Individual)", "instrumentos": "EA1_Cuestionario_Conocimiento_Informe_Diseño", "duracion": "8 horas directas y 2 horas de trabajo independiente"},
+      {"titulo": "Actividad de Aprendizaje 2: Configurar herramientas de desarrollo y versionamiento.", "descripcion": "3.3.2 Configuración del entorno.", "ambiente": "Laboratorio de software", "estrategias": "Taller práctico", "materiales": "Computador, Git, VS Code", "apoyo": "Documentación oficial", "evidencias": "EA2: Evidencia de desempeño: configuración del entorno de desarrollo y del repositorio (Sesión 2 – Individual)", "instrumentos": "EA2_Lista_Chequeo_Desempeño_Entorno_Desarrollo", "duracion": "16 horas directas y 2 horas de trabajo independiente"}
+    ],
+    "3.4": [{"descripcion": "Documento de estándares de codificación del proyecto.", "ambiente": "Laboratorio de software", "estrategias": "Aprendizaje basado en proyectos", "materiales": "Computador", "apoyo": "Guías de estilo", "evidencias": "EA3: Evidencia de producto: documento de estándares de codificación (Equipo)", "instrumentos": "EA3_Rúbrica_Producto_Estándares_Codificación", "duracion": "12 horas directas y 4 horas de trabajo independiente"}]
+  },
+  "evidencias": [
+    ["Ejecución", "Planear la construcción del software", "Actividad de Aprendizaje 1", "EA1: Evidencia de conocimiento: cuestionario", "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software.", "Técnica: formulación de preguntas. Instrumento: EA1_Cuestionario_Conocimiento_Informe_Diseño"],
+    ["Ejecución", "Planear la construcción del software", "Actividad de Aprendizaje 2", "EA2: Evidencia de desempeño: configuración del entorno", "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.; Selecciona y configura herramientas de versionamiento para el control de cambios en el código.", "Técnica: observación directa. Instrumento: EA2_Lista_Chequeo_Desempeño_Entorno_Desarrollo"],
+    ["Ejecución", "Planear la construcción del software", "Transferencia", "EA3: Evidencia de producto: documento de estándares", "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada.", "Técnica: valoración de producto. Instrumento: EA3_Rúbrica_Producto_Estándares_Codificación"]
+  ],
+  "glosario": ["Repositorio: espacio donde se almacena y versiona el código."],
+  "bibliografia": ["Chacon, S. y Straub, B. (2014). Pro Git (2.a ed.). Apress."],
+  "control_documento": [["Instructor de prueba", "Instructor", "Centro de prueba", "2026-10-29"]],
+  "cambios": []
+}

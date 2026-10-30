@@ -33,7 +33,7 @@ TIPOS = {
                      "Lea cada pregunta y responda. En las preguntas de selección marque una sola opción."),
 }
 NIVELES = ["Excelente", "Bueno", "Aceptable", "Insuficiente"]
-CAMPOS_ID = {"programa", "codigo", "ficha", "competencia", "resultados", "instructor"}
+CAMPOS_ID = {"guia", "programa", "codigo", "ficha", "competencia", "resultados", "instructor"}
 CAMPOS_INST = {"codigo", "tipo", "evidencia", "actividad", "tecnica", "criterios", "instrucciones",
                "indicadores", "niveles", "rubrica", "preguntas", "aprobacion"}
 
@@ -114,6 +114,7 @@ def lista_textos(inst, clave, minimo=1):
 
 def identificacion(ident, inst, nombre, tecnica):
     filas = [
+        ("Guía de aprendizaje", val(ident.get("guia"))),
         ("Programa de formación", " – ".join(x for x in (val(ident.get("codigo"), True), val(ident.get("programa"))) if x)),
         ("Ficha", val(ident.get("ficha"), True)),
         ("Competencia", val(ident.get("competencia"))),
@@ -121,7 +122,7 @@ def identificacion(ident, inst, nombre, tecnica):
         ("Actividad de aprendizaje", val(inst.get("actividad"))),
         ("Evidencia", val(inst.get("evidencia"))),
         ("Técnica", val(inst.get("tecnica") or tecnica)),
-        ("Instrumento", nombre + ": " + val(inst.get("codigo"))),
+        ("Instrumento", val(inst.get("codigo"))),
         ("Instructor(a)", val(ident.get("instructor"))),
         ("Aprendiz(ces)", ""),
         ("Documento de identidad", ""),
@@ -203,7 +204,7 @@ def instrumento(ident, inst, primero):
     if tipo not in TIPOS:
         raise ValueError(f"{inst.get('codigo', '?')}: tipo debe ser uno de {', '.join(TIPOS)}.")
     nombre, tecnica, instrucciones = TIPOS[tipo]
-    x = [para(val(inst.get("codigo")), jc="center", bold=True, sz=26, after=60, brk=not primero),
+    x = [para(val(inst.get("codigo")), jc="center", bold=True, sz=24, after=60, brk=not primero),
          para(nombre.upper(), jc="center", bold=True, sz=22, after=200),
          identificacion(ident, inst, nombre, tecnica),
          para("", after=0),

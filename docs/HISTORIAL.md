@@ -25,7 +25,7 @@
 ## Reglas pedagógicas clave (Formato Explicativo)
 - 3.1 y 3.2 no se evalúan; 3.3 copia textual la planeación pedagógica (verbo infinitivo + objeto + condición) y se evalúa; 3.4 transfiere y se evalúa.
 - Descripción de actividad: individual/colaborativa, qué hacen, con qué herramienta, cómo socializan.
-- Evidencias EA1, EA2…; instrumentos `EA1_Lista_Chequeo_Desempeño_<Nombre>`.
+- Codificación (definida por el instructor, 2026-10-30): guía `GA1 <competencia>`; actividad `AA1 - <nombre>`; evidencia `AA1 - <nombre> - EV1` (EV reinicia en cada AA); instrumento `GA1 <competencia> - IE <tipo> - AA1 - <evidencia> - EV1`; archivos `GA1-<competencia>_<nombre>.docx` y `GA1-<competencia>_Instrumentos.docx`. Reemplaza la anterior `EA1`.
 - Duración: "X horas directas y Y de trabajo independiente".
 
 ## Sesiones en Claude Code
@@ -39,6 +39,7 @@
 - 2026-10-30: distribución multiplataforma. `.claude-plugin/` (plugin + marketplace Claude Code, validado con `claude plugin validate`), `.agents/plugins/marketplace.json` (Codex, sin validar: Codex no instalado), `dist/guia-aprendizaje-sena-skill.zip` (claude.ai y ChatGPT; lo actualiza `empaquetar.py`). Licencia MIT para la obra propia; `NOTICE.md` excluye plantilla, logo y catálogo SENA (públicos para instructores) y resúmenes de obras de terceros. `.claude/skills/` ya no se versiona (junction local).
 
 - 2026-10-30: formato del Word de la guía. `generar_guia.py` pone etiquetas en negrita, justifica el texto, separa actividades y apartados, quita la negrita heredada del párrafo objetivo, aplica sangría francesa a la bibliografía y fija anchos de la tabla 4 (diseño fijo, encabezado repetido, títulos de tabla unidos a su tabla). Revisado en Word (PDF). Convenciones en `references/entrega-word.md`.
+- 2026-10-30: codificación GA/AA/EV/IE. Referencias (`evaluacion.md`, `formato-gfpi-f-135.md`, `entrega-word.md`, `instrumentos.md`, SKILL.md) actualizadas; `validar_guia.py` valida formato AA/EV/IE, numeración EV por actividad, GA vs competencia y avisa si queda `EA<n>`; `generar_instrumentos.py` muestra la guía (`identificacion.guia`); `generar_guia.py` pone en negrita el código de evidencia y separa instrumentos por línea. Pruebas ADSO actualizadas (incluye AA1 con EV1 y EV2).
 
 ## Pendiente / ideas
 - Confirmar instalación real: marketplace en Claude Code, `codex plugin marketplace add oyanguas82/fpi-sena-skill`, subida del zip en claude.ai y ChatGPT.

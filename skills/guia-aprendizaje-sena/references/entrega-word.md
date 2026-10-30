@@ -54,12 +54,13 @@ El generador da formato al contenido; no uses Markdown (`**`, `#`, viñetas) den
 - `titulo` de actividad en negrita, con espacio antes; párrafos de presentación y contexto justificados.
 - Glosario: escribe `Término: definición` (el término sale en negrita).
 - Bibliografía: sangría francesa APA.
-- Tabla 4: columna de evidencia con `EAn:` en negrita; criterios separados por `;` van en párrafos aparte; en la última columna escribe `Técnica: … Instrumento: …` (cada etiqueta en negrita y en su línea).
+- Tabla 4: columna de evidencia con el código `AA1 - <nombre> - EV1` en negrita (antes de `:`); criterios separados por `;` van en párrafos aparte; en la última columna escribe `Técnica: … Instrumento: …` (cada etiqueta en negrita y en su línea).
 
 ## Convenciones de contenido
 - `identificacion.competencia`: `código – denominación` literal.
 - `identificacion.resultados`: un RA por línea (`\n`), literal.
-- Cada actividad acepta `titulo` opcional (línea antes de sus campos). En 3.3 úsalo para `Actividad de Aprendizaje N: <texto literal de la planeación>`; en `descripcion` inicia con la numeración `3.3.x …`.
+- Cada actividad acepta `titulo` opcional (línea antes de sus campos). En 3.3 y 3.4 úsalo para `AA<n> - <texto literal de la planeación>`; en `descripcion` inicia con la numeración `3.3.x …`.
+- Codificación GA/AA/EV/IE y nombres de archivo: ver [evaluacion.md](evaluacion.md).
 - `duracion` de cada actividad: `X horas directas y Y horas de trabajo independiente`.
 - En 3.1 y 3.2 omite `evidencias` e `instrumentos` (no se evalúan).
 - `evidencias[i][4]` (criterio) debe ser idéntico a un criterio del programa; el validador lo comprueba.

@@ -2,7 +2,9 @@
 Uso: python validar_guia.py --datos datos.json [--instrumentos instrumentos.json] --programa programa.json
 Guía: competencia y RA literales, criterios oficiales, horas, evidencias en 3.3/3.4,
 presentación de 4 párrafos y campos pendientes.
-Instrumentos: criterios oficiales, código EA presente en la tabla 4, número de indicadores,
+Codificación: GA<n> <competencia>, AA<n> - <actividad>, AA<n> - <evidencia> - EV<m> (EV reinicia por AA),
+GA<n> <competencia> - IE <tipo> - AA<n> - <evidencia> - EV<m>.
+Instrumentos: criterios oficiales, código IE válido, AA-EV presente en la tabla 4, número de indicadores,
 descriptores de rúbrica y clave del cuestionario. Solo biblioteca estándar.
 """
 import argparse
@@ -42,6 +44,23 @@ def es_oficial(crit, oficiales):
     return n in oficiales or any(n in o or o in n for o in oficiales if len(o) > 20)
 
 
+EV_RX = re.compile(r"AA\s*(\d+)\s*-\s*(.+?)\s*-\s*EV\s*(\d+)", re.I)
+IE_RX = re.compile(r"^GA\s*(\d+)\s+(\d{9})\s*-\s*IE\s+(.+?)\s*-\s*AA\s*(\d+)\s*-\s*(.+?)\s*-\s*EV\s*(\d+)$", re.I)
+GA_RX = re.compile(r"^GA\s*(\d+)\s+(\d{9})$", re.I)
+TIPO_IE = {"lista_chequeo": "lista de chequeo", "lista_verificacion": "lista de verificacion",
+           "rubrica": "rubrica", "cuestionario": "cuestionario"}
+EJ_IE = "GA1 220501121 - IE Lista de chequeo - AA1 - Mapa mental - EV1"
+
+
+def evidencias_en(texto):
+    """{(aa, ev): nombre} de los códigos «AA1 - <nombre> - EV1» presentes en el texto."""
+    return {(int(a), int(e)): n.strip() for a, n, e in EV_RX.findall(str(texto))}
+
+
+def cod_ev(clave):
+    return f"AA{clave[0]}-EV{clave[1]}"
+
+
 def buscar_competencia(p, texto):
     t = norm(texto)
     return next((c for c in p["competencias"] if str(c["codigo"]) in t
@@ -59,17 +78,28 @@ def validar_instrumentos(ins, guia, prog, err, adv):
         err.append("Instrumentos: la competencia no coincide con ninguna del programa.")
     oficiales = {norm(x) for x in comp.get("criterios_evaluacion", [])} if comp else set()
     filas = (guia or {}).get("evidencias", [])
+    guia_cod = str(ins.get("identificacion", {}).get("guia", "")).strip()
+    mg = GA_RX.match(guia_cod)
+    if not mg:
+        err.append(f"Instrumentos: «identificacion.guia» debe ser «GA<n> <código competencia>» (p. ej. GA1 220501121); hay «{guia_cod}».")
+    elif comp and mg.group(2) != str(comp["codigo"]):
+        err.append(f"Instrumentos: la guía {guia_cod} no corresponde a la competencia {comp['codigo']}.")
     vistos = set()
     for inst in lista:
-        cod = str(inst.get("codigo", ""))
-        m = re.match(r"(EA\d+)_", cod)
+        cod = str(inst.get("codigo", "")).strip()
+        m = IE_RX.match(cod)
         if not m:
-            err.append(f"Instrumento «{cod[:60]}»: el código debe iniciar con EA<n>_ (p. ej. EA1_Lista_Chequeo_Desempeño_<Nombre>).")
+            err.append(f"Instrumento «{cod[:70]}»: el código debe tener la forma «{EJ_IE}».")
             continue
-        ea = m.group(1)
-        if cod in vistos:
+        clave = (int(m.group(4)), int(m.group(6)))
+        ea = cod_ev(clave)
+        if mg and (m.group(1), m.group(2)) != (mg.group(1), mg.group(2)):
+            err.append(f"{cod}: el prefijo GA no coincide con la guía {guia_cod}.")
+        if inst.get("tipo") in TIPO_IE and norm(m.group(3)) != TIPO_IE[inst["tipo"]]:
+            adv.append(f"{cod}: «IE {m.group(3)}» no corresponde al tipo «{inst['tipo']}».")
+        if norm(cod) in vistos:
             err.append(f"{cod}: código de instrumento repetido.")
-        vistos.add(cod)
+        vistos.add(norm(cod))
         crits = inst.get("criterios", [])
         if not crits:
             err.append(f"{cod}: sin criterios de evaluación.")
@@ -77,15 +107,18 @@ def validar_instrumentos(ins, guia, prog, err, adv):
             if comp and not es_oficial(c, oficiales):
                 err.append(f"{cod}: criterio no oficial → «{c[:80]}»")
         if guia is not None:
-            filas_ea = [f for f in filas if re.search(rf"\b{ea}\b", " ".join(f))]
+            filas_ea = [f for f in filas if len(f) > 3 and clave in evidencias_en(f[3])]
             if not filas_ea:
                 err.append(f"{cod}: la evidencia {ea} no está en la tabla 4 de la guía.")
             else:
+                nombre_tabla = evidencias_en(filas_ea[0][3])[clave]
+                if norm(nombre_tabla) != norm(m.group(5)):
+                    adv.append(f"{cod}: la evidencia se llama «{nombre_tabla}» en la tabla 4.")
                 crit_tabla = " ".join(norm(f[4]) for f in filas_ea if len(f) > 4)
                 for c in crits:
                     if norm(c) not in crit_tabla:
                         adv.append(f"{cod}: el criterio «{c[:60]}…» no figura en la fila de {ea} en la tabla 4.")
-                if not any(cod in f[5] for f in filas_ea if len(f) > 5):
+                if not any(norm(cod) in norm(f[5]) for f in filas_ea if len(f) > 5):
                     adv.append(f"{cod}: el nombre del instrumento no coincide con la columna «Técnica e instrumento» de {ea}.")
         tipo = inst.get("tipo")
         if tipo in ("lista_chequeo", "lista_verificacion"):
@@ -107,10 +140,15 @@ def validar_instrumentos(ins, guia, prog, err, adv):
         else:
             err.append(f"{cod}: tipo no válido «{tipo}».")
     if guia is not None:
-        nombrados = {c for f in filas if len(f) > 5 for c in re.findall(r"EA\d+_[^\s;,.]+", f[5])}
-        faltan = nombrados - vistos
+        nombrados = {}
+        for f in filas:
+            if len(f) > 5:
+                for x in re.split(r"Instrumentos?\s*:", f[5])[1:]:
+                    x = x.strip().rstrip(".")
+                    nombrados[norm(x)] = x
+        faltan = [v for k, v in nombrados.items() if IE_RX.match(v) and k not in vistos]
         if faltan:
-            adv.append("Instrumentos de la tabla 4 sin generar: " + ", ".join(sorted(faltan)))
+            adv.append("Instrumentos de la tabla 4 sin generar: " + "; ".join(sorted(faltan)))
 
 
 def main():
@@ -155,6 +193,14 @@ def validar_guia(d, p, err, adv):
         for i, x in enumerate(act.get(m, []), 1):
             if not str(x.get("evidencias", "")).strip() or not str(x.get("instrumentos", "")).strip():
                 adv.append(f"{m} actividad {i}: sin evidencia o instrumento (verifique si es subactividad no evaluable).")
+            titulo = str(x.get("titulo", "")).strip()
+            if titulo and not re.match(r"^AA\s*\d+\s*-\s*\S", titulo):
+                adv.append(f"{m} actividad {i}: el título debería ser «AA<n> - <nombre de la actividad>».")
+            for ie in re.split(r"\s*;\s*|\n", str(x.get("instrumentos", ""))):
+                if ie.strip() and PEND not in ie and not IE_RX.match(ie.strip().rstrip(".")):
+                    adv.append(f"{m} actividad {i}: instrumento «{ie[:50]}» sin la forma «{EJ_IE}».")
+    if re.search(r"\bEA\d+", json.dumps(d, ensure_ascii=False)):
+        adv.append("Hay códigos «EA<n>» (codificación anterior): use «AA<n> - <evidencia> - EV<m>».")
     total = sum(horas(x.get("duracion")) or 0 for m in act.values() for x in m)
     dur = horas(ident.get("duracion"))
     if dur and total and abs(dur - total) > 0.01:
@@ -163,10 +209,17 @@ def validar_guia(d, p, err, adv):
     filas = d.get("evidencias", [])
     if not filas:
         err.append("La tabla de evidencias (apartado 4) está vacía.")
-    codigos_tabla = {c for f in filas for c in re.findall(r"EA\d+", " ".join(f))}
-    codigos_act = {c for m in act.values() for x in m for c in re.findall(r"EA\d+", str(x.get("evidencias", "")))}
+    codigos_tabla = {k for f in filas if len(f) > 3 for k in evidencias_en(f[3])}
+    codigos_act = {k for m in act.values() for x in m for k in evidencias_en(x.get("evidencias", ""))}
     if codigos_act - codigos_tabla:
-        err.append("Evidencias en actividades que no están en la tabla 4: " + ", ".join(sorted(codigos_act - codigos_tabla)))
+        err.append("Evidencias en actividades que no están en la tabla 4: "
+                   + ", ".join(cod_ev(k) for k in sorted(codigos_act - codigos_tabla)))
+    if filas and not codigos_tabla:
+        err.append("La tabla 4 no tiene evidencias codificadas «AA<n> - <evidencia> - EV<m>».")
+    for aa in sorted({a for a, _ in codigos_tabla}):
+        evs = sorted(e for a, e in codigos_tabla if a == aa)
+        if evs != list(range(1, len(evs) + 1)):
+            adv.append(f"AA{aa}: las evidencias deben numerarse EV1, EV2… dentro de la actividad (hay {evs}).")
 
     if p:
         comp = buscar_competencia(p, ident.get("competencia", ""))

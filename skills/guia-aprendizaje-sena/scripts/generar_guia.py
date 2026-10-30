@@ -238,9 +238,10 @@ def parrafos_celda(valor, col):
             else:
                 out.append([(x.strip(), False)])
         return out
-    m = re.match(r"^(EA\d+:)\s*(.*)$", valor, re.S)
+    # Evidencia: el código «AA1 - <nombre> - EV1» en negrita y la descripción después de «:».
+    m = re.match(r"^(AA\s*\d+\s*-\s*.+?\s*-\s*EV\s*\d+)\s*:?\s*(.*)$", valor, re.S)
     if col == 3 and m:
-        return [[(m.group(1) + " ", True), (m.group(2), False)]]
+        return [[(m.group(1) + (": " if m.group(2) else ""), True), (m.group(2), False)]]
     return [[(l, False)] for l in valor.split("\n") if l.strip()] or [[("", False)]]
 
 
@@ -344,7 +345,10 @@ def generate(data, output):
             for key, label in CAMPOS:
                 if key in {"evidencias", "instrumentos"} and section in {"3.1", "3.2"} and key not in activity:
                     continue
-                values.append(etiqueta_valor(label, activity.get(key),
+                valor = activity.get(key)
+                if key == "instrumentos" and isinstance(valor, str):
+                    valor = re.sub(r"\s*;\s*", "\n", valor.strip())  # un instrumento por línea
+                values.append(etiqueta_valor(label, valor,
                                              before=160 if not titulo and index > 1 and key == "descripcion" else None))
         replace_between(h[section], h[following], values)
     replace_between(h["5."], h["6."], [termino(g) for g in string_list(data, "glosario")])

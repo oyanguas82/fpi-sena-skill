@@ -42,10 +42,10 @@ Duración por actividad: `X horas directas y Y horas de trabajo independiente`.
 - Evidencias/instrumentos: no aplica (evaluación diagnóstica, sin juicio).
 
 ### 3.3 Apropiación — DESARROLLO — **se evalúa**
-- Títulos de "Actividad de Aprendizaje N" se copian **textuales de la planeación pedagógica** (verbo en infinitivo + objeto + condición).
+- Cada actividad se titula `AA<n> - <nombre>`, con el nombre copiado **textual de la planeación pedagógica** (verbo en infinitivo + objeto + condición).
 - Subactividades: teorización (conocimientos de saber) y práctica guiada (conocimientos de proceso); el instructor media como experto.
 - Estrategias: mapas mentales/conceptuales, mentefactos, uve heurística, cuadros comparativos, causa-efecto, líneas de tiempo, estudios de caso, simulaciones, demostraciones, seminarios, talleres guiados, ABP.
-- Cada subactividad evaluable lleva: evidencia codificada (EA1, EA2…), tipo (conocimiento/desempeño/producto), modalidad (individual/equipo) e instrumento.
+- Cada subactividad evaluable lleva: evidencia codificada (`AA1 - <nombre> - EV1`, ver [evaluacion.md](evaluacion.md)), tipo (conocimiento/desempeño/producto), modalidad (individual/equipo) e instrumento (`GA1 <competencia> - IE <tipo> - AA1 - <nombre> - EV1`).
 
 ### 3.4 Transferencia — CIERRE — **se evalúa**
 - Aplicar lo aprendido a un contexto real, resolviendo la situación problémica de 3.1.

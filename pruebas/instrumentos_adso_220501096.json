@@ -1,5 +1,6 @@
 {
   "identificacion": {
+    "guia": "GA1 220501096",
     "programa": "Análisis y Desarrollo de Software",
     "codigo": "228118 v1",
     "ficha": "",
@@ -9,23 +10,61 @@
   },
   "instrumentos": [
     {
-      "codigo": "EA1_Cuestionario_Conocimiento_Informe_Diseño",
+      "codigo": "GA1 220501096 - IE Cuestionario - AA1 - Cuestionario - EV1",
       "tipo": "cuestionario",
-      "evidencia": "EA1: Evidencia de conocimiento: cuestionario sobre interpretación del informe de diseño",
-      "actividad": "Actividad de Aprendizaje 1: Interpretar el informe de diseño del software.",
-      "criterios": ["Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."],
+      "evidencia": "AA1 - Cuestionario - EV1: Evidencia de conocimiento – Individual",
+      "actividad": "AA1 - Interpretar el informe de diseño del software.",
+      "criterios": [
+        "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."
+      ],
       "aprobacion": "Responde correctamente al menos el 80 % de las preguntas.",
       "preguntas": [
-        {"enunciado": "¿Qué artefacto del informe de diseño describe las clases y sus relaciones?", "opciones": ["Diagrama de casos de uso", "Diagrama de clases", "Diagrama de despliegue", "Historia de usuario"], "respuesta": 1},
-        {"enunciado": "El diagrama de despliegue permite identificar:", "opciones": ["Los nodos y componentes donde se ejecuta el software", "Los requisitos no funcionales", "El cronograma del proyecto"], "respuesta": "a"},
-        {"enunciado": "Explique cómo usaría el informe de diseño para definir el plan de trabajo de construcción."}
+        {
+          "enunciado": "¿Qué artefacto del informe de diseño describe las clases y sus relaciones?",
+          "opciones": [
+            "Diagrama de casos de uso",
+            "Diagrama de clases",
+            "Diagrama de despliegue",
+            "Historia de usuario"
+          ],
+          "respuesta": 1
+        },
+        {
+          "enunciado": "El diagrama de despliegue permite identificar:",
+          "opciones": [
+            "Los nodos y componentes donde se ejecuta el software",
+            "Los requisitos no funcionales",
+            "El cronograma del proyecto"
+          ],
+          "respuesta": "a"
+        },
+        {
+          "enunciado": "Explique cómo usaría el informe de diseño para definir el plan de trabajo de construcción."
+        }
       ]
     },
     {
-      "codigo": "EA2_Lista_Chequeo_Desempeño_Entorno_Desarrollo",
+      "codigo": "GA1 220501096 - IE Lista de verificación - AA1 - Mapa mental - EV2",
+      "tipo": "lista_verificacion",
+      "evidencia": "AA1 - Mapa mental - EV2: Evidencia de producto – Individual",
+      "actividad": "AA1 - Interpretar el informe de diseño del software.",
+      "criterios": [
+        "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."
+      ],
+      "aprobacion": "Cumple la totalidad de los indicadores.",
+      "indicadores": [
+        "El mapa mental presenta el objetivo del software como idea central.",
+        "El mapa mental relaciona los módulos definidos en el informe de diseño.",
+        "El mapa mental identifica las herramientas y tecnologías indicadas en el diseño.",
+        "El mapa mental ordena las tareas de construcción según las dependencias del diseño.",
+        "El mapa mental usa palabras clave e imágenes legibles."
+      ]
+    },
+    {
+      "codigo": "GA1 220501096 - IE Lista de chequeo - AA2 - Configuración del entorno - EV1",
       "tipo": "lista_chequeo",
-      "evidencia": "EA2: Evidencia de desempeño: configuración del entorno de desarrollo y del repositorio",
-      "actividad": "Actividad de Aprendizaje 2: Configurar herramientas de desarrollo y versionamiento.",
+      "evidencia": "AA2 - Configuración del entorno - EV1: Evidencia de desempeño – Individual",
+      "actividad": "AA2 - Configurar herramientas de desarrollo y versionamiento.",
       "criterios": [
         "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.",
         "Selecciona y configura herramientas de versionamiento para el control de cambios en el código."
@@ -41,16 +80,42 @@
       ]
     },
     {
-      "codigo": "EA3_Rúbrica_Producto_Estándares_Codificación",
+      "codigo": "GA1 220501096 - IE Rúbrica - AA3 - Documento de estándares - EV1",
       "tipo": "rubrica",
-      "evidencia": "EA3: Evidencia de producto: documento de estándares de codificación",
-      "actividad": "Transferencia: documento de estándares de codificación del proyecto.",
-      "criterios": ["Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada."],
+      "evidencia": "AA3 - Documento de estándares - EV1: Evidencia de producto – Equipo",
+      "actividad": "AA3 - Definir los estándares de codificación del proyecto.",
+      "criterios": [
+        "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada."
+      ],
       "aprobacion": "Alcanza al menos el nivel «Aceptable» en todos los indicadores.",
       "rubrica": [
-        {"indicador": "Reglas de nombrado", "descriptores": ["Define reglas para variables, métodos, clases, tablas y campos, con ejemplos.", "Define reglas para la mayoría de elementos, con ejemplos.", "Define reglas generales sin ejemplos.", "No define reglas de nombrado."]},
-        {"indicador": "Documentación del código", "descriptores": ["Especifica formato de comentarios y documentación por tipo de elemento.", "Especifica formato de comentarios de forma general.", "Menciona la documentación sin especificar formato.", "No aborda la documentación."]},
-        {"indicador": "Coherencia con la plataforma", "descriptores": ["Las reglas siguen la guía oficial de estilo de la plataforma y la citan.", "Las reglas siguen la guía oficial con desviaciones menores.", "Las reglas son parcialmente coherentes con la plataforma.", "Las reglas contradicen la plataforma."]}
+        {
+          "indicador": "Reglas de nombrado",
+          "descriptores": [
+            "Define reglas para variables, métodos, clases, tablas y campos, con ejemplos.",
+            "Define reglas para la mayoría de elementos, con ejemplos.",
+            "Define reglas generales sin ejemplos.",
+            "No define reglas de nombrado."
+          ]
+        },
+        {
+          "indicador": "Documentación del código",
+          "descriptores": [
+            "Especifica formato de comentarios y documentación por tipo de elemento.",
+            "Especifica formato de comentarios de forma general.",
+            "Menciona la documentación sin especificar formato.",
+            "No aborda la documentación."
+          ]
+        },
+        {
+          "indicador": "Coherencia con la plataforma",
+          "descriptores": [
+            "Las reglas siguen la guía oficial de estilo de la plataforma y la citan.",
+            "Las reglas siguen la guía oficial con desviaciones menores.",
+            "Las reglas son parcialmente coherentes con la plataforma.",
+            "Las reglas contradicen la plataforma."
+          ]
+        }
       ]
     }
   ]

@@ -51,7 +51,7 @@ Reglas de alineación curricular:
 
 ### Paso 5. Generar el Word
 Sigue [entrega-word.md](references/entrega-word.md): arma el JSON y ejecuta
-`python scripts/generar_guia.py --datos datos.json --salida <ruta>/Guia_<programa>_<competencia>.docx`.
+`python scripts/generar_guia.py --datos datos.json --salida <ruta>/GA<n>-<competencia>_<nombre_corto>.docx` (codificación GA/AA/EV/IE en [evaluacion.md](references/evaluacion.md)).
 Luego valida: `python scripts/validar_guia.py --datos datos.json --programa <json_del_programa>`.
 Corrige todo error reportado antes de entregar.
 

@@ -3,7 +3,7 @@
 Léelo cuando el instructor pida los instrumentos (lista de chequeo, lista de verificación, rúbrica o cuestionario) de una guía.
 
 ## Reglas
-- Un instrumento por evidencia `EAn` de la tabla 4. El `codigo` es el mismo nombre que figura en la columna «Técnica e instrumento» (p. ej. `EA2_Lista_Chequeo_Desempeño_<Nombre>`).
+- Un instrumento por evidencia de la tabla 4. El `codigo` es el nombre IE que figura en la columna «Técnica e instrumento»: `GA1 220501121 - IE Lista de chequeo - AA1 - Mapa mental - EV1` (ver codificación en [evaluacion.md](evaluacion.md)). `identificacion.guia` lleva el código de la guía (`GA1 220501121`).
 - `criterios`: copia literal de los criterios oficiales de esa evidencia (los mismos de la tabla 4).
 - Indicadores derivados del criterio, uno por aspecto observable, con la sintaxis de [evaluacion.md](evaluacion.md) (desempeño: verbo + objeto + condición; producto: objeto + verbo + condición). Listas: 4–8 indicadores. Rúbrica: 3–8 indicadores.
 - Tipo según la evidencia: desempeño → `lista_chequeo` o `rubrica`; producto → `lista_verificacion` o `rubrica`; conocimiento → `cuestionario` o `rubrica`.
@@ -12,25 +12,25 @@ Léelo cuando el instructor pida los instrumentos (lista de chequeo, lista de ve
 
 ## Comandos
 ```
-python scripts/generar_instrumentos.py --datos instrumentos.json --salida <ruta>/Instrumentos_<programa>_<competencia>.docx
+python scripts/generar_instrumentos.py --datos instrumentos.json --salida <ruta>/GA1-<competencia>_Instrumentos.docx
 python scripts/validar_guia.py --datos datos.json --instrumentos instrumentos.json --programa <json_del_programa>
 ```
-El validador comprueba criterios oficiales, que cada `EAn` exista en la tabla 4, coherencia de nombres, número de indicadores, descriptores de rúbrica y clave del cuestionario. Corrige los errores antes de entregar.
+El validador comprueba criterios oficiales, el formato del código IE, que la GA corresponda a la competencia, que cada `AA - EV` exista en la tabla 4, coherencia de nombres, número de indicadores, descriptores de rúbrica y clave del cuestionario. Corrige los errores antes de entregar.
 
 ## JSON
 ```json
 {
-  "identificacion": {"programa": "", "codigo": "", "ficha": "", "competencia": "", "resultados": "", "instructor": ""},
+  "identificacion": {"guia": "GA1 220501121", "programa": "", "codigo": "", "ficha": "", "competencia": "", "resultados": "", "instructor": ""},
   "instrumentos": [
-    {"codigo": "EA2_Lista_Chequeo_Desempeño_<Nombre>", "tipo": "lista_chequeo",
-     "evidencia": "EA2: Evidencia de desempeño: …", "actividad": "Actividad de Aprendizaje 2: …",
+    {"codigo": "GA1 220501121 - IE Lista de chequeo - AA2 - Configuración del equipo - EV1", "tipo": "lista_chequeo",
+     "evidencia": "AA2 - Configuración del equipo - EV1: Evidencia de desempeño – Individual", "actividad": "AA2 - …",
      "criterios": ["criterio literal"], "aprobacion": "",
      "indicadores": ["Indicador 1", "Indicador 2"]},
-    {"codigo": "EA3_Rúbrica_Producto_<Nombre>", "tipo": "rubrica", "evidencia": "", "actividad": "",
+    {"codigo": "GA1 220501121 - IE Rúbrica - AA3 - Informe técnico - EV1", "tipo": "rubrica", "evidencia": "", "actividad": "",
      "criterios": [""], "aprobacion": "",
      "niveles": ["Excelente", "Bueno", "Aceptable", "Insuficiente"],
      "rubrica": [{"indicador": "", "descriptores": ["", "", "", ""]}]},
-    {"codigo": "EA1_Cuestionario_Conocimiento_<Nombre>", "tipo": "cuestionario", "evidencia": "", "actividad": "",
+    {"codigo": "GA1 220501121 - IE Cuestionario - AA1 - Cuestionario - EV1", "tipo": "cuestionario", "evidencia": "", "actividad": "",
      "criterios": [""], "aprobacion": "",
      "preguntas": [{"enunciado": "", "opciones": ["", "", ""], "respuesta": "b"},
                    {"enunciado": "Pregunta abierta", "respuesta": "respuesta esperada (opcional)"}]}

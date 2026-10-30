@@ -51,7 +51,8 @@ Reglas de alineación curricular:
 - Cada **conocimiento de saber** y **de proceso** de los RA elegidos debe quedar cubierto por al menos una actividad (3.2–3.4). Incluye al final del chat una matriz breve conocimiento → actividad.
 - Cada **criterio de evaluación** usado en la tabla del apartado 4 se copia textual del currículo (puedes pasarlo de MAYÚSCULAS a mayúscula inicial sin cambiar palabras).
 - La suma de horas de las actividades debe coincidir con la duración de la guía y no superar las horas del RA/competencia.
-- Progresión de Bloom: 3.1–3.2 recordar/comprender; 3.3 aplicar/analizar; 3.4 evaluar/crear.
+- Progresión (instructivo GFPI-F-135): 3.1 problematiza (analizar, reflexionar, cuestionar); 3.2 activa saberes previos; 3.3 construye; 3.4 transfiere a contextos reales (crear, innovar, solucionar).
+- Actividades de aprendizaje (3.3): copiadas de la planeación pedagógica GFPI-F-134, con **verbo + objeto + condición + componente actitudinal**; cada subactividad dice qué hace el aprendiz, modalidad, herramienta y socialización, y su dominio (Cognitivo, Procedimental, Actitudinal). La transferencia (3.4) no es actividad de la planeación, pero sí genera evidencias.
 
 ### Paso 6. Generar el Word
 Sigue [entrega-word.md](references/entrega-word.md): arma el JSON y ejecuta

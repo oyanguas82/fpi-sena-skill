@@ -6,18 +6,31 @@
 - Retroalimentación continua: no esperar a la evidencia final.
 
 ## Momentos
-| Momento | Dónde en la guía | Juicio |
-|---|---|---|
-| Diagnóstica | 3.1–3.2 | No |
-| Formativa / continua | 3.3 | Sí |
-| Sumativa | 3.3 final y 3.4 | Sí |
+| Momento | Dónde en la guía | Para qué | Juicio |
+|---|---|---|---|
+| Diagnóstica | 3.1–3.2 (inicio) | Identificar saberes previos | No |
+| Formativa | 3.3 (desarrollo) | Seguimiento, retroalimentación y fortalecimiento del desempeño | Sí |
+| Sumativa | 3.3 final y 3.4 (cierre) | Valorar el nivel de logro frente a los RA | Sí |
+
+La evaluación busca verificar el logro de los RA, valorar las competencias en sus dimensiones cognitiva, procedimental y actitudinal, identificar fortalezas y aspectos por mejorar y emitir juicios con base en evidencias objetivas. El instructor define las evidencias, elige técnicas e instrumentos acordes con su tipo, garantiza la coherencia actividad–evidencia–evaluación, retroalimenta a tiempo y registra resultados según los lineamientos. El aprendiz debe conocer los criterios e indicadores con que será evaluado.
 
 ## Tipos de evidencia → técnica → instrumento
-| Evidencia | Qué demuestra | Técnicas | Instrumentos |
-|---|---|---|---|
-| **Conocimiento** | Conceptos, teorías, principios (saber) | Formulación de preguntas; ensayo; organizador gráfico | Cuestionario; rúbrica |
-| **Desempeño** | Cómo ejecuta el proceso técnico (hacer observable) | Observación directa; exposición; simulación | Lista de chequeo; rúbrica |
-| **Producto** | Resultado tangible que cumple especificaciones | Valoración de producto | Lista de verificación; rúbrica |
+| Evidencia | Qué demuestra | Ejemplos |
+|---|---|---|
+| **Conocimiento** | Apropiación conceptual: conceptos, teorías, principios que el aprendiz aplica | cuestionarios, pruebas escritas, organizadores gráficos (mapas conceptuales y mentales, cuadros sinópticos, diagramas de flujo, líneas de tiempo, infografías), mentefactos, ensayos |
+| **Desempeño** | Cómo ejecuta procesos o procedimientos en contextos reales o simulados (información directa y confiable) | simulaciones, prácticas de laboratorio, ejercicios aplicados, demostraciones, juego de roles |
+| **Producto** | Resultados tangibles que cumplen el criterio, según instructivos | informes, proyectos, prototipos, presentaciones digitales, documentos elaborados |
+
+**Parejas técnica → instrumento** (instructivo GFPI-F-135):
+| Técnica | Instrumento |
+|---|---|
+| Ensayo | Rúbrica |
+| Organizador gráfico (mapas conceptuales y mentales, cuadros sinópticos, infografías) | Rúbrica |
+| Formulación de preguntas | Cuestionario |
+| Observación directa | Lista de chequeo |
+| Exposición | Lista de chequeo o rúbrica |
+| Valoración de producto | Lista de verificación o rúbrica |
+| Simulación / entrevista | Guía de observación, escala de valoración |
 
 Relación con el currículo:
 - Conocimientos de **saber** → evidencias de conocimiento.

@@ -13,7 +13,7 @@
       "codigo": "IE-GA1-220501096-AA1-EV01 Cuestionario",
       "tipo": "cuestionario",
       "evidencia": "Evidencia de conocimiento: GA1-220501096-AA1-EV01 cuestionario sobre el informe de diseño",
-      "actividad": "GA1-220501096-AA1: Interpretar el informe de diseño del software.",
+      "actividad": "GA1-220501096-AA1: Interpretar el informe de diseño del software, a partir del análisis de sus diagramas y especificaciones, para definir el plan de construcción, con actitud crítica y disposición para el aprendizaje.",
       "criterios": [
         "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."
       ],
@@ -47,7 +47,7 @@
       "codigo": "IE-GA1-220501096-AA1-EV02 Lista de verificación",
       "tipo": "lista_verificacion",
       "evidencia": "Evidencia de producto: GA1-220501096-AA1-EV02 mapa mental del plan de construcción",
-      "actividad": "GA1-220501096-AA1: Interpretar el informe de diseño del software.",
+      "actividad": "GA1-220501096-AA1: Interpretar el informe de diseño del software, a partir del análisis de sus diagramas y especificaciones, para definir el plan de construcción, con actitud crítica y disposición para el aprendizaje.",
       "criterios": [
         "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software."
       ],
@@ -64,7 +64,7 @@
       "codigo": "IE-GA1-220501096-AA2-EV01 Lista de chequeo",
       "tipo": "lista_chequeo",
       "evidencia": "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno",
-      "actividad": "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento.",
+      "actividad": "GA1-220501096-AA2: Configurar las herramientas de desarrollo y versionamiento, de acuerdo con las condiciones del software a construir, demostrando responsabilidad y trabajo colaborativo.",
       "criterios": [
         "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.",
         "Selecciona y configura herramientas de versionamiento para el control de cambios en el código."
@@ -83,7 +83,7 @@
       "codigo": "IE-GA1-240201528-AA1-EV01 Lista de verificación",
       "tipo": "lista_verificacion",
       "evidencia": "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo",
-      "actividad": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software.",
+      "actividad": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software, aplicando procedimientos estadísticos, con rigor y honestidad en el manejo de los datos.",
       "criterios": [
         "Define el problema a resolver de acuerdo con las necesidades de su entorno.",
         "Plantea ecuaciones o sistemas de ecuaciones de acuerdo con la relación entre las variables."
@@ -101,7 +101,7 @@
       "codigo": "IE-GA1-220501096-AA3-EV01 Rúbrica",
       "tipo": "rubrica",
       "evidencia": "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación",
-      "actividad": "GA1-220501096-AA3: Definir los estándares de codificación del proyecto.",
+      "actividad": "3.4.1 Definir los estándares de codificación del proyecto (transferencia)",
       "criterios": [
         "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada."
       ],

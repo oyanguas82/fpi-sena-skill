@@ -22,6 +22,10 @@ IE_COD = re.compile(r"IE\s*-\s*" + COD + r"\s*-\s*EV\s*(\d{1,2})", re.I)
 AA_TITULO = re.compile(r"^" + COD + r"\s*[:\-]\s*\S", re.I)
 TIPO_IE = {"lista_chequeo": "lista de chequeo", "lista_verificacion": "lista de verificacion",
            "rubrica": "rubrica", "cuestionario": "cuestionario"}
+SALUDO = re.compile(r"^\s*(Apreciad[oa]s?|Estimad[oa]s?|Cordial saludo|Bienvenid[oa]|Reciba un cordial saludo|Querid[oa]s?)\b", re.I)
+ACTITUDINAL = re.compile(r"demostrando|con actitud|actitud|responsab|compromiso|respet|[ée]tic|disposici[oó]n|"
+                         r"autonom|colaborativ|rigor|puntualidad|liderazgo|creatividad|disciplina|honestidad", re.I)
+DOMINIO = re.compile(r"\((?:\s*(?:Cognitiv[oa]|Procedimental|Actitudinal|Valorativ[oa])\s*[-–/,y]*)+\)", re.I)
 EJ_EV = "GA1-220501092-AA1-EV01"
 EJ_IE = "IE-GA1-220501092-AA1-EV01 Lista de chequeo"
 
@@ -169,6 +173,11 @@ def validar_guia(d, p, err, adv):
     pres = d.get("presentacion", [])
     if len(pres) != 4:
         err.append("La presentación debe tener exactamente 4 párrafos.")
+    elif PEND not in json.dumps(pres, ensure_ascii=False):
+        if not SALUDO.match(str(pres[0])):
+            adv.append("La presentación debería iniciar con un saludo («Apreciado aprendiz», «Estimado aprendiz», …).")
+        if not re.search(r"Actividad de Aprendizaje\s*\d", " ".join(map(str, pres)), re.I):
+            adv.append("La presentación debería enunciar las actividades de aprendizaje: «✓ Actividad de Aprendizaje 1: …».")
 
     ap = str(ident.get("actividad_proyecto", "")).strip()
     if ap and PEND not in ap and not re.match(r"^AP\s*\d+\s*-", ap, re.I):
@@ -185,8 +194,16 @@ def validar_guia(d, p, err, adv):
             elif not str(x.get("entrega", "")).strip():
                 adv.append(f"{m} actividad {i}: faltan los lineamientos de entrega (producto, formato, extensión, envío).")
             titulo = str(x.get("titulo", "")).strip()
-            if titulo and not AA_TITULO.match(titulo):
-                adv.append(f"{m} actividad {i}: el título debería ser «GA1-<competencia>-AA<n>: <nombre de la actividad>».")
+            # Solo 3.3 viene de la planeación pedagógica; la transferencia (3.4) no se formula como AA.
+            if m == "3.3" and titulo and PEND not in titulo:
+                if not AA_TITULO.match(titulo):
+                    adv.append(f"3.3 actividad {i}: el título debería ser «GA1-<competencia>-AA<n>: <nombre de la actividad>».")
+                elif not ACTITUDINAL.search(titulo):
+                    adv.append(f"3.3 actividad {i}: la actividad de aprendizaje debería cerrar con un componente actitudinal "
+                               "(verbo + objeto + condición + componente actitudinal, p. ej. «…, demostrando responsabilidad»).")
+            desc = str(x.get("descripcion", ""))
+            if m == "3.3" and desc.strip() and PEND not in desc and not DOMINIO.search(desc):
+                adv.append(f"3.3 actividad {i}: indique el dominio de cada subactividad: (Cognitivo), (Procedimental) o (Actitudinal).")
             for ie in re.split(r"\s*;\s*|\n", str(x.get("instrumentos", ""))):
                 if ie.strip() and PEND not in ie and not IE_RX.match(ie.strip().rstrip(".")):
                     adv.append(f"{m} actividad {i}: instrumento «{ie[:50]}» sin la forma «{EJ_IE}».")

@@ -11,7 +11,7 @@
       "name": "fpi-sena",
       "source": "./",
       "description": "Guías de Aprendizaje SENA (GFPI-F-135 V04) desde la estructura curricular oficial",
-      "version": "1.3.0"
+      "version": "1.4.0"
     }
   ]
 }

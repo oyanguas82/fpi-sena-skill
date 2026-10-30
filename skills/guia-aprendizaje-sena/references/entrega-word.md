@@ -42,7 +42,7 @@ Todos los campos son opcionales; los omitidos producen un borrador marcado como 
 }
 ```
 
-El párrafo obligatorio sobre el objetivo de las actividades se inserta automáticamente antes de 3.1. El campo `contexto_actividades` lo complementa con el contexto de la competencia. Cada descripción puede incluir varios párrafos separados por saltos de línea.
+El texto introductorio del apartado 3 y el de cada momento (3.1 inicio, 3.2 inicio, 3.3 desarrollo, 3.4 cierre), sugeridos por el instructivo del formato, se insertan automáticamente; no los repitas en el JSON. El campo `contexto_actividades` lo complementa con el contexto de la competencia. Cada descripción puede incluir varios párrafos separados por saltos de línea.
 
 `evidencias` tiene seis columnas. `control_documento` tiene cuatro (el generador conserva "Autor (es)" en la primera columna de la tabla). `cambios` tiene cinco: nombre, cargo, dependencia, fecha y razón. Para una primera elaboración, usa `"cambios": []`, que deja "No aplica: primera elaboración" en la razón del cambio sin inventar autoría. Si omites `cambios`, quedará pendiente de confirmar si hubo ajustes.
 
@@ -53,7 +53,8 @@ El generador da formato al contenido; no uses Markdown (`**`, `#`, viñetas) den
 - Identificación y campos de actividades: etiqueta en negrita y valor en texto normal, justificado.
 - `titulo` de actividad en negrita, con espacio antes; párrafos de presentación y contexto justificados.
 - Glosario: escribe `Término: definición` (el término sale en negrita).
-- Bibliografía: sangría francesa APA.
+- Bibliografía: sangría francesa APA; las entradas `"Bibliografía"` y `"Webgrafía"` salen como subtítulos en negrita.
+- Presentación: el párrafo 3 lista las actividades en líneas `✓ Actividad de Aprendizaje N: …`.
 - Códigos oficiales (`GA1-…-AA1`, `GA1-…-EV01`, `IE-GA1-…`) en negrita dondequiera que aparezcan.
 - Identificación con varias líneas: `Técnicas:`, `Claves:` y el código inicial de cada competencia o RA en negrita.
 - `entrega`: una línea por rótulo (`Producto: …`, `Formato: …`, `Extensión: …`, `Envío: …`); el rótulo sale en negrita.

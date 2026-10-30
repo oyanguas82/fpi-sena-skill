@@ -10,10 +10,10 @@
     "duracion": "56 horas\nTécnico: 48 horas\nClaves: 8 horas"
   },
   "presentacion": [
-    "Párrafo 1.",
-    "Párrafo 2.",
-    "Párrafo 3.",
-    "Párrafo 4."
+    "Estimado aprendiz, reciba un cordial saludo. Esta guía de aprendizaje tiene como propósito formativo que usted planee la construcción del software del proyecto a partir de su diseño, fortaleciendo las habilidades, destrezas y actitudes necesarias para lograr las competencias de construcción del software y de razonamiento cuantitativo.",
+    "Durante la guía trabajará la interpretación del informe de diseño, la configuración de herramientas de desarrollo y versionamiento, la definición de estándares de codificación y el análisis cuantitativo del rendimiento, relacionando lo que ya sabe con estos nuevos aprendizajes.",
+    "Las actividades de aprendizaje de la planeación pedagógica son:\n✓ Actividad de Aprendizaje 1: Interpretar el informe de diseño del software.\n✓ Actividad de Aprendizaje 2: Configurar las herramientas de desarrollo y versionamiento.\n✓ Actividad de Aprendizaje 3: Plantear problemas matemáticos a partir de los tiempos de ejecución del software.",
+    "Le invitamos a participar activamente, a organizar su trabajo autónomo y a aportar al trabajo colaborativo de su equipo: cada actividad es una oportunidad para crecer personal y profesionalmente."
   ],
   "contexto_actividades": "Contexto de prueba.",
   "actividades": {
@@ -39,8 +39,8 @@
     ],
     "3.3": [
       {
-        "titulo": "GA1-220501096-AA1: Interpretar el informe de diseño del software.",
-        "descripcion": "3.3.1 Cuestionario y mapa mental sobre el informe de diseño.",
+        "titulo": "GA1-220501096-AA1: Interpretar el informe de diseño del software, a partir del análisis de sus diagramas y especificaciones, para definir el plan de construcción, con actitud crítica y disposición para el aprendizaje.",
+        "descripcion": "3.3.1.1 De manera individual, los aprendices responden un cuestionario sobre los diagramas del informe de diseño, utilizando la plataforma institucional, y socializan sus respuestas en plenaria. (Cognitivo)\n3.3.1.2 En equipos, elaboran un mapa mental del plan de construcción con una herramienta digital y lo exponen al grupo, respetando las opiniones de los demás. (Cognitivo - Actitudinal)",
         "ambiente": "Aula",
         "estrategias": "Estudio de caso; mapa mental",
         "materiales": "Informe de diseño",
@@ -51,8 +51,8 @@
         "duracion": "8 horas directas y 2 horas de trabajo independiente"
       },
       {
-        "titulo": "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento.",
-        "descripcion": "3.3.2 Configuración del entorno.",
+        "titulo": "GA1-220501096-AA2: Configurar las herramientas de desarrollo y versionamiento, de acuerdo con las condiciones del software a construir, demostrando responsabilidad y trabajo colaborativo.",
+        "descripcion": "3.3.2.1 De manera individual, cada aprendiz instala y configura el entorno de desarrollo siguiendo la documentación oficial y demuestra su funcionamiento al instructor. (Procedimental)\n3.3.2.2 En equipos, crean el repositorio del proyecto en Git, registran cambios y fusionan ramas, y socializan el flujo de trabajo acordado. (Procedimental - Actitudinal)",
         "ambiente": "Laboratorio de software",
         "estrategias": "Taller práctico",
         "materiales": "Computador, Git, VS Code",
@@ -63,8 +63,8 @@
         "duracion": "16 horas directas y 2 horas de trabajo independiente"
       },
       {
-        "titulo": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software.",
-        "descripcion": "3.3.3 Análisis cuantitativo de los tiempos de ejecución de dos algoritmos del proyecto.",
+        "titulo": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software, aplicando procedimientos estadísticos, con rigor y honestidad en el manejo de los datos.",
+        "descripcion": "3.3.3.1 En parejas, registran los tiempos de ejecución de dos algoritmos del proyecto en una hoja de cálculo, calculan medidas de tendencia central y presentan sus gráficos en el ambiente de formación. (Procedimental - Cognitivo)",
         "ambiente": "Laboratorio de software",
         "estrategias": "Aprendizaje basado en problemas",
         "materiales": "Hoja de cálculo",
@@ -77,8 +77,8 @@
     ],
     "3.4": [
       {
-        "titulo": "GA1-220501096-AA3: Definir los estándares de codificación del proyecto.",
-        "descripcion": "Documento de estándares de codificación del proyecto.",
+        "titulo": "3.4.1 Definir los estándares de codificación del proyecto",
+        "descripcion": "En equipos, los aprendices redactan el documento de estándares de codificación que usará el proyecto formativo, con un procesador de texto colaborativo, y lo sustentan ante el grupo y el instructor.",
         "ambiente": "Laboratorio de software",
         "estrategias": "Aprendizaje basado en proyectos",
         "materiales": "Computador",
@@ -110,7 +110,7 @@
     [
       "Planeación",
       "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
-      "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento",
+      "GA1-220501096-AA2: Configurar las herramientas de desarrollo y versionamiento",
       "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno",
       "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.; Selecciona y configura herramientas de versionamiento para el control de cambios en el código.",
       "Técnica: observación directa. Instrumento: IE-GA1-220501096-AA2-EV01 Lista de chequeo"
@@ -118,7 +118,7 @@
     [
       "Planeación",
       "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
-      "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución",
+      "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software",
       "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo",
       "Define el problema a resolver de acuerdo con las necesidades de su entorno.; Plantea ecuaciones o sistemas de ecuaciones de acuerdo con la relación entre las variables.",
       "Técnica: valoración de producto. Instrumento: IE-GA1-240201528-AA1-EV01 Lista de verificación"
@@ -126,7 +126,7 @@
     [
       "Planeación",
       "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
-      "GA1-220501096-AA3: Definir los estándares de codificación del proyecto",
+      "GA1-220501096-AA3: Transferencia – estándares de codificación del proyecto",
       "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación",
       "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada.",
       "Técnica: valoración de producto. Instrumento: IE-GA1-220501096-AA3-EV01 Rúbrica"
@@ -137,7 +137,10 @@
     "Tiempo de ejecución: duración de un algoritmo con una entrada dada. Importancia: es la base para comparar la eficiencia del software."
   ],
   "bibliografia": [
-    "Chacon, S. y Straub, B. (2014). Pro Git (2.a ed.). Apress."
+    "Bibliografía",
+    "Chacon, S. y Straub, B. (2014). Pro Git (2.a ed.). Apress.",
+    "Webgrafía",
+    "Git. (s. f.). Documentación de Git. https://git-scm.com/doc"
   ],
   "control_documento": [
     [

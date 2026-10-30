@@ -11,9 +11,27 @@ from zipfile import ZipFile
 
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 PENDIENTE = "[Pendiente de información del instructor]"
-OBJETIVO = ("El objetivo de estas actividades de aprendizaje es buscar que usted estimado aprendiz, "
+# Textos introductorios sugeridos por el instructivo del formato GFPI-F-135 V04 (literales).
+OBJETIVO = ("El objetivo de estas actividades de aprendizaje es buscar que usted, estimado aprendiz, "
             "comprenda, construya, demuestre, aplique y transfiera los conocimientos, procedimientos "
             "y valores apropiados de las competencias pertinentes a su programa de formación.")
+INTRO_MOMENTO = {
+    "3.1": ("Estas actividades constituyen el primer momento del acto educativo, esto es «inicio», con el "
+            "propósito de fomentar en usted la importancia de que descubra la necesidad sentida de conocimiento, "
+            "la cual se va a esclarecer con el desarrollo de las actividades de aprendizaje propuestas."),
+    "3.2": ("Estas actividades siguen siendo parte del primer momento del acto educativo «inicio» y dan inicio al "
+            "aprendizaje significativo, entendido como un proceso en que se establece una relación sustantiva "
+            "entre el objeto de conocimiento por aprender y lo que el aprendiz ya sabe."),
+    "3.3": ("Estas actividades son propias del segundo momento del acto educativo «desarrollo» y se enfocan hacia "
+            "la construcción integral del conocimiento: conceptos (saber), procedimientos (saber hacer) y valores "
+            "(saber ser), cuyo propósito es el de desarrollar capacidades para la elaboración de marcos "
+            "conceptuales, la construcción y apropiación de los saberes inherentes a las competencias del "
+            "programa de formación."),
+    "3.4": ("Las actividades de transferencia del conocimiento corresponden al tercer momento de «cierre» del "
+            "proceso formativo y tienen como propósito que el aprendiz ponga en práctica los conocimientos "
+            "adquiridos, integrando conceptos, procedimientos y actitudes en contextos reales o simulados, en "
+            "coherencia con la situación planteada y los resultados de aprendizaje definidos."),
+}
 CAMPOS = [
     ("descripcion", "Descripción de la actividad: "),
     ("ambiente", "Ambiente requerido: "),
@@ -382,7 +400,7 @@ def generate(data, output):
         items = activities.get(section) or [{}]
         if not isinstance(items, list) or any(not isinstance(a, dict) for a in items):
             raise ValueError("Cada momento requiere una lista de actividades.")
-        values = []
+        values = [item([(INTRO_MOMENTO[section], False)], jc="both", after=160, ind=(0, 0))]
         for index, activity in enumerate(items, 1):
             if set(activity) - {k for k, label in CAMPOS} - {"titulo"}:
                 raise ValueError("Campo de actividad desconocido.")
@@ -403,8 +421,12 @@ def generate(data, output):
         replace_between(h[section], h[following], values)
     replace_between(h["5."], h["6."], [termino(g) for g in string_list(data, "glosario")])
     # Referencias APA: sangría francesa de 1,27 cm, alineadas a la izquierda.
-    replace_between(h["6."], h["7."], [item([(val(r), False)], jc="left", after=120, ind=(720, 720))
-                                       for r in string_list(data, "bibliografia")])
+    # «Bibliografía» y «Webgrafía» como entradas propias se muestran como subtítulos en negrita.
+    replace_between(h["6."], h["7."], [
+        item([(r.strip().rstrip(":"), True)], jc="left", before=120, after=80, ind=(0, 0), keep=True)
+        if re.fullmatch(r"\s*(Bibliograf[ií]a|Webgraf[ií]a|Cibergraf[ií]a)\s*:?\s*", r, re.I)
+        else item([(val(r), False)], jc="left", after=120, ind=(720, 720))
+        for r in string_list(data, "bibliografia")])
     # Respiro antes de cada título de apartado.
     for k in ("2.", "3. ", "4.", "5.", "6.", "7.", "8."):
         formato(h[k], before=240, after=120, keep=True)
@@ -442,6 +464,12 @@ def generate(data, output):
             if not isinstance(values, list) or len(values) != count or any(not isinstance(v, str) for v in values):
                 raise ValueError(key + ": número de columnas o tipo de texto incorrecto.")
             row = sample.cloneNode(True)
+            if key == "evidencias":  # una fila de evidencia no se parte entre páginas
+                trpr = children(row, "trPr")
+                if not trpr:
+                    trpr = [row.ownerDocument.createElementNS(W, "w:trPr")]
+                    row.insertBefore(trpr[0], children(row, "tc")[0])
+                set_child(trpr[0], "cantSplit", TRPR_ORDEN, {})
             cells = children(row, "tc")
             for col, (cell, value) in enumerate(zip(cells, (["Autor (es)"] if author else []) + values)):
                 cellparas = children(cell, "p")

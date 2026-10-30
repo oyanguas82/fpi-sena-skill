@@ -38,6 +38,8 @@
 - 2026-10-29: extractor corregido. `extraer_estructura.py` reconoce marcadores de RA en las listas («RA 1», «RA1.», «R.A. 2», «RAP 1», «RA 3 Y 4», «240201524_01») y RA numerados sin espacio («2.EFECTUAR») o con prefijo «RA1»/«RAP 1»; si los RA no tienen número, asigna por posición con aviso; toma las horas del RA cuando el PDF las trae («96H»). Catálogo regenerado: 611 marcadores eliminados de las listas, RA con listas propias 25 → 339, 39 RA con horas. `validar_guia.py` rechaza marcadores como criterio.
 - 2026-10-30: distribución multiplataforma. `.claude-plugin/` (plugin + marketplace Claude Code, validado con `claude plugin validate`), `.agents/plugins/marketplace.json` (Codex, sin validar: Codex no instalado), `dist/guia-aprendizaje-sena-skill.zip` (claude.ai y ChatGPT; lo actualiza `empaquetar.py`). Licencia MIT para la obra propia; `NOTICE.md` excluye plantilla, logo y catálogo SENA (públicos para instructores) y resúmenes de obras de terceros. `.claude/skills/` ya no se versiona (junction local).
 
+- 2026-10-30: formato del Word de la guía. `generar_guia.py` pone etiquetas en negrita, justifica el texto, separa actividades y apartados, quita la negrita heredada del párrafo objetivo, aplica sangría francesa a la bibliografía y fija anchos de la tabla 4 (diseño fijo, encabezado repetido, títulos de tabla unidos a su tabla). Revisado en Word (PDF). Convenciones en `references/entrega-word.md`.
+
 ## Pendiente / ideas
 - Confirmar instalación real: marketplace en Claude Code, `codex plugin marketplace add oyanguas82/fpi-sena-skill`, subida del zip en claude.ai y ChatGPT.
 - Programa 838200: criterios partidos palabra por palabra (falla de unión de líneas); otros ítems sueltos tipo «EMPRENDEDORES.», «(3)», «-UTILIZA …».

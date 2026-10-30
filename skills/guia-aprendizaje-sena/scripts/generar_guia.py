@@ -4,6 +4,7 @@ Solo requiere la biblioteca estandar de Python.
 """
 import argparse
 import json
+import re
 from pathlib import Path
 from xml.dom import minidom
 from zipfile import ZipFile
@@ -65,6 +66,200 @@ def paragraph_like(sample, value):
     put(p, value)
     return p
 
+
+# ---------------------------------------------------------------- formato
+# Orden de los hijos de w:pPr y w:rPr exigido por el esquema de Word.
+PPR_ORDEN = ["pStyle", "keepNext", "keepLines", "pageBreakBefore", "framePr", "widowControl", "numPr",
+             "suppressLineNumbers", "pBdr", "shd", "tabs", "suppressAutoHyphens", "kinsoku", "wordWrap",
+             "overflowPunct", "topLinePunct", "autoSpaceDE", "autoSpaceDN", "bidi", "adjustRightInd",
+             "snapToGrid", "spacing", "ind", "contextualSpacing", "mirrorIndents", "suppressOverlap", "jc",
+             "textDirection", "textAlignment", "textboxTightWrap", "outlineLvl", "divId", "cnfStyle", "rPr",
+             "sectPr", "pPrChange"]
+RPR_ORDEN = ["rStyle", "rFonts", "b", "bCs", "i", "iCs", "caps", "smallCaps", "strike", "dstrike", "outline",
+             "shadow", "emboss", "imprint", "noProof", "snapToGrid", "vanish", "webHidden", "color", "spacing",
+             "w", "kern", "position", "sz", "szCs", "highlight", "u", "effect", "bdr", "shd", "fitText",
+             "vertAlign", "rtl", "cs", "em", "lang", "eastAsianLayout", "specVanish", "oMath"]
+
+
+def set_child(parent, tag, orden, attrs=None):
+    """Crea o reemplaza el hijo w:<tag> respetando el orden del esquema; attrs=None lo elimina."""
+    for c in children(parent, tag):
+        parent.removeChild(c)
+    if attrs is None:
+        return None
+    el = parent.ownerDocument.createElementNS(W, "w:" + tag)
+    for k, v in attrs.items():
+        el.setAttribute("w:" + k, str(v))
+    pos = orden.index(tag) if tag in orden else len(orden)
+    sig = next((c for c in parent.childNodes if c.nodeType == c.ELEMENT_NODE and c.localName in orden
+                and orden.index(c.localName) > pos), None)
+    parent.insertBefore(el, sig)
+    return el
+
+
+def formato(p, jc=None, before=None, after=None, ind=None, keep=False, line=None):
+    """Ajusta alineación, espaciado (en dxa), sangría (izquierda, francesa) y mantener con el siguiente."""
+    ppr = children(p, "pPr")
+    if ppr:
+        ppr = ppr[0]
+    else:
+        ppr = p.ownerDocument.createElementNS(W, "w:pPr")
+        p.insertBefore(ppr, p.firstChild)
+    if jc:
+        set_child(ppr, "jc", PPR_ORDEN, {"val": jc})
+    if before is not None or after is not None or line is not None:
+        old = children(ppr, "spacing")
+        attrs = {}
+        if old:
+            for k in ("before", "after", "line", "lineRule"):
+                if old[0].getAttribute("w:" + k):
+                    attrs[k] = old[0].getAttribute("w:" + k)
+        if before is not None:
+            attrs["before"] = before
+        if after is not None:
+            attrs["after"] = after
+        if line is not None:
+            attrs["line"], attrs["lineRule"] = line, "auto"
+        set_child(ppr, "spacing", PPR_ORDEN, attrs)
+        set_child(ppr, "contextualSpacing", PPR_ORDEN, None)
+    if ind is not None:
+        izq, francesa = ind
+        attrs = {"left": izq, "firstLine": 0} if not francesa else {"left": izq, "hanging": francesa}
+        set_child(ppr, "ind", PPR_ORDEN, attrs)
+    if keep:
+        set_child(ppr, "keepNext", PPR_ORDEN, {})
+    return p
+
+
+def put_rich(paragraph, segmentos, sz=None):
+    """Como put(), pero con varios segmentos [(texto, negrita)]; los saltos de línea van como w:br."""
+    runs = paragraph.getElementsByTagNameNS(W, "r")
+    base = children(runs[0], "rPr") if runs else []
+    if not base:  # párrafo vacío: toma el formato de carácter del propio párrafo
+        ppr = children(paragraph, "pPr")
+        base = children(ppr[0], "rPr") if ppr else []
+    base = base[0] if base else None
+    for c in list(paragraph.childNodes):
+        if not (c.nodeType == c.ELEMENT_NODE and c.namespaceURI == W and c.localName == "pPr"):
+            paragraph.removeChild(c)
+    doc = paragraph.ownerDocument
+    for texto, negrita in segmentos:
+        rpr = base.cloneNode(True) if base else doc.createElementNS(W, "w:rPr")
+        for tag in ("b", "bCs"):
+            set_child(rpr, tag, RPR_ORDEN, {} if negrita else None)
+        if sz:
+            for tag in ("sz", "szCs"):
+                set_child(rpr, tag, RPR_ORDEN, {"val": sz})
+        for i, parte in enumerate(str(texto).split("\n")):
+            run = doc.createElementNS(W, "w:r")
+            run.appendChild(rpr.cloneNode(True))
+            if i:
+                run.appendChild(doc.createElementNS(W, "w:br"))
+            t = doc.createElementNS(W, "w:t")
+            t.setAttribute("xml:space", "preserve")
+            t.appendChild(doc.createTextNode(parte))
+            run.appendChild(t)
+            paragraph.appendChild(run)
+
+
+def lineas(segmentos):
+    """Divide segmentos [(texto, negrita)] en líneas (una por párrafo) según los saltos de línea."""
+    out = [[]]
+    for texto, negrita in segmentos:
+        for i, parte in enumerate(str(texto).split("\n")):
+            if i:
+                out.append([])
+            if parte.strip():
+                out[-1].append((parte, negrita))
+    return [l for l in out if l] or [[(PENDIENTE, False)]]
+
+
+def item(segmentos, **fmt):
+    """Elemento de contenido: segmentos [(texto, negrita)] más formato de párrafo."""
+    return {"segs": segmentos, "fmt": fmt}
+
+
+def texto_cuerpo(valor):
+    return item([(val(valor), False)], jc="both", after=120, ind=(0, 0))
+
+
+def etiqueta_valor(etiqueta, valor, **fmt):
+    """«Etiqueta: valor» con la etiqueta en negrita (valores multilínea → párrafos siguientes)."""
+    fmt = {"jc": "both", "after": 80, "ind": (0, 0)} | fmt
+    return item([(etiqueta, True), (val(valor), False)], **fmt)
+
+
+# Tabla 4: más ancho para evidencia, criterio e instrumento (suma = ancho original 9629).
+ANCHOS_EVIDENCIAS = [1300, 1400, 1500, 1650, 1979, 1800]
+
+
+TBLPR_ORDEN = ["tblStyle", "tblpPr", "tblOverlap", "bidiVisual", "tblStyleRowBandSize", "tblStyleColBandSize",
+               "tblW", "jc", "tblCellSpacing", "tblInd", "tblBorders", "shd", "tblLayout", "tblCellMar", "tblLook"]
+TRPR_ORDEN = ["cnfStyle", "divId", "gridBefore", "gridAfter", "wBefore", "wAfter", "cantSplit", "trHeight",
+              "tblHeader", "tblCellSpacing", "jc", "hidden"]
+
+
+def anchos_columnas(table, anchos):
+    """Fija los anchos (diseño fijo: Word no reajusta por contenido) y repite el encabezado sin partirlo."""
+    set_child(children(table, "tblPr")[0], "tblLayout", TBLPR_ORDEN, {"type": "fixed"})
+    encabezado = children(table, "tr")[0]
+    trpr = children(encabezado, "trPr")
+    if not trpr:
+        trpr = [table.ownerDocument.createElementNS(W, "w:trPr")]
+        encabezado.insertBefore(trpr[0], next((c for c in encabezado.childNodes if c.nodeType == c.ELEMENT_NODE
+                                                and c.localName not in ("tblPrEx",)), None))
+    set_child(trpr[0], "cantSplit", TRPR_ORDEN, {})
+    set_child(trpr[0], "tblHeader", TRPR_ORDEN, {})
+    grid = children(table, "tblGrid")[0]
+    for col, ancho in zip(children(grid, "gridCol"), anchos):
+        col.setAttribute("w:w", str(ancho))
+    for row in children(table, "tr"):
+        for cell, ancho in zip(children(row, "tc"), anchos):
+            for tcpr in children(cell, "tcPr"):
+                for tcw in children(tcpr, "tcW"):
+                    tcw.setAttribute("w:w", str(ancho))
+                    tcw.setAttribute("w:type", "dxa")
+
+
+def parrafos_celda(valor, col):
+    """Párrafos de una celda de la tabla 4: criterios separados por «;», y en la última columna
+    «Técnica:» e «Instrumento:» en líneas propias con la etiqueta en negrita."""
+    if col == 4:
+        return [[(c.strip(), False)] for c in re.split(r"\s*;\s*|\n", valor) if c.strip()]
+    if col == 5:
+        out = []
+        for x in re.split(r"(T[ée]cnica\s*:|Instrumentos?\s*:)", valor):
+            if not x.strip():
+                continue
+            if re.fullmatch(r"T[ée]cnica\s*:|Instrumentos?\s*:", x.strip()):
+                out.append([(x.strip() + " ", True)])  # cada etiqueta abre un párrafo
+            elif out and len(out[-1]) == 1 and out[-1][0][1]:
+                out[-1].append((x.strip(), False))
+            else:
+                out.append([(x.strip(), False)])
+        return out
+    m = re.match(r"^(EA\d+:)\s*(.*)$", valor, re.S)
+    if col == 3 and m:
+        return [[(m.group(1) + " ", True), (m.group(2), False)]]
+    return [[(l, False)] for l in valor.split("\n") if l.strip()] or [[("", False)]]
+
+
+def llenar_celda(cell, primero, parrafos):
+    for i, segs in enumerate(parrafos):
+        p = primero if i == 0 else primero.cloneNode(True)
+        put_rich(p, segs, sz=20)
+        formato(p, jc="left", before=0, after=40 if i < len(parrafos) - 1 else 0, line=240)
+        if i:
+            cell.appendChild(p)
+
+
+def termino(entrada):
+    """Glosario: «Término: definición» con el término en negrita."""
+    if ":" in entrada and entrada.index(":") < 60:
+        t, d = entrada.split(":", 1)
+        return item([(t.strip() + ": ", True), (d.strip(), False)], jc="both", after=120, ind=(0, 0))
+    return texto_cuerpo(entrada)
+
 def string_list(data, key):
     values = data.get(key, [PENDIENTE])
     if not isinstance(values, list) or any(not isinstance(v, str) for v in values):
@@ -101,8 +296,15 @@ def generate(data, output):
         for n in between:
             body.removeChild(n)
         for value in values:
-            for line in val(value).splitlines():
-                body.insertBefore(paragraph_like(sample, line), end)
+            elem = value if isinstance(value, dict) else texto_cuerpo(value)
+            for i, linea in enumerate(lineas(elem["segs"])):
+                p = paragraph_like(sample, "")
+                put_rich(p, linea)
+                fmt = dict(elem["fmt"])
+                if i:  # continuación de un valor multilínea: sin espacio extra antes
+                    fmt.pop("before", None)
+                formato(p, **fmt)
+                body.insertBefore(p, end)
     ids = data.get("identificacion", {})
     keys = ["programa", "codigo", "proyecto", "fase", "actividad_proyecto", "competencia", "resultados", "duracion"]
     if not isinstance(ids, dict) or set(ids) - set(keys):
@@ -114,7 +316,8 @@ def generate(data, output):
         if p is None or p is h["2."]:
             raise ValueError("La estructura de identificación no coincide con la plantilla.")
         label = text(p).rstrip()
-        put(p, label + " " + val(ids.get(key)))
+        put_rich(p, [(label + " ", True), (val(ids.get(key)), False)])
+        formato(p, jc="both", after=60)
         p = p.nextSibling
     presentation = string_list(data, "presentacion")
     if "presentacion" in data and len(presentation) != 4:
@@ -134,17 +337,32 @@ def generate(data, output):
         for index, activity in enumerate(items, 1):
             if set(activity) - {k for k, label in CAMPOS} - {"titulo"}:
                 raise ValueError("Campo de actividad desconocido.")
-            if activity.get("titulo"):
-                values.append(str(activity["titulo"]))
-            elif len(items) > 1:
-                values.append("Actividad " + str(index))
+            titulo = activity.get("titulo") or ("Actividad " + str(index) if len(items) > 1 else None)
+            if titulo:
+                values.append(item([(str(titulo), True)], jc="both", before=200 if index > 1 else 120,
+                                   after=80, ind=(0, 0), keep=True))
             for key, label in CAMPOS:
                 if key in {"evidencias", "instrumentos"} and section in {"3.1", "3.2"} and key not in activity:
                     continue
-                values.append(label + val(activity.get(key)))
+                values.append(etiqueta_valor(label, activity.get(key),
+                                             before=160 if not titulo and index > 1 and key == "descripcion" else None))
         replace_between(h[section], h[following], values)
-    replace_between(h["5."], h["6."], string_list(data, "glosario"))
-    replace_between(h["6."], h["7."], string_list(data, "bibliografia"))
+    replace_between(h["5."], h["6."], [termino(g) for g in string_list(data, "glosario")])
+    # Referencias APA: sangría francesa de 1,27 cm, alineadas a la izquierda.
+    replace_between(h["6."], h["7."], [item([(val(r), False)], jc="left", after=120, ind=(720, 720))
+                                       for r in string_list(data, "bibliografia")])
+    # Respiro antes de cada título de apartado.
+    for k in ("2.", "3. ", "4.", "5.", "6.", "7.", "8."):
+        formato(h[k], before=240, after=120, keep=True)
+    for k in ("3.1", "3.2", "3.3", "3.4"):
+        formato(h[k], before=200, after=80, keep=True)
+    # Títulos de tabla (4, 7, 8): mantener con la tabla, incluidos los párrafos vacíos intermedios,
+    # y el encabezado de cada tabla con su primera fila.
+    for k in ("4.", "7.", "8."):
+        n = h[k].nextSibling
+        while n is not None and n.nodeType == n.ELEMENT_NODE and n.localName == "p":
+            formato(n, keep=True)
+            n = n.nextSibling
     tables = children(body, "tbl")
     if len(tables) != 3:
         raise ValueError("Se esperaban las tres tablas originales.")
@@ -160,6 +378,9 @@ def generate(data, output):
         if not rows:
             rows = [[PENDIENTE] * count]
         existing = children(table, "tr")
+        if key == "evidencias":
+            anchos_columnas(table, ANCHOS_EVIDENCIAS)
+            existing = children(table, "tr")
         sample = existing[1].cloneNode(True)
         for row in existing[1:]:
             table.removeChild(row)
@@ -168,12 +389,22 @@ def generate(data, output):
                 raise ValueError(key + ": número de columnas o tipo de texto incorrecto.")
             row = sample.cloneNode(True)
             cells = children(row, "tc")
-            for cell, value in zip(cells, (["Autor (es)"] if author else []) + values):
+            for col, (cell, value) in enumerate(zip(cells, (["Autor (es)"] if author else []) + values)):
                 cellparas = children(cell, "p")
                 for extra in cellparas[1:]:
                     cell.removeChild(extra)
-                put(cellparas[0], value if value else ("" if key == "cambios" and values[-1].startswith("No aplica:") else PENDIENTE))
+                if not value:
+                    value = "" if key == "cambios" and values[-1].startswith("No aplica:") else PENDIENTE
+                if key == "evidencias":
+                    llenar_celda(cell, cellparas[0], parrafos_celda(value, col))
+                else:
+                    put(cellparas[0], value)
+                    if not (author and col == 0):
+                        formato(cellparas[0], jc="left")
             table.appendChild(row)
+        for cp in children(children(table, "tr")[0], "tc"):
+            for pp in children(cp, "p"):
+                formato(pp, keep=True)
     xml_bytes = xml.toxml(encoding="UTF-8")
     output.parent.mkdir(parents=True, exist_ok=True)
     with ZipFile(output, "w") as z:

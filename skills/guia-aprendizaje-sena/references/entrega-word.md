@@ -48,6 +48,14 @@ El párrafo obligatorio sobre el objetivo de las actividades se inserta automát
 
 Al elaborar la guía, sustituye los textos ilustrativos del ejemplo por información sustentada y desarrolla las actividades conforme a las instrucciones pedagógicas. El script organiza el documento, pero no verifica por sí solo la validez curricular ni que las referencias sean auténticas.
 
+## Formato automático
+El generador da formato al contenido; no uses Markdown (`**`, `#`, viñetas) dentro de los textos:
+- Identificación y campos de actividades: etiqueta en negrita y valor en texto normal, justificado.
+- `titulo` de actividad en negrita, con espacio antes; párrafos de presentación y contexto justificados.
+- Glosario: escribe `Término: definición` (el término sale en negrita).
+- Bibliografía: sangría francesa APA.
+- Tabla 4: columna de evidencia con `EAn:` en negrita; criterios separados por `;` van en párrafos aparte; en la última columna escribe `Técnica: … Instrumento: …` (cada etiqueta en negrita y en su línea).
+
 ## Convenciones de contenido
 - `identificacion.competencia`: `código – denominación` literal.
 - `identificacion.resultados`: un RA por línea (`\n`), literal.

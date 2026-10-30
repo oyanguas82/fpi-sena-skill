@@ -1,0 +1,15 @@
+{
+  "name": "fpi-sena",
+  "version": "1.1.0",
+  "description": "Guías de Aprendizaje SENA (GFPI-F-135 V04) desde la estructura curricular oficial",
+  "author": {
+    "name": "OSCAR E YANGUAS A"
+  },
+  "keywords": [
+    "sena",
+    "guia de aprendizaje",
+    "gfpi-f-135",
+    "fpi"
+  ],
+  "icon": "./assets/gpt-icon.png"
+}

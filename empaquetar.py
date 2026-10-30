@@ -29,6 +29,8 @@ def main():
     with ZipFile(claude, "w", ZIP_DEFLATED) as z:
         for f in archivos(SKILL):
             z.write(f, Path("guia-aprendizaje-sena") / f.relative_to(SKILL))
+        for legal in ("LICENSE", "NOTICE.md"):
+            z.write(RAIZ / legal, Path("guia-aprendizaje-sena") / legal)
 
     # La misma skill como .zip, para subirla en ChatGPT (Plugins → Skills → Create → Upload).
     skill_zip = salida / "guia-aprendizaje-sena-skill.zip"
@@ -42,7 +44,7 @@ def main():
     with ZipFile(chatgpt, "w", ZIP_DEFLATED) as z:
         for f in archivos(SKILL):
             z.write(f, f.relative_to(RAIZ))
-        for extra in ["plugin.json", ".codex-plugin/plugin.json", "assets/gpt-icon.png"]:
+        for extra in ["plugin.json", ".codex-plugin/plugin.json", "assets/gpt-icon.png", "LICENSE", "NOTICE.md"]:
             z.write(RAIZ / extra, extra)
 
     for p in (claude, skill_zip, dist, chatgpt):

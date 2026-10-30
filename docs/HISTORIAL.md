@@ -28,6 +28,9 @@
 - Evidencias EA1, EA2…; instrumentos `EA1_Lista_Chequeo_Desempeño_<Nombre>`.
 - Duración: "X horas directas y Y de trabajo independiente".
 
+## Sesiones en Claude Code
+- 2026-10-29: continuación del desarrollo en Claude Code (VS Code). `CLAUDE.md` importa este historial con `@docs/HISTORIAL.md`, así que se carga en cada sesión. Historial versionado en el commit `3058e44`.
+
 ## Pendiente / ideas
 - Probar la skill instalada en Claude y en ChatGPT con casos reales.
 - Revisar los ítems truncados de los programas más usados.

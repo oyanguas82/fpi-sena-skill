@@ -1,0 +1,32 @@
+{
+  "name": "fpi-sena",
+  "version": "1.0.0",
+  "description": "Guías de aprendizaje SENA GFPI-F-135 V04 desde la estructura curricular",
+  "author": {
+    "name": "OSCAR E YANGUAS A"
+  },
+  "keywords": [
+    "sena",
+    "guia de aprendizaje",
+    "gfpi-f-135",
+    "fpi"
+  ],
+  "skills": "./skills",
+  "interface": {
+    "capabilities": [
+      "skills"
+    ],
+    "category": "Education & Research",
+    "composerIcon": "./assets/gpt-icon.png",
+    "defaultPrompt": [
+      "Crea una guía de aprendizaje para el programa 228118, competencia ...",
+      "Revisa mi guía de aprendizaje contra la estructura curricular",
+      "Propón evidencias e instrumentos para este resultado de aprendizaje"
+    ],
+    "developerName": "OSCAR E YANGUAS A",
+    "displayName": "FPI SENA",
+    "logo": "./assets/gpt-icon.png",
+    "longDescription": "Diseña guías de aprendizaje SENA (GFPI-F-135 V04) en Word a partir de la estructura curricular oficial: competencias, resultados, conocimientos y criterios.",
+    "shortDescription": "Guías SENA GFPI-F-135 V04"
+  }
+}

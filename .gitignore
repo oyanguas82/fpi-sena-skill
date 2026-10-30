@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+salidas/
+*.docx
+!skills/guia-aprendizaje-sena/assets/*.docx
+*.pdf
+.DS_Store
+Thumbs.db

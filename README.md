@@ -1,10 +1,14 @@
 # FPI SENA – Skill de Guías de Aprendizaje (GFPI-F-135 V04)
 
-Skill (estándar SKILL.md) para Claude y ChatGPT que diseña guías de aprendizaje SENA en Word a partir de la estructura curricular oficial.
+Skill (estándar SKILL.md) para Claude, Claude Code, Codex y ChatGPT que diseña guías de aprendizaje SENA en Word a partir de la estructura curricular oficial.
 
 ## Estructura
 ```
-plugin.json, .codex-plugin/      Manifiestos del plugin ChatGPT
+plugin.json                      Manifiesto del plugin (Codex / ChatGPT, formato portátil)
+.codex-plugin/plugin.json        Manifiesto Codex (compatibilidad)
+.agents/plugins/marketplace.json Marketplace para Codex / ChatGPT
+.claude-plugin/                  Plugin y marketplace para Claude Code
+dist/                            Skill empaquetada (.zip) para claude.ai y ChatGPT
 skills/guia-aprendizaje-sena/
   SKILL.md                       Instrucciones y flujo
   references/                    Reglas del formato, evaluación, estrategias, Bloom, APA
@@ -26,15 +30,24 @@ python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json -
 ```
 
 ## Empaquetar
-`python empaquetar.py` genera ambos paquetes en `../entregables`.
-- Claude: comprimir la carpeta `skills/guia-aprendizaje-sena` → `guia-aprendizaje-sena.skill`.
-- ChatGPT: comprimir la raíz del repositorio → plugin `.zip`.
+`python empaquetar.py` genera en `../entregables` el `.skill` (Claude), la skill `.zip` (ChatGPT) y el plugin `.zip`, y actualiza `dist/guia-aprendizaje-sena-skill.zip`. Ejecútelo tras cambiar la skill o el catálogo.
 
-## Instalación para otros usuarios
-**Claude Code**
+## Instalación
+**Claude Code** (plugin)
 ```
-/plugin marketplace add TU_USUARIO/fpi-sena-skill
+/plugin marketplace add oyanguas82/fpi-sena-skill
 /plugin install fpi-sena@fpi-sena-marketplace
 ```
-**Claude (web/escritorio):** descargar `guia-aprendizaje-sena.skill` de Releases y subirlo en Configuración › Skills.
-**ChatGPT:** descargar `fpi-sena-plugin-chatgpt.zip` de Releases e instalar el plugin.
+En la app de escritorio: Agregar marketplace → `https://github.com/oyanguas82/fpi-sena-skill.git` → Sincronizar → instalar **fpi-sena**.
+
+**Codex** (plugin)
+```
+codex plugin marketplace add oyanguas82/fpi-sena-skill
+```
+Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de ChatGPT/Codex).
+
+**Claude (claude.ai web/escritorio)** (skill): descargue [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) y súbalo en Configuración › Capacidades › Skills. Requiere ejecución de código.
+
+**ChatGPT** (skill): Plugins › Skills › Create › Upload from your computer › `dist/guia-aprendizaje-sena-skill.zip` (planes Business, Enterprise, Edu). Como plugin, un administrador sube `fpi-sena-plugin-chatgpt.zip` en Admin console › Plugins.
+
+Pasos de prueba en [docs/PRUEBAS.md](docs/PRUEBAS.md).

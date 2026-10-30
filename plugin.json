@@ -6,6 +6,8 @@
   "author": {
     "name": "OSCAR E YANGUAS A"
   },
+  "homepage": "https://github.com/oyanguas82/fpi-sena-skill",
+  "repository": "https://github.com/oyanguas82/fpi-sena-skill",
   "extensions": {
     "com.openai": {
       "interface": {

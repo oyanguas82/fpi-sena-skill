@@ -1,0 +1,20 @@
+{
+  "name": "fpi-sena-marketplace",
+  "interface": {
+    "displayName": "FPI SENA"
+  },
+  "plugins": [
+    {
+      "name": "fpi-sena",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education & Research"
+    }
+  ]
+}

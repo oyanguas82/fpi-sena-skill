@@ -33,6 +33,10 @@ def main():
     # La misma skill como .zip, para subirla en ChatGPT (Plugins → Skills → Create → Upload).
     skill_zip = salida / "guia-aprendizaje-sena-skill.zip"
     skill_zip.write_bytes(claude.read_bytes())
+    # Copia versionada en el repositorio, descargable desde GitHub (claude.ai y ChatGPT).
+    dist = RAIZ / "dist" / "guia-aprendizaje-sena-skill.zip"
+    dist.parent.mkdir(exist_ok=True)
+    dist.write_bytes(claude.read_bytes())
 
     chatgpt = salida / "fpi-sena-plugin-chatgpt.zip"
     with ZipFile(chatgpt, "w", ZIP_DEFLATED) as z:
@@ -41,7 +45,7 @@ def main():
         for extra in ["plugin.json", ".codex-plugin/plugin.json", "assets/gpt-icon.png"]:
             z.write(RAIZ / extra, extra)
 
-    for p in (claude, skill_zip, chatgpt):
+    for p in (claude, skill_zip, dist, chatgpt):
         with ZipFile(p) as z:
             assert z.testzip() is None
             print(f"{p}  v{version}  {len(z.namelist())} archivos  {p.stat().st_size // 1024} KB")

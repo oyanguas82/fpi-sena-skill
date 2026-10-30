@@ -34,9 +34,13 @@
   - `generar_instrumentos.py`: lista de chequeo, lista de verificación, rúbrica (2–5 niveles) y cuestionario con clave de respuestas en página aparte. Reutiliza logo, estilos y márgenes de la plantilla (sin modificarla); pie propio «Anexo: instrumentos de evaluación…».
   - `validar_guia.py --instrumentos`: criterios oficiales, EAn presente en tabla 4, nombre del instrumento igual al de la tabla, 4–8 indicadores, descriptores por nivel, clave del cuestionario e instrumentos de la tabla sin generar. `--datos` ahora es opcional.
   - `references/instrumentos.md` con reglas y JSON; `pruebas/` con guía e instrumentos de ejemplo (ADSO 220501096). Revisado visualmente en Word (PDF).
+- 2026-10-29: pruebas (pendiente 1). `empaquetar.py` genera los paquetes v1.1 en `../entregables`. Plan de pruebas y resultados en `docs/PRUEBAS.md`. Hallazgo: 45 competencias con RA fusionados o marcadores «RA n» en las listas (fallo del extractor).
+- 2026-10-29: extractor corregido. `extraer_estructura.py` reconoce marcadores de RA en las listas («RA 1», «RA1.», «R.A. 2», «RAP 1», «RA 3 Y 4», «240201524_01») y RA numerados sin espacio («2.EFECTUAR») o con prefijo «RA1»/«RAP 1»; si los RA no tienen número, asigna por posición con aviso; toma las horas del RA cuando el PDF las trae («96H»). Catálogo regenerado: 611 marcadores eliminados de las listas, RA con listas propias 25 → 339, 39 RA con horas. `validar_guia.py` rechaza marcadores como criterio.
 
 ## Pendiente / ideas
-- Probar la skill instalada en Claude y en ChatGPT con casos reales.
+- Programa 838200: criterios partidos palabra por palabra (falla de unión de líneas); otros ítems sueltos tipo «EMPRENDEDORES.», «(3)», «-UTILIZA …».
+- Revisar nombres de competencia anómalos en 635503 (240202501, 240201526, 240201530).
+- Probar en claude.ai y ChatGPT los casos de `docs/PRUEBAS.md` y anotar resultados.
 - Revisar los ítems truncados de los programas más usados.
 - Mejorar heurística de unión de líneas en formato A (listas sin viñetas).
 - Guía de prueba: `../entregables/Guia_prueba_ADSO_220501096.docx`.

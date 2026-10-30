@@ -26,5 +26,15 @@ python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json -
 ```
 
 ## Empaquetar
+`python empaquetar.py` genera ambos paquetes en `../entregables`.
 - Claude: comprimir la carpeta `skills/guia-aprendizaje-sena` → `guia-aprendizaje-sena.skill`.
 - ChatGPT: comprimir la raíz del repositorio → plugin `.zip`.
+
+## Instalación para otros usuarios
+**Claude Code**
+```
+/plugin marketplace add TU_USUARIO/fpi-sena-skill
+/plugin install fpi-sena@fpi-sena-marketplace
+```
+**Claude (web/escritorio):** descargar `guia-aprendizaje-sena.skill` de Releases y subirlo en Configuración › Skills.
+**ChatGPT:** descargar `fpi-sena-plugin-chatgpt.zip` de Releases e instalar el plugin.

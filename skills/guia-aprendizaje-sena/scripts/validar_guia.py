@@ -36,6 +36,9 @@ def horas(texto):
 
 def es_oficial(crit, oficiales):
     n = norm(crit)
+    # Marcadores de grupo que quedaron en el catálogo («RA 1», «R.A. 2», «240201524_01») no son criterios.
+    if re.fullmatch(r"(r ?a ?)?(\d{9} )?\d{1,2}( (y )?\d{1,2})*", n):
+        return False
     return n in oficiales or any(n in o or o in n for o in oficiales if len(o) > 20)
 
 

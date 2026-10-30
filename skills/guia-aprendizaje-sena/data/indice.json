@@ -77,7 +77,7 @@
   "archivo": "programas/134400_v2.json",
   "fuente": "ASISTENCIA EN ORGANIZACION DE ARCHIVOS . vr. 2.pdf",
   "competencias": 16,
-  "advertencias": 4
+  "advertencias": 5
  },
  {
   "codigo": "134104",
@@ -117,7 +117,7 @@
   "archivo": "programas/836138_v1.json",
   "fuente": "CONSTRUCCION DE EDIFICACIONES..pdf",
   "competencias": 15,
-  "advertencias": 2
+  "advertencias": 3
  },
  {
   "codigo": "836141",
@@ -127,7 +127,7 @@
   "archivo": "programas/836141_v1.json",
   "fuente": "CONSTRUCCION INDUSTRIALIZADA EN SECO.pdf",
   "competencias": 9,
-  "advertencias": 1
+  "advertencias": 3
  },
  {
   "codigo": "133100",
@@ -157,7 +157,7 @@
   "archivo": "programas/124101_v1.json",
   "fuente": "DESARROLLO DE PROCESOS DE MERCADEO VR 01.pdf",
   "competencias": 18,
-  "advertencias": 3
+  "advertencias": 6
  },
  {
   "codigo": "635100",
@@ -187,7 +187,7 @@
   "archivo": "programas/532100_v1.json",
   "fuente": "EJECUCION DE LA DANZA..pdf",
   "competencias": 12,
-  "advertencias": 4
+  "advertencias": 3
  },
  {
   "codigo": "664212",
@@ -207,7 +207,7 @@
   "archivo": "programas/832204_v1.json",
   "fuente": "ELECTRICIDAD RESIDENCIAL, COMERCIAL Y DE SISTEMAS FOTOVOLTAICOS VR 1.pdf",
   "competencias": 15,
-  "advertencias": 6
+  "advertencias": 8
  },
  {
   "codigo": "134102",
@@ -317,7 +317,7 @@
   "archivo": "programas/733105_v1.json",
   "fuente": "MANEJO DE LA PRODUCCION AGROECOLOGICA.pdf",
   "competencias": 15,
-  "advertencias": 2
+  "advertencias": 6
  },
  {
   "codigo": "837501",
@@ -327,7 +327,7 @@
   "archivo": "programas/837501_v2.json",
   "fuente": "MANTENIMIENTO DE EQUIPOS DE AIRE ACONDICIONADO Y REFRIGERACION.pdf",
   "competencias": 20,
-  "advertencias": 4
+  "advertencias": 10
  },
  {
   "codigo": "233105",
@@ -547,7 +547,7 @@
   "archivo": "programas/733290_v1.json",
   "fuente": "PRODUCCION PECUARIA..pdf",
   "competencias": 11,
-  "advertencias": 3
+  "advertencias": 1
  },
  {
   "codigo": "733291",
@@ -597,7 +597,7 @@
   "archivo": "programas/331318_v1.json",
   "fuente": "PROMOTOR DE SALUD.pdf",
   "competencias": 6,
-  "advertencias": 1
+  "advertencias": 0
  },
  {
   "codigo": "421149",
@@ -617,7 +617,7 @@
   "archivo": "programas/134200_v2.json",
   "fuente": "RECURSOS HUMANOS V2.pdf",
   "competencias": 16,
-  "advertencias": 5
+  "advertencias": 6
  },
  {
   "codigo": "331308",
@@ -637,7 +637,7 @@
   "archivo": "programas/231100_v1.json",
   "fuente": "SANEAMIENTO Y SALUD AMBIENTAL.pdf",
   "competencias": 15,
-  "advertencias": 7
+  "advertencias": 8
  },
  {
   "codigo": "331505",
@@ -667,7 +667,7 @@
   "archivo": "programas/233108_v1.json",
   "fuente": "SISTEMAS TELEINFORMÁTICOS..pdf",
   "competencias": 12,
-  "advertencias": 2
+  "advertencias": 3
  },
  {
   "codigo": "834258",
@@ -677,6 +677,6 @@
   "archivo": "programas/834258_v1.json",
   "fuente": "SOLDADURA DE PRODUCTOS METALICOS EN PLATINA..pdf",
   "competencias": 15,
-  "advertencias": 4
+  "advertencias": 2
  }
 ]

@@ -101,6 +101,33 @@ def es_nuevo(prev, l, umbral, solo_verbos):
     return prev["x1"] < umbral
 
 
+# Marcadores de grupo por RA dentro de las listas: «RA 1», «RA 1:», «RA1.», «R.A. 2», «RAP 1», «RA 3 Y 4», «RA 210601027 02».
+MARCA_RA = re.compile(r"(?:(?<=\s)|^)R\.?\s?A\.?P?\.?\s*(?:\d{9}\s+)?(\d{1,2}(?:\s*(?:Y|,|-)\s*\d{1,2})*)\s*[:.\-]?(?=\s|$)")
+# Variante en línea propia: código de competencia + número de RA («240201524_01», «210601020 01:»).
+MARCA_COD = re.compile(r"\d{9}[\s_-]*(\d{1,2})\s*:?")
+
+
+def partir_marcas(lines):
+    """Separa los marcadores «RA n» de las líneas. Devuelve líneas y marcas {"ra": [n, ...]}.
+    El texto que sigue a una marca en la misma línea se marca como inicio de ítem."""
+    out = []
+    for l in lines:
+        m = MARCA_COD.fullmatch(l["t"])
+        if m:
+            out.append({"ra": [int(m.group(1))]})
+            continue
+        partes = MARCA_RA.split(l["t"])
+        if len(partes) == 1:
+            out.append(l)
+            continue
+        for i, parte in enumerate(partes):
+            if i % 2:
+                out.append({"ra": [int(n) for n in re.findall(r"\d+", parte)]})
+            elif parte.strip():
+                out.append(dict(l, t=parte.strip(), nuevo=i > 0))
+    return out
+
+
 def _limpia(t):
     return re.sub(r"^\*\s*", "", re.sub(r"\s+", " ", t)).strip()
 
@@ -118,11 +145,14 @@ def _corta_encabezado(buf, ras):
     return buf, None
 
 
-def agrupar(lines, marcador, umbral, avisos, contexto, verbos=False, ras=()):
+def agrupar(lines, marcador, umbral, avisos, contexto, verbos=False, ras=(), partir=True):
     """Une líneas envueltas en ítems. Devuelve [(texto, grupo)] donde grupo es el RA (si el PDF agrupa por RA)."""
-    usa_marca = bool(marcador) and any(re.match(marcador, l["t"]) for l in lines)
-    solo_verbos = verbos and not usa_marca and lines and \
-        sum(es_inf(l["t"]) for l in lines) >= 0.4 * len(lines)
+    if partir:
+        lines = partir_marcas(lines)
+    texto = [l for l in lines if "t" in l]
+    usa_marca = bool(marcador) and any(re.match(marcador, l["t"]) for l in texto)
+    solo_verbos = verbos and not usa_marca and texto and \
+        sum(es_inf(l["t"]) for l in texto) >= 0.4 * len(texto)
     items, grupo, buf, prev = [], None, [], None
 
     def flush():
@@ -142,15 +172,19 @@ def agrupar(lines, marcador, umbral, avisos, contexto, verbos=False, ras=()):
         buf = []
 
     for l in lines:
+        if "ra" in l:
+            flush()
+            grupo, prev = l["ra"], None
+            continue
         t = l["t"]
         if usa_marca:
-            if re.match(marcador, t):
+            if re.match(marcador, t) or l.get("nuevo"):
                 flush()
                 items.append([t, grupo])
             else:
                 buf.append(l)
         else:
-            if es_nuevo(prev, l, umbral, solo_verbos) or not items:
+            if l.get("nuevo") or es_nuevo(prev, l, umbral, solo_verbos) or not items:
                 items.append([t, grupo])
             else:
                 items[-1][0] += " " + t
@@ -168,12 +202,22 @@ def agrupar(lines, marcador, umbral, avisos, contexto, verbos=False, ras=()):
 
 
 def ra_lista(lines, umbral, avisos, ctx):
-    items = agrupar(lines, r"^(\d{9}-?)?\d{1,2}\s*[-.)]?\s+\S", umbral, avisos, ctx, verbos=True)
+    # Numeración: «1. TEXTO», «2.TEXTO» (sin espacio), «RA1 TEXTO», «RAP 2. TEXTO» o «RA3» sola en su línea.
+    marcador = r"^(?:\d{9}-?)?(?:R\.?\s?A\.?P?\.?\s*\d{1,2}\b|\d{1,2}\s*(?:[-.)]\s*|\s+)[A-ZÁÉÍÓÚÑa-záéíóúñ])"
+    items = agrupar(lines, marcador, umbral, avisos, ctx, verbos=True, partir=False)
     out = []
     for t, _ in items:
-        m = re.match(r"^(?:\d{9}-?)?(\d{1,2})\s*[-.)]?\s+(.*)$", t)
-        out.append({"numero": m.group(1) if m else None, "denominacion": (m.group(2) if m else t).strip(),
-                    "duracion_horas": None})
+        m = re.match(r"^(?:\d{9}-?)?(?:R\.?\s?A\.?P?\.?\s*)?(\d{1,2})\s*(?:[-.:)]\s*|\s+|$)(.*)$", t)
+        den = (m.group(2) if m else t).strip()
+        # Algunos PDF traen las horas del RA al final («… CONSUMIDOR. 96H») o en una línea aparte.
+        h = re.search(r"(?:^|\s)(\d{2,4})\s*H(?:ORAS)?\.?$", den, re.I)
+        horas = int(h.group(1)) if h else None
+        den = den[:h.start()].strip() if h else den
+        if not den:
+            if out and horas and out[-1]["duracion_horas"] is None:
+                out[-1]["duracion_horas"] = horas
+            continue
+        out.append({"numero": m.group(1) if m else None, "denominacion": den, "duracion_horas": horas})
     out.sort(key=lambda r: int(r["numero"]) if r["numero"] and r["numero"].isdigit() else 99)
     return out
 
@@ -187,6 +231,20 @@ def contenidos(comp, bloques, marcador, umbral, avisos, ctx):
         comp[clave] = [t for t, _ in items]
         for t, g in items:
             if not g:
+                continue
+            if isinstance(g, list):  # marcador «RA n»
+                destino = [r for r in comp["resultados"] if r["numero"] and int(r["numero"]) in g]
+                if not destino and all(r["numero"] is None for r in comp["resultados"]):
+                    # RA sin numerar en el PDF: el marcador n corresponde al n-ésimo RA en el orden del PDF.
+                    destino = [r for i, r in enumerate(comp["resultados"], 1) if i in g]
+                    aviso = f"{ctx}: RA sin número en el PDF; conocimientos y criterios asignados por posición"
+                    if destino and aviso not in avisos:
+                        avisos.append(aviso)
+                aviso = f"{ctx} {sec}: marcador RA {g} sin resultado correspondiente"
+                if len(destino) != len(set(g)) and aviso not in avisos:
+                    avisos.append(aviso)
+                for ra in destino:
+                    ra.setdefault(clave, []).append(t)
                 continue
             pg = plain(g)[:40]
             ra = next((r for r in comp["resultados"] if plain(r["denominacion"])[:40] == pg), None)

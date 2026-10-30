@@ -34,11 +34,11 @@ python scripts/buscar_programa.py --programa 228118 --competencia 220501096 # de
 ```
 
 ## Cómo usarlo al diseñar la guía
-- **Si el RA trae sus propias listas** (`resultados[i].conocimientos_*` / `criterios_evaluacion`): úsalas; el diseño curricular ya las asoció a ese RA.
+- **Si el RA trae sus propias listas** (`resultados[i].conocimientos_*` / `criterios_evaluacion`): úsalas; el diseño curricular ya las asoció a ese RA (por encabezado del RA o por marcadores «RA 1», «RAP 2», «240201524_01» en el PDF). Si la advertencia dice «asignados por posición», el PDF no numeraba los RA: muestra la asignación al instructor para que la confirme.
 - **Si no**: las listas están solo a nivel de competencia; selecciona las que correspondan a los RA elegidos y muéstrale al instructor la selección.
 - `denominacion` de la competencia es el texto que va en la guía (en formato B corresponde a "Norma / unidad de competencia").
 - Los textos vienen en MAYÚSCULAS. Puedes pasarlos a mayúscula inicial **sin cambiar palabras**; el validador compara sin distinguir mayúsculas ni tildes.
-- `duracion_horas` del RA casi siempre es `null`: pide las horas al instructor (planeación pedagógica).
+- `duracion_horas` del RA casi siempre es `null` (solo unos 40 RA traen horas en el PDF): si falta, pide las horas al instructor (planeación pedagógica).
 - Competencias con código `999999999` = etapa productiva; no se usan para guías.
 - **Advertencias**: el reporte de SOFIA Plus a veces corta texto en los saltos de página. Si un ítem que vas a usar aparece en `advertencias` (o empieza con "…"), avisa al instructor y pídele confirmar el texto completo.
 

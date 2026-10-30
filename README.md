@@ -8,7 +8,7 @@ plugin.json                      Manifiesto del plugin (Codex / ChatGPT, formato
 .codex-plugin/plugin.json        Manifiesto Codex (compatibilidad)
 .agents/plugins/marketplace.json Marketplace para Codex / ChatGPT
 .claude-plugin/                  Plugin y marketplace para Claude Code
-dist/                            Skill empaquetada (.zip) para claude.ai y ChatGPT
+dist/                            Skill (.zip, claude.ai y ChatGPT › Skills) y plugin (.zip, ChatGPT › Complementos)
 skills/guia-aprendizaje-sena/
   SKILL.md                       Instrucciones y flujo
   references/                    Reglas del formato, evaluación, estrategias, Bloom, APA
@@ -32,7 +32,7 @@ python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json -
 ```
 
 ## Empaquetar
-`python empaquetar.py` genera en `../entregables` el `.skill` (Claude), la skill `.zip` (ChatGPT) y el plugin `.zip`, y actualiza `dist/guia-aprendizaje-sena-skill.zip`. Ejecútelo tras cambiar la skill o el catálogo.
+`python empaquetar.py` genera en `../entregables` el `.skill` (Claude), la skill `.zip` y el plugin `.zip` (ChatGPT), y actualiza `dist/` con la skill y el plugin. Ejecútelo tras cambiar la skill o el catálogo.
 
 ## Instalación
 **Claude Code** (plugin)
@@ -54,7 +54,13 @@ Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de 
 
 **Claude (claude.ai web/escritorio)** (skill): descargue [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) y súbalo en Configuración › Capacidades › Skills. Requiere ejecución de código.
 
-**ChatGPT** (skill): Plugins › Skills › Create › Upload from your computer › `dist/guia-aprendizaje-sena-skill.zip` (planes Business, Enterprise, Edu). Como plugin, un administrador sube `fpi-sena-plugin-chatgpt.zip` en Admin console › Plugins.
+**ChatGPT** — hay dos archivos distintos según la opción que use:
+| Opción en ChatGPT | Archivo | Contenido |
+|---|---|---|
+| **Complementos / Plugins** → subir plugin | [`dist/fpi-sena-plugin-chatgpt.zip`](dist/fpi-sena-plugin-chatgpt.zip) | `plugin.json` y `.codex-plugin/plugin.json` en la raíz, `skills/`, `assets/` |
+| **Plugins › Skills** → Create → Upload from your computer | [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) | carpeta `guia-aprendizaje-sena/` con `SKILL.md` |
+
+Si sube el ZIP de la skill por «Complementos», ChatGPT responde *Expected a single plugin archive*: use el ZIP del plugin. La subida de plugins puede requerir permisos de administrador del espacio de trabajo.
 
 Pasos de prueba en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 

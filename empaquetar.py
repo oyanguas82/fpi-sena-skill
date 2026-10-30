@@ -47,7 +47,11 @@ def main():
         for extra in ["plugin.json", ".codex-plugin/plugin.json", "assets/gpt-icon.png", "LICENSE", "NOTICE.md"]:
             z.write(RAIZ / extra, extra)
 
-    for p in (claude, skill_zip, dist, chatgpt):
+    # El plugin para ChatGPT («Complementos» / Plugins) también va en dist/, descargable desde GitHub.
+    dist_plugin = RAIZ / "dist" / "fpi-sena-plugin-chatgpt.zip"
+    dist_plugin.write_bytes(chatgpt.read_bytes())
+
+    for p in (claude, skill_zip, dist, chatgpt, dist_plugin):
         with ZipFile(p) as z:
             assert z.testzip() is None
             print(f"{p}  v{version}  {len(z.namelist())} archivos  {p.stat().st_size // 1024} KB")

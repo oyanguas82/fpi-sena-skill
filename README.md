@@ -42,6 +42,10 @@ python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json -
 ```
 En la app de escritorio: Agregar marketplace → `https://github.com/oyanguas82/fpi-sena-skill.git` → Sincronizar → instalar **fpi-sena**.
 
+**Actualizar en Claude Code / app de escritorio.** Los marketplaces de terceros no se actualizan solos: el botón «Actualizar» del plugin compara contra la copia local del marketplace. Primero refresque el marketplace y luego el plugin:
+- App de escritorio: sección de marketplaces → `fpi-sena-marketplace` → **Sincronizar / Actualizar marketplace** (o active la actualización automática). Si sigue en una versión vieja, quite el marketplace, vuelva a agregarlo y reinstale **fpi-sena**.
+- Terminal: `claude plugin marketplace update fpi-sena-marketplace` y luego `claude plugin update fpi-sena@fpi-sena-marketplace`; o en una sesión `/plugin` → Marketplaces → `fpi-sena-marketplace` → **Update marketplace** / **Enable auto-update**.
+
 **Codex** (plugin)
 ```
 codex plugin marketplace add oyanguas82/fpi-sena-skill

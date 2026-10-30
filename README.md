@@ -51,3 +51,6 @@ Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de 
 **ChatGPT** (skill): Plugins › Skills › Create › Upload from your computer › `dist/guia-aprendizaje-sena-skill.zip` (planes Business, Enterprise, Edu). Como plugin, un administrador sube `fpi-sena-plugin-chatgpt.zip` en Admin console › Plugins.
 
 Pasos de prueba en [docs/PRUEBAS.md](docs/PRUEBAS.md).
+
+## Licencia
+Código y documentación propios: [MIT](LICENSE). La plantilla GFPI-F-135, el logo SENA, el catálogo curricular y los resúmenes de obras de terceros no están cubiertos: ver [NOTICE.md](NOTICE.md).

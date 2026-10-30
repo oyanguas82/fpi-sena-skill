@@ -1,6 +1,11 @@
 {
   "name": "fpi-sena-marketplace",
-  "owner": { "name": "OSCAR E YANGUAS A" },
+  "owner": {
+    "name": "OSCAR E YANGUAS A"
+  },
+  "metadata": {
+    "description": "Skill para diseñar Guías de Aprendizaje SENA (GFPI-F-135 V04) e instrumentos de evaluación desde la estructura curricular oficial"
+  },
   "plugins": [
     {
       "name": "fpi-sena",

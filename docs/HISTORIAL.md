@@ -43,6 +43,8 @@
 - 2026-10-30: codificación GA/AA/EV/IE. Referencias (`evaluacion.md`, `formato-gfpi-f-135.md`, `entrega-word.md`, `instrumentos.md`, SKILL.md) actualizadas; `validar_guia.py` valida formato AA/EV/IE, numeración EV por actividad, GA vs competencia y avisa si queda `EA<n>`; `generar_instrumentos.py` muestra la guía (`identificacion.guia`); `generar_guia.py` pone en negrita el código de evidencia y separa instrumentos por línea. Pruebas ADSO actualizadas (incluye AA1 con EV1 y EV2).
 - 2026-10-30: aprendizaje de dos guías reales (228128 V04 presencial y 228118 V01 virtual). Codificación oficial (reemplaza GA/AA/EV con espacios del mismo día), guías multicompetencia (validador por unión de competencias; instrumentos muestran solo su competencia), lineamientos de entrega (`entrega`), código AP, glosario con importancia, `references/ejemplos-guias.md`. Pruebas ADSO con 220501096 + 240201528.
 
+- 2026-10-30: despliegue v1.2.0 (manifiestos de Claude Code, Codex y ChatGPT; paquetes y `dist/` regenerados; etiqueta `v1.2.0`).
+
 ## Pendiente / ideas
 - Confirmar instalación real: marketplace en Claude Code, `codex plugin marketplace add oyanguas82/fpi-sena-skill`, subida del zip en claude.ai y ChatGPT.
 - Programa 838200: criterios partidos palabra por palabra (falla de unión de líneas); otros ítems sueltos tipo «EMPRENDEDORES.», «(3)», «-UTILIZA …».

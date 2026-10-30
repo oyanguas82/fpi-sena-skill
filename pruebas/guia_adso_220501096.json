@@ -2,37 +2,150 @@
   "identificacion": {
     "programa": "Análisis y Desarrollo de Software",
     "codigo": "228118 v1",
-    "proyecto": "Sistema de información para la gestión de inventarios",
-    "fase": "Ejecución",
-    "actividad_proyecto": "AP2-Planear la construcción del software",
+    "proyecto": "Análisis y desarrollo de software a la medida para el sector servicios en el municipio de Florencia (2480542)",
+    "fase": "Planeación",
+    "actividad_proyecto": "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
     "competencia": "Técnicas:\n220501096 – Desarrollar la solución de software de acuerdo con el diseño y metodologías de desarrollo\nClaves:\n240201528 – Razonar cuantitativamente frente a situaciones susceptibles de ser abordadas de manera matemática en contextos laborales, sociales y personales",
     "resultados": "Técnicos:\n220501096-01. Planear actividades de construcción del software de acuerdo con el diseño establecido.\nClaves:\n240201528-02. Plantear problemas matemáticos a partir de situaciones generadas en el contexto social y productivo.",
     "duracion": "56 horas\nTécnico: 48 horas\nClaves: 8 horas"
   },
-  "presentacion": ["Párrafo 1.", "Párrafo 2.", "Párrafo 3.", "Párrafo 4."],
+  "presentacion": [
+    "Párrafo 1.",
+    "Párrafo 2.",
+    "Párrafo 3.",
+    "Párrafo 4."
+  ],
   "contexto_actividades": "Contexto de prueba.",
   "actividades": {
-    "3.1": [{"descripcion": "Reflexión inicial.", "ambiente": "Aula", "estrategias": "Lluvia de ideas", "materiales": "Tablero", "apoyo": "Video", "duracion": "2 horas directas y 0 horas de trabajo independiente"}],
-    "3.2": [{"descripcion": "Contextualización.", "ambiente": "Aula", "estrategias": "Preguntas guía", "materiales": "Tablero", "apoyo": "Lectura", "duracion": "2 horas directas y 0 horas de trabajo independiente"}],
-    "3.3": [
-      {"titulo": "GA1-220501096-AA1: Interpretar el informe de diseño del software.", "descripcion": "3.3.1 Cuestionario y mapa mental sobre el informe de diseño.", "ambiente": "Aula", "estrategias": "Estudio de caso; mapa mental", "materiales": "Informe de diseño", "apoyo": "Guía", "evidencias": "Evidencia de conocimiento: GA1-220501096-AA1-EV01 cuestionario sobre el informe de diseño\nEvidencia de producto: GA1-220501096-AA1-EV02 mapa mental del plan de construcción", "entrega": "Producto: cuestionario resuelto y mapa mental\nFormato: PDF\nExtensión: libre\nEnvío: espacio de cada evidencia en la plataforma (GA1-220501096-AA1-EV01 y GA1-220501096-AA1-EV02)", "instrumentos": "IE-GA1-220501096-AA1-EV01 Cuestionario; IE-GA1-220501096-AA1-EV02 Lista de verificación", "duracion": "8 horas directas y 2 horas de trabajo independiente"},
-      {"titulo": "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento.", "descripcion": "3.3.2 Configuración del entorno.", "ambiente": "Laboratorio de software", "estrategias": "Taller práctico", "materiales": "Computador, Git, VS Code", "apoyo": "Documentación oficial", "evidencias": "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno de desarrollo y del repositorio", "entrega": "Producto: demostración en el ambiente y enlace al repositorio\nFormato: URL del repositorio en documento PDF\nExtensión: 1 página\nEnvío: espacio de la evidencia GA1-220501096-AA2-EV01", "instrumentos": "IE-GA1-220501096-AA2-EV01 Lista de chequeo", "duracion": "16 horas directas y 2 horas de trabajo independiente"},
-      {"titulo": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software.", "descripcion": "3.3.3 Análisis cuantitativo de los tiempos de ejecución de dos algoritmos del proyecto.", "ambiente": "Laboratorio de software", "estrategias": "Aprendizaje basado en problemas", "materiales": "Hoja de cálculo", "apoyo": "Tutorial de estadística descriptiva", "evidencias": "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo", "entrega": "Producto: informe con tablas y gráficos\nFormato: PDF\nExtensión: máximo 5 páginas\nEnvío: espacio de la evidencia GA1-240201528-AA1-EV01", "instrumentos": "IE-GA1-240201528-AA1-EV01 Lista de verificación", "duracion": "6 horas directas y 2 horas de trabajo independiente"}
+    "3.1": [
+      {
+        "descripcion": "Reflexión inicial.",
+        "ambiente": "Aula",
+        "estrategias": "Lluvia de ideas",
+        "materiales": "Tablero",
+        "apoyo": "Video",
+        "duracion": "2 horas directas y 0 horas de trabajo independiente"
+      }
     ],
-    "3.4": [{"titulo": "GA1-220501096-AA3: Definir los estándares de codificación del proyecto.", "descripcion": "Documento de estándares de codificación del proyecto.", "ambiente": "Laboratorio de software", "estrategias": "Aprendizaje basado en proyectos", "materiales": "Computador", "apoyo": "Guías de estilo", "evidencias": "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación", "entrega": "Producto: documento de estándares (equipo)\nFormato: PDF o Word\nExtensión: libre\nEnvío: espacio de la evidencia GA1-220501096-AA3-EV01", "instrumentos": "IE-GA1-220501096-AA3-EV01 Rúbrica", "duracion": "12 horas directas y 4 horas de trabajo independiente"}]
+    "3.2": [
+      {
+        "descripcion": "Contextualización.",
+        "ambiente": "Aula",
+        "estrategias": "Preguntas guía",
+        "materiales": "Tablero",
+        "apoyo": "Lectura",
+        "duracion": "2 horas directas y 0 horas de trabajo independiente"
+      }
+    ],
+    "3.3": [
+      {
+        "titulo": "GA1-220501096-AA1: Interpretar el informe de diseño del software.",
+        "descripcion": "3.3.1 Cuestionario y mapa mental sobre el informe de diseño.",
+        "ambiente": "Aula",
+        "estrategias": "Estudio de caso; mapa mental",
+        "materiales": "Informe de diseño",
+        "apoyo": "Guía",
+        "evidencias": "Evidencia de conocimiento: GA1-220501096-AA1-EV01 cuestionario sobre el informe de diseño\nEvidencia de producto: GA1-220501096-AA1-EV02 mapa mental del plan de construcción",
+        "entrega": "Producto: cuestionario resuelto y mapa mental\nFormato: PDF\nExtensión: libre\nEnvío: espacio de cada evidencia en la plataforma (GA1-220501096-AA1-EV01 y GA1-220501096-AA1-EV02)",
+        "instrumentos": "IE-GA1-220501096-AA1-EV01 Cuestionario; IE-GA1-220501096-AA1-EV02 Lista de verificación",
+        "duracion": "8 horas directas y 2 horas de trabajo independiente"
+      },
+      {
+        "titulo": "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento.",
+        "descripcion": "3.3.2 Configuración del entorno.",
+        "ambiente": "Laboratorio de software",
+        "estrategias": "Taller práctico",
+        "materiales": "Computador, Git, VS Code",
+        "apoyo": "Documentación oficial",
+        "evidencias": "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno de desarrollo y del repositorio",
+        "entrega": "Producto: demostración en el ambiente y enlace al repositorio\nFormato: URL del repositorio en documento PDF\nExtensión: 1 página\nEnvío: espacio de la evidencia GA1-220501096-AA2-EV01",
+        "instrumentos": "IE-GA1-220501096-AA2-EV01 Lista de chequeo",
+        "duracion": "16 horas directas y 2 horas de trabajo independiente"
+      },
+      {
+        "titulo": "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución del software.",
+        "descripcion": "3.3.3 Análisis cuantitativo de los tiempos de ejecución de dos algoritmos del proyecto.",
+        "ambiente": "Laboratorio de software",
+        "estrategias": "Aprendizaje basado en problemas",
+        "materiales": "Hoja de cálculo",
+        "apoyo": "Tutorial de estadística descriptiva",
+        "evidencias": "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo",
+        "entrega": "Producto: informe con tablas y gráficos\nFormato: PDF\nExtensión: máximo 5 páginas\nEnvío: espacio de la evidencia GA1-240201528-AA1-EV01",
+        "instrumentos": "IE-GA1-240201528-AA1-EV01 Lista de verificación",
+        "duracion": "6 horas directas y 2 horas de trabajo independiente"
+      }
+    ],
+    "3.4": [
+      {
+        "titulo": "GA1-220501096-AA3: Definir los estándares de codificación del proyecto.",
+        "descripcion": "Documento de estándares de codificación del proyecto.",
+        "ambiente": "Laboratorio de software",
+        "estrategias": "Aprendizaje basado en proyectos",
+        "materiales": "Computador",
+        "apoyo": "Guías de estilo",
+        "evidencias": "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación",
+        "entrega": "Producto: documento de estándares (equipo)\nFormato: PDF o Word\nExtensión: libre\nEnvío: espacio de la evidencia GA1-220501096-AA3-EV01",
+        "instrumentos": "IE-GA1-220501096-AA3-EV01 Rúbrica",
+        "duracion": "12 horas directas y 4 horas de trabajo independiente"
+      }
+    ]
   },
   "evidencias": [
-    ["Ejecución", "AP2-Planear la construcción del software", "GA1-220501096-AA1: Interpretar el informe de diseño del software", "Evidencia de conocimiento: GA1-220501096-AA1-EV01 cuestionario sobre el informe de diseño", "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software.", "Técnica: formulación de preguntas. Instrumento: IE-GA1-220501096-AA1-EV01 Cuestionario"],
-    ["Ejecución", "AP2-Planear la construcción del software", "GA1-220501096-AA1: Interpretar el informe de diseño del software", "Evidencia de producto: GA1-220501096-AA1-EV02 mapa mental del plan de construcción", "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software.", "Técnica: valoración de producto. Instrumento: IE-GA1-220501096-AA1-EV02 Lista de verificación"],
-    ["Ejecución", "AP2-Planear la construcción del software", "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento", "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno", "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.; Selecciona y configura herramientas de versionamiento para el control de cambios en el código.", "Técnica: observación directa. Instrumento: IE-GA1-220501096-AA2-EV01 Lista de chequeo"],
-    ["Ejecución", "AP2-Planear la construcción del software", "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución", "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo", "Define el problema a resolver de acuerdo con las necesidades de su entorno.; Plantea ecuaciones o sistemas de ecuaciones de acuerdo con la relación entre las variables.", "Técnica: valoración de producto. Instrumento: IE-GA1-240201528-AA1-EV01 Lista de verificación"],
-    ["Ejecución", "AP2-Planear la construcción del software", "GA1-220501096-AA3: Definir los estándares de codificación del proyecto", "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación", "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada.", "Técnica: valoración de producto. Instrumento: IE-GA1-220501096-AA3-EV01 Rúbrica"]
+    [
+      "Planeación",
+      "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "GA1-220501096-AA1: Interpretar el informe de diseño del software",
+      "Evidencia de conocimiento: GA1-220501096-AA1-EV01 cuestionario sobre el informe de diseño",
+      "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software.",
+      "Técnica: formulación de preguntas. Instrumento: IE-GA1-220501096-AA1-EV01 Cuestionario"
+    ],
+    [
+      "Planeación",
+      "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "GA1-220501096-AA1: Interpretar el informe de diseño del software",
+      "Evidencia de producto: GA1-220501096-AA1-EV02 mapa mental del plan de construcción",
+      "Interpreta el informe de diseño para definir el plan de trabajo en la construcción del software.",
+      "Técnica: valoración de producto. Instrumento: IE-GA1-220501096-AA1-EV02 Lista de verificación"
+    ],
+    [
+      "Planeación",
+      "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "GA1-220501096-AA2: Configurar herramientas de desarrollo y versionamiento",
+      "Evidencia de desempeño: GA1-220501096-AA2-EV01 configuración del entorno",
+      "Selecciona y configura herramientas de desarrollo de acuerdo con las condiciones del software a construir.; Selecciona y configura herramientas de versionamiento para el control de cambios en el código.",
+      "Técnica: observación directa. Instrumento: IE-GA1-220501096-AA2-EV01 Lista de chequeo"
+    ],
+    [
+      "Planeación",
+      "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "GA1-240201528-AA1: Plantear problemas matemáticos a partir de los tiempos de ejecución",
+      "Evidencia de producto: GA1-240201528-AA1-EV01 informe de análisis cuantitativo",
+      "Define el problema a resolver de acuerdo con las necesidades de su entorno.; Plantea ecuaciones o sistemas de ecuaciones de acuerdo con la relación entre las variables.",
+      "Técnica: valoración de producto. Instrumento: IE-GA1-240201528-AA1-EV01 Lista de verificación"
+    ],
+    [
+      "Planeación",
+      "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "GA1-220501096-AA3: Definir los estándares de codificación del proyecto",
+      "Evidencia de producto: GA1-220501096-AA3-EV01 documento de estándares de codificación",
+      "Define estándares de codificación de acuerdo con las reglas de la plataforma de desarrollo seleccionada.",
+      "Técnica: valoración de producto. Instrumento: IE-GA1-220501096-AA3-EV01 Rúbrica"
+    ]
   ],
   "glosario": [
     "Repositorio: espacio donde se almacena y versiona el código. Importancia: permite trabajar en equipo sin perder cambios.",
     "Tiempo de ejecución: duración de un algoritmo con una entrada dada. Importancia: es la base para comparar la eficiencia del software."
   ],
-  "bibliografia": ["Chacon, S. y Straub, B. (2014). Pro Git (2.a ed.). Apress."],
-  "control_documento": [["Instructor de prueba", "Instructor", "Centro de prueba", "2026-10-30"]],
+  "bibliografia": [
+    "Chacon, S. y Straub, B. (2014). Pro Git (2.a ed.). Apress."
+  ],
+  "control_documento": [
+    [
+      "Instructor de prueba",
+      "Instructor",
+      "Centro de prueba",
+      "2026-10-30"
+    ]
+  ],
   "cambios": []
 }

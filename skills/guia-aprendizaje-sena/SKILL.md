@@ -1,6 +1,6 @@
 ---
 name: guia-aprendizaje-sena
-description: Diseña Guías de Aprendizaje SENA en el formato GFPI-F-135 V04 (Word editable) a partir de la estructura curricular oficial del programa (competencias, resultados de aprendizaje, conocimientos de saber y de proceso, criterios de evaluación, horas). Úsala cuando un instructor SENA pida crear, completar, revisar o corregir una guía de aprendizaje, sus actividades (reflexión, contextualización, apropiación, transferencia), evidencias, instrumentos de evaluación o la tabla de evidencias, aunque no mencione el código del formato.
+description: Diseña Guías de Aprendizaje SENA en el formato GFPI-F-135 V04 (Word editable) a partir de la estructura curricular oficial del programa (competencias, resultados de aprendizaje, conocimientos de saber y de proceso, criterios de evaluación, horas) y de su proyecto formativo (fases, actividades de proyecto AP y RA planeados). Úsala cuando un instructor SENA pida crear, completar, revisar o corregir una guía de aprendizaje, sus actividades (reflexión, contextualización, apropiación, transferencia), evidencias, instrumentos de evaluación o la tabla de evidencias, aunque no mencione el código del formato.
 ---
 
 # Guía de Aprendizaje SENA (GFPI-F-135 V04)
@@ -21,13 +21,16 @@ Competencias, resultados de aprendizaje (RA), conocimientos, criterios de evalua
 3. Si no está en el catálogo y el instructor adjunta el PDF del diseño curricular, extráelo: `python scripts/extraer_estructura.py <pdf> --salida <carpeta_escribible>` y usa el JSON resultante. Detalle en [estructura-curricular.md](references/estructura-curricular.md).
 4. Sin catálogo ni PDF: pide que pegue competencia, RA, conocimientos y criterios.
 
-### Paso 2. Seleccionar competencia y resultados
+### Paso 2. Proyecto formativo y actividad de proyecto (formación titulada)
+Busca el proyecto del programa con `python scripts/buscar_proyecto.py --programa <código>`, muestra sus fases y actividades de proyecto (AP) y pide al instructor la AP de la guía. `--proyecto <código> --actividad AP<n>` lista las competencias y RA planeados en esa AP: son la base del paso 3. Detalle en [proyectos-formativos.md](references/proyectos-formativos.md). Sin proyecto en el catálogo, pide los datos al instructor.
+
+### Paso 3. Seleccionar competencia y resultados
 Lista las competencias del programa (`--programa <código> --competencias`) y, una vez elegida, sus RA, conocimientos y criterios (`--competencia <código>`). El instructor escoge uno o varios RA para la guía. Una guía suele integrar **varias competencias**: la técnica del proyecto y competencias claves o transversales; repite la consulta por cada una.
 - Si el RA trae sus propios conocimientos y criterios, usa esos; si no, selecciona de la competencia y muestra la selección.
 - Si algún texto que vas a usar figura en `advertencias` del programa (posible truncado del PDF), pide al instructor confirmarlo.
 
-### Paso 3. Datos del instructor (pregunta solo lo que falte)
-- Proyecto formativo, fase y actividad de proyecto (si es titulada).
+### Paso 4. Datos del instructor (pregunta solo lo que falte)
+- Proyecto formativo, fase y actividad de proyecto, si no salieron del catálogo de proyectos.
 - Actividades de aprendizaje de la **planeación pedagógica** (se copian textuales en 3.3).
 - Duración: horas directas y de trabajo independiente.
 - Ambiente de formación, modalidad (presencial / virtual / a distancia) y recursos disponibles.
@@ -35,7 +38,7 @@ Lista las competencias del programa (`--programa <código> --competencias`) y, u
 
 Si el instructor pide avanzar sin algunos datos, genera el borrador con campos pendientes.
 
-### Paso 4. Diseñar el contenido
+### Paso 5. Diseñar el contenido
 Lee antes de redactar:
 - [formato-gfpi-f-135.md](references/formato-gfpi-f-135.md): reglas de cada apartado (obligatorio).
 - [evaluacion.md](references/evaluacion.md): evidencias, técnicas, instrumentos e indicadores.
@@ -50,15 +53,15 @@ Reglas de alineación curricular:
 - La suma de horas de las actividades debe coincidir con la duración de la guía y no superar las horas del RA/competencia.
 - Progresión de Bloom: 3.1–3.2 recordar/comprender; 3.3 aplicar/analizar; 3.4 evaluar/crear.
 
-### Paso 5. Generar el Word
+### Paso 6. Generar el Word
 Sigue [entrega-word.md](references/entrega-word.md): arma el JSON y ejecuta
 `python scripts/generar_guia.py --datos datos.json --salida <ruta>/GA1-<competencia técnica>_<nombre_corto>.docx` (codificación oficial GA/AA/EV/IE en [evaluacion.md](references/evaluacion.md)).
-Luego valida: `python scripts/validar_guia.py --datos datos.json --programa <json_del_programa>`.
+Luego valida: `python scripts/validar_guia.py --datos datos.json --programa <json_del_programa> [--proyecto data/proyectos/<código>.json]`.
 Corrige todo error reportado antes de entregar.
 
 Si el instructor pide los instrumentos de evaluación, genéralos como anexo Word siguiendo [instrumentos.md](references/instrumentos.md).
 
-### Paso 6. Entregar
+### Paso 7. Entregar
 Adjunta el `.docx` real (enlace descargable; también el de instrumentos, si se generó) y en el chat: resumen de 3–5 líneas, matriz de cobertura y lista de pendientes. No afirmes revisión visual si no la hiciste.
 
 ## Cuándo entregar Word

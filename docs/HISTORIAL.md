@@ -44,8 +44,10 @@
 - 2026-10-30: aprendizaje de dos guías reales (228128 V04 presencial y 228118 V01 virtual). Codificación oficial (reemplaza GA/AA/EV con espacios del mismo día), guías multicompetencia (validador por unión de competencias; instrumentos muestran solo su competencia), lineamientos de entrega (`entrega`), código AP, glosario con importancia, `references/ejemplos-guias.md`. Pruebas ADSO con 220501096 + 240201528.
 
 - 2026-10-30: despliegue v1.2.0 (manifiestos de Claude Code, Codex y ChatGPT; paquetes y `dist/` regenerados; etiqueta `v1.2.0`).
+- 2026-10-30 (v1.3.0): proyectos formativos. `extraer_proyecto.py` (GFPI-F-016 y verificación de viabilidad) → `data/proyectos/` + `data/indice_proyectos.json`: 37 proyectos, 31 con planeación, 1941 RA (en los 31 coincide con el total declarado en 1.9.1–1.9.3), 1651 enlazados al catálogo curricular. Variantes resueltas: RA sin número, número pegado al código («27050108903.»), rótulos «RA 2:»/«RAP 01.», AP sin numerar (asignadas por fase y orden), fases con errores de digitación, celdas que arrastran texto de la fila anterior, páginas con una sola fila. `buscar_proyecto.py`, `validar_guia.py --proyecto` (AP existe, fase, RA planeados en la AP) y paso 2 del SKILL.md. No se guardan nombres de personas.
 
 ## Pendiente / ideas
+- Proyectos: 6 solo con verificación de viabilidad (sin planeación); Promotor de Salud sin códigos (borrador); 14 con AP numeradas por el extractor; 290 RA sin enlazar (213 de competencias de otra versión del programa: 112005 v101, 723105/723106 v102, 525203, 621201, 723107, 632305).
 - Confirmar instalación real: marketplace en Claude Code, `codex plugin marketplace add oyanguas82/fpi-sena-skill`, subida del zip en claude.ai y ChatGPT.
 - Programa 838200: criterios partidos palabra por palabra (falla de unión de líneas); otros ítems sueltos tipo «EMPRENDEDORES.», «(3)», «-UTILIZA …».
 - Revisar nombres de competencia anómalos en 635503 (240202501, 240201526, 240201530).

@@ -1,5 +1,5 @@
 """Valida el JSON de una guía (y de sus instrumentos) contra la estructura curricular.
-Uso: python validar_guia.py --datos datos.json [--instrumentos instrumentos.json] --programa programa.json
+Uso: python validar_guia.py --datos datos.json [--instrumentos instrumentos.json] --programa programa.json [--proyecto proyecto.json]
 Guía: competencias (técnicas y claves) y RA literales, criterios oficiales, horas, evidencias en 3.3/3.4,
 presentación de 4 párrafos, actividad de proyecto AP<n> y campos pendientes.
 Codificación oficial: actividad GA1-<competencia>-AA1; evidencia GA1-<competencia>-AA1-EV01
@@ -249,11 +249,38 @@ def validar_guia(d, p, err, adv):
         adv.append(f"{pend} campo(s) pendiente(s) de información del instructor.")
 
 
+def validar_proyecto(d, proy, err, adv):
+    """Coherencia de la guía con el proyecto formativo (data/proyectos/<código>.json)."""
+    ident = d.get("identificacion", {})
+    ap_txt = str(ident.get("actividad_proyecto", ""))
+    m = re.match(r"^AP\s*(\d+)\s*-?\s*(.*)$", ap_txt.strip(), re.I)
+    if not m:
+        err.append("Con --proyecto, la actividad de proyecto debe iniciar con su código AP<n>.")
+        return
+    act, fase = None, None
+    for f in proy.get("fases", []):
+        for a in f["actividades"]:
+            if a["numero"] == int(m.group(1)):
+                act, fase = a, f["fase"]
+    if act is None:
+        err.append(f"La actividad AP{m.group(1)} no existe en el proyecto {proy['proyecto'].get('codigo')}.")
+        return
+    if m.group(2) and norm(m.group(2))[:30] not in norm(act["nombre"]):
+        adv.append(f"AP{m.group(1)} se llama en el proyecto «{act['nombre'][:80]}».")
+    if ident.get("fase") and norm(ident["fase"])[:5] != norm(fase)[:5]:
+        adv.append(f"AP{m.group(1)} pertenece a la fase {fase} del proyecto; la guía dice «{ident['fase']}».")
+    del_ap = {(r["competencia"], r["ra"]) for r in act["resultados"]}
+    for c, n in re.findall(r"(\d{9})\s*-\s*(\d{1,2})\b", str(ident.get("resultados", ""))):
+        if (c, f"{int(n):02d}") not in del_ap:
+            adv.append(f"El RA {c}-{int(n):02d} no está planeado en AP{m.group(1)} del proyecto.")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--datos", help="JSON de la guía")
     ap.add_argument("--instrumentos", help="JSON de los instrumentos de evaluación")
     ap.add_argument("--programa")
+    ap.add_argument("--proyecto", help="JSON del proyecto formativo (data/proyectos/<código>.json)")
     a = ap.parse_args()
     if not a.datos and not a.instrumentos:
         ap.error("indique --datos, --instrumentos o ambos")
@@ -268,6 +295,8 @@ def main():
             adv.append(f"Instrumentos: {pend} campo(s) pendiente(s).")
     if guia is not None:
         validar_guia(guia, prog, err, adv)
+        if a.proyecto:
+            validar_proyecto(guia, json.loads(Path(a.proyecto).read_text(encoding="utf-8")), err, adv)
     for e in err:
         print("ERROR:", e)
     for w in adv:

@@ -18,6 +18,7 @@ Use un chat nuevo por caso. Escriba como instructor, sin mencionar el nombre de 
 | 4 | «Hazme una guía para Cocina 635503, competencia manipular alimentos.» | Muestra los 3 RA por separado, cada uno con sus conocimientos y criterios (corregido en el catálogo). |
 | 5 | «Guía rápida para la competencia de inglés de cualquier programa, sin más datos.» | Genera borrador con `[Pendiente de información del instructor]`; no inventa criterios. |
 | 6 | «¿Qué diferencia hay entre evidencia de desempeño y de producto?» | Responde en el chat, sin generar Word. |
+| 8 | «Guía para ADSO, proyecto de mi centro, actividad de proyecto de diseño.» | Encuentra el proyecto 2480542, muestra fases y AP, propone AP3 con sus competencias y RA planeados. |
 | 7 | Adjuntar un PDF de diseño curricular que no esté en el catálogo y pedir una guía. | Ejecuta `extraer_estructura.py` (si el entorno tiene `pdfplumber`) o pide pegar el contenido. |
 
 ## Lista de revisión por caso

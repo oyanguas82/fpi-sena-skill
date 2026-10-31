@@ -60,7 +60,9 @@ Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de 
 | **Complementos / Plugins** → subir plugin | [`dist/fpi-sena-plugin-chatgpt.zip`](dist/fpi-sena-plugin-chatgpt.zip) | `plugin.json` y `.codex-plugin/plugin.json` en la raíz, `skills/`, `assets/` |
 | **Plugins › Skills** → Create → Upload from your computer | [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) | carpeta `guia-aprendizaje-sena/` con `SKILL.md` |
 
-Si sube el ZIP de la skill por «Complementos», ChatGPT responde *Expected a single plugin archive*: use el ZIP del plugin. La subida de plugins puede requerir permisos de administrador del espacio de trabajo.
+Si sube el ZIP de la skill por «Complementos», ChatGPT responde *Expected a single plugin archive*: use el ZIP del plugin.
+
+**Para que ChatGPT entregue el Word con la plantilla oficial:** el complemento le da a ChatGPT las instrucciones y el catálogo, pero no copia la plantilla ni los scripts a su entorno de Python. Adjunte en la conversación (o, mejor, en los **archivos del Proyecto** para no repetirlo) el ZIP de la skill [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip). ChatGPT lo descomprime, ejecuta `generar_guia.py` sobre la plantilla y valida el Word con `validar_guia.py --docx`. Requiere la ejecución de código (análisis de datos) activada. La subida de plugins puede requerir permisos de administrador del espacio de trabajo.
 
 Pasos de prueba en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 

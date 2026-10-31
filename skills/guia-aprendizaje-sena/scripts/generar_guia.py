@@ -332,14 +332,17 @@ def string_list(data, key):
         raise ValueError(key + " debe ser una lista de textos.")
     return values or [PENDIENTE]
 
-def generate(data, output):
+def generate(data, output, plantilla=None):
     if not isinstance(data, dict):
         raise ValueError("Los datos deben ser un objeto JSON.")
     allowed = {"identificacion", "presentacion", "contexto_actividades", "actividades",
                "evidencias", "glosario", "bibliografia", "control_documento", "cambios"}
     if set(data) - allowed:
         raise ValueError("Campos desconocidos: " + ", ".join(sorted(set(data) - allowed)))
-    template = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    # --plantilla permite usar una copia adjunta (p. ej. en ChatGPT, /mnt/data/…docx).
+    template = Path(plantilla) if plantilla else Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    if not template.exists():
+        raise ValueError("No se encontró la plantilla GFPI-F-135: " + str(template) + ". Indique --plantilla.")
     output = Path(output).resolve()
     if output == template.resolve():
         raise ValueError("No sobrescriba la plantilla empaquetada.")
@@ -505,6 +508,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--datos", required=True, type=Path)
     parser.add_argument("--salida", required=True, type=Path)
+    parser.add_argument("--plantilla", type=Path, help="Ruta de la plantilla GFPI-F-135 (por defecto, assets/)")
     args = parser.parse_args()
-    result = generate(json.loads(args.datos.read_text(encoding="utf-8-sig")), args.salida)
+    result = generate(json.loads(args.datos.read_text(encoding="utf-8-sig")), args.salida, args.plantilla)
     print(result)

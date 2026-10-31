@@ -245,7 +245,7 @@ def instrumento(ident, inst, primero):
     return "".join(x)
 
 
-def generar(datos, salida):
+def generar(datos, salida, plantilla_ruta=None):
     if not isinstance(datos, dict) or set(datos) - {"identificacion", "instrumentos"}:
         raise ValueError("El JSON solo admite «identificacion» e «instrumentos».")
     ident = datos.get("identificacion", {})
@@ -254,7 +254,9 @@ def generar(datos, salida):
     instrumentos = datos.get("instrumentos")
     if not isinstance(instrumentos, list) or not instrumentos:
         raise ValueError("«instrumentos» debe ser una lista con al menos un instrumento.")
-    plantilla = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    plantilla = Path(plantilla_ruta) if plantilla_ruta else Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    if not plantilla.exists():
+        raise ValueError("No se encontró la plantilla GFPI-F-135: " + str(plantilla) + ". Indique --plantilla.")
     salida = Path(salida).resolve()
     if salida == plantilla.resolve():
         raise ValueError("No sobrescriba la plantilla empaquetada.")
@@ -291,8 +293,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--datos", required=True, type=Path)
     ap.add_argument("--salida", required=True, type=Path)
+    ap.add_argument("--plantilla", type=Path, help="Ruta de la plantilla GFPI-F-135 (por defecto, assets/)")
     a = ap.parse_args()
     try:
-        print(generar(json.loads(a.datos.read_text(encoding="utf-8-sig")), a.salida))
+        print(generar(json.loads(a.datos.read_text(encoding="utf-8-sig")), a.salida, a.plantilla))
     except ValueError as e:
         raise SystemExit("ERROR: " + str(e))

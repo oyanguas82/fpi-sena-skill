@@ -297,7 +297,7 @@ APARTADOS = ["1. IDENTIFICACI", "2. PRESENTACI", "3. FORMULACI", "3.1", "3.2", "
              "5. GLOSARIO", "6. REFERENTES", "7. CONTROL DEL DOCUMENTO", "8. CONTROL DE CAMBIOS"]
 
 
-def validar_docx(ruta, err, adv):
+def validar_docx(ruta, err, adv, plantilla=None):
     """Comprueba que el Word de la guía salió de la plantilla GFPI-F-135 (vía generar_guia.py):
     todos los componentes de la plantilla (logo, encabezados, pie, estilos, numeración) idénticos byte a byte."""
     from zipfile import ZipFile, BadZipFile
@@ -306,7 +306,7 @@ def validar_docx(ruta, err, adv):
     except (BadZipFile, OSError):
         err.append(f"{ruta}: no es un archivo Word (.docx) válido.")
         return
-    with ZipFile(PLANTILLA) as t:
+    with ZipFile(plantilla or PLANTILLA) as t:
         nombres = set(doc.namelist())
         distintos = [n for n in t.namelist() if n != "word/document.xml"
                      and (n not in nombres or doc.read(n) != t.read(n))]
@@ -329,6 +329,7 @@ def main():
     ap.add_argument("--programa")
     ap.add_argument("--proyecto", help="JSON del proyecto formativo (data/proyectos/<código>.json)")
     ap.add_argument("--docx", help="Word de la guía generado: verifica que salió de la plantilla GFPI-F-135")
+    ap.add_argument("--plantilla", help="Ruta de la plantilla GFPI-F-135 (por defecto, assets/)")
     a = ap.parse_args()
     if not a.datos and not a.instrumentos and not a.docx:
         ap.error("indique --datos, --instrumentos o --docx")
@@ -346,7 +347,7 @@ def main():
         if a.proyecto:
             validar_proyecto(guia, json.loads(Path(a.proyecto).read_text(encoding="utf-8")), err, adv)
     if a.docx:
-        validar_docx(a.docx, err, adv)
+        validar_docx(a.docx, err, adv, a.plantilla)
     for e in err:
         print("ERROR:", e)
     for w in adv:

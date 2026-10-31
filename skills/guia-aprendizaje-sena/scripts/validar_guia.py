@@ -292,9 +292,25 @@ def validar_proyecto(d, proy, err, adv):
             adv.append(f"El RA {c}-{int(n):02d} no está planeado en AP{m.group(1)} del proyecto.")
 
 
-PLANTILLA = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
 APARTADOS = ["1. IDENTIFICACI", "2. PRESENTACI", "3. FORMULACI", "3.1", "3.2", "3.3", "3.4", "4. PLANTEAMIENTO",
              "5. GLOSARIO", "6. REFERENTES", "7. CONTROL DEL DOCUMENTO", "8. CONTROL DE CAMBIOS"]
+
+
+def ruta_plantilla(plantilla=None):
+    """Plantilla indicada, la de assets/ o la incrustada en scripts/plantilla.py
+    (entornos donde Python no ve assets/, p. ej. ChatGPT)."""
+    if plantilla:
+        return Path(plantilla)
+    en_assets = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    if en_assets.exists():
+        return en_assets
+    try:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from plantilla import ruta_plantilla as _incrustada
+        return _incrustada()
+    except ImportError:
+        return en_assets
 
 
 def validar_docx(ruta, err, adv, plantilla=None):
@@ -306,7 +322,7 @@ def validar_docx(ruta, err, adv, plantilla=None):
     except (BadZipFile, OSError):
         err.append(f"{ruta}: no es un archivo Word (.docx) válido.")
         return
-    with ZipFile(plantilla or PLANTILLA) as t:
+    with ZipFile(ruta_plantilla(plantilla)) as t:
         nombres = set(doc.namelist())
         distintos = [n for n in t.namelist() if n != "word/document.xml"
                      and (n not in nombres or doc.read(n) != t.read(n))]

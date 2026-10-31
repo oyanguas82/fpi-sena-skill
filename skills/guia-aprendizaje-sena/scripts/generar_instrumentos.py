@@ -245,6 +245,23 @@ def instrumento(ident, inst, primero):
     return "".join(x)
 
 
+def ruta_plantilla(plantilla=None):
+    """Plantilla indicada, la de assets/ o la incrustada en scripts/plantilla.py
+    (entornos donde Python no ve assets/, p. ej. ChatGPT)."""
+    if plantilla:
+        return Path(plantilla)
+    en_assets = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    if en_assets.exists():
+        return en_assets
+    try:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from plantilla import ruta_plantilla as _incrustada
+        return _incrustada()
+    except ImportError:
+        return en_assets
+
+
 def generar(datos, salida, plantilla_ruta=None):
     if not isinstance(datos, dict) or set(datos) - {"identificacion", "instrumentos"}:
         raise ValueError("El JSON solo admite «identificacion» e «instrumentos».")
@@ -254,7 +271,7 @@ def generar(datos, salida, plantilla_ruta=None):
     instrumentos = datos.get("instrumentos")
     if not isinstance(instrumentos, list) or not instrumentos:
         raise ValueError("«instrumentos» debe ser una lista con al menos un instrumento.")
-    plantilla = Path(plantilla_ruta) if plantilla_ruta else Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    plantilla = ruta_plantilla(plantilla_ruta)
     if not plantilla.exists():
         raise ValueError("No se encontró la plantilla GFPI-F-135: " + str(plantilla) + ". Indique --plantilla.")
     salida = Path(salida).resolve()

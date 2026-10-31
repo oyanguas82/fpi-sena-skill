@@ -1,15 +1,43 @@
 """Empaqueta la skill para Claude (.skill) y el plugin para ChatGPT (.zip).
+Antes de empaquetar, regenera scripts/plantilla.py: la plantilla GFPI-F-135 incrustada en base64
+para entornos que no exponen archivos binarios a Python (p. ej. ChatGPT).
 Uso: python empaquetar.py [--salida ../entregables]
 Solo biblioteca estándar.
 """
 import argparse
+import base64
 import json
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 RAIZ = Path(__file__).resolve().parent
 SKILL = RAIZ / "skills" / "guia-aprendizaje-sena"
+PLANTILLA = SKILL / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
 IGNORAR = {"__pycache__", ".DS_Store", "Thumbs.db"}
+
+MODULO = '''"""Plantilla GFPI-F-135 V04 incrustada (base64). La genera empaquetar.py: no editar a mano.
+Sirve en entornos donde Python no ve assets/ (p. ej. ChatGPT): los generadores la usan si falta el .docx.
+"""
+import base64
+import tempfile
+from pathlib import Path
+
+DOCX_B64 = "{b64}"
+
+
+def ruta_plantilla(plantilla=None):
+    """Ruta de la plantilla: la indicada, la de assets/ o una copia reconstruida desde DOCX_B64."""
+    if plantilla:
+        return Path(plantilla)
+    en_assets = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    if en_assets.exists():
+        return en_assets
+    copia = Path(tempfile.gettempdir()) / "GFPI-F-135_Formato_Guia_de_Aprendizaje.docx"
+    datos = base64.b64decode(DOCX_B64)
+    if not copia.exists() or copia.read_bytes() != datos:
+        copia.write_bytes(datos)
+    return copia
+'''
 
 
 def archivos(carpeta):
@@ -18,12 +46,21 @@ def archivos(carpeta):
             yield f
 
 
+def incrustar_plantilla():
+    destino = SKILL / "scripts" / "plantilla.py"
+    contenido = MODULO.replace("{b64}", base64.b64encode(PLANTILLA.read_bytes()).decode("ascii"))
+    if not destino.exists() or destino.read_text(encoding="utf-8") != contenido:
+        destino.write_text(contenido, encoding="utf-8")
+    return destino
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--salida", type=Path, default=RAIZ.parent / "entregables")
     salida = ap.parse_args().salida.resolve()
     salida.mkdir(parents=True, exist_ok=True)
     version = json.loads((RAIZ / "plugin.json").read_text(encoding="utf-8"))["version"]
+    incrustar_plantilla()
 
     claude = salida / "guia-aprendizaje-sena.skill"
     with ZipFile(claude, "w", ZIP_DEFLATED) as z:

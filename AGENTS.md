@@ -6,7 +6,7 @@ Proyecto: skill `guia-aprendizaje-sena` (Guías de Aprendizaje SENA, formato GFP
 - Idioma: español. Respuestas breves y exactas.
 - Scripts en Python; `generar_guia.py`, `generar_instrumentos.py`, `validar_guia.py`, `buscar_programa.py` y `buscar_proyecto.py` usan solo biblioteca estándar. `extraer_estructura.py` y `extraer_proyecto.py` requieren `pdfplumber`.
 - Nunca inventar contenido curricular: competencias, RA, conocimientos y criterios salen de `data/programas/*.json`.
-- No modificar la plantilla `assets/GFPI-F-135 Formato Guia de Aprendizaje.docx`.
+- No modificar la plantilla `assets/GFPI-F-135 Formato Guia de Aprendizaje.docx`. `scripts/plantilla.py` es una copia incrustada (base64) que regenera `empaquetar.py`; no editarla a mano.
 - SKILL.md debe mantenerse corto; el detalle va en `references/`.
 - Los PDF no se versionan (.gitignore): diseños curriculares en `../estructuras-curriculares`, proyectos formativos en `../proyectos-formativos`. Extraer a `data/programas/` y `data/proyectos/` con los scripts `extraer_*`.
 - Nunca guardar nombres de personas de los PDF de proyectos.

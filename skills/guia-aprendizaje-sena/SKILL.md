@@ -57,10 +57,11 @@ Reglas de alineación curricular:
 ### Paso 6. Generar el Word (obligatorio con el script y la plantilla)
 **El Word se genera SIEMPRE ejecutando `scripts/generar_guia.py`**, que copia la plantilla oficial `assets/GFPI-F-135 Formato Guia de Aprendizaje.docx` (logo, encabezado, pie «GFPI-F-135 V04», estilos, tablas). **Nunca** crees el documento con python-docx, docx-js, otra skill de Word, ni desde cero: aunque se parezca, no es el formato oficial.
 1. Ubica la carpeta de esta skill en el entorno donde ejecutas Python: `find / -name generar_guia.py -path "*guia-aprendizaje-sena*" 2>/dev/null`. Usa esa carpeta (`<skill>`) como base para `scripts/`, `assets/` y `data/`.
-   **Si no aparece** (p. ej. en ChatGPT, donde la skill solo expone sus textos): pide al instructor adjuntar a la conversación, o a los archivos de su Proyecto, el ZIP de la skill `guia-aprendizaje-sena-skill.zip` (https://github.com/oyanguas82/fpi-sena-skill/raw/main/dist/guia-aprendizaje-sena-skill.zip). Descomprímelo (`unzip … -d /mnt/data/`) y usa `/mnt/data/guia-aprendizaje-sena` como `<skill>`. Si solo adjunta la plantilla `.docx`, ejecuta el script que copies del ZIP o de la skill con `--plantilla <ruta de la plantilla>`.
+   La plantilla también viene **incrustada en `scripts/plantilla.py`**: si el entorno no muestra `assets/` o el `.docx` (p. ej. ChatGPT), los scripts la reconstruyen solos, idéntica a la oficial. Basta con encontrar `scripts/`; **no pidas archivos al instructor**.
+   Solo si no aparece ningún script de la skill en el entorno de Python, pide como último recurso adjuntar `guia-aprendizaje-sena-skill.zip` (https://github.com/oyanguas82/fpi-sena-skill/raw/main/dist/guia-aprendizaje-sena-skill.zip), descomprímelo en `/mnt/data/` y úsalo como `<skill>`.
 2. Arma el JSON según [entrega-word.md](references/entrega-word.md) y ejecuta `python <skill>/scripts/generar_guia.py --datos datos.json --salida <ruta>/GA1-<competencia técnica>_<nombre_corto>.docx` (codificación GA/AA/EV/IE en [evaluacion.md](references/evaluacion.md)).
 3. Valida datos **y** Word: `python <skill>/scripts/validar_guia.py --datos datos.json --programa <json_del_programa> [--proyecto <skill>/data/proyectos/<código>.json] --docx <ruta>/GA1-….docx`. Si dice que el Word no salió de la plantilla, vuelve a generarlo con el script. Corrige todo error antes de entregar.
-4. Mientras no tengas el ZIP o la plantilla, entrega el JSON y pide el adjunto; si no puedes ejecutar Python, dilo. No entregues un Word hecho de otra forma.
+4. Si no puedes ejecutar Python, dilo y entrega el JSON. No entregues un Word hecho de otra forma.
 
 Si el instructor pide los instrumentos de evaluación, genéralos como anexo Word siguiendo [instrumentos.md](references/instrumentos.md).
 

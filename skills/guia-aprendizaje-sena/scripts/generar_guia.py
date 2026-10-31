@@ -332,6 +332,23 @@ def string_list(data, key):
         raise ValueError(key + " debe ser una lista de textos.")
     return values or [PENDIENTE]
 
+def ruta_plantilla(plantilla=None):
+    """Plantilla indicada, la de assets/ o la incrustada en scripts/plantilla.py
+    (entornos donde Python no ve assets/, p. ej. ChatGPT)."""
+    if plantilla:
+        return Path(plantilla)
+    en_assets = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    if en_assets.exists():
+        return en_assets
+    try:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from plantilla import ruta_plantilla as _incrustada
+        return _incrustada()
+    except ImportError:
+        return en_assets
+
+
 def generate(data, output, plantilla=None):
     if not isinstance(data, dict):
         raise ValueError("Los datos deben ser un objeto JSON.")
@@ -340,7 +357,7 @@ def generate(data, output, plantilla=None):
     if set(data) - allowed:
         raise ValueError("Campos desconocidos: " + ", ".join(sorted(set(data) - allowed)))
     # --plantilla permite usar una copia adjunta (p. ej. en ChatGPT, /mnt/data/…docx).
-    template = Path(plantilla) if plantilla else Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+    template = ruta_plantilla(plantilla)
     if not template.exists():
         raise ValueError("No se encontró la plantilla GFPI-F-135: " + str(template) + ". Indique --plantilla.")
     output = Path(output).resolve()

@@ -13,7 +13,7 @@ Proyecto: skill `guia-aprendizaje-sena` (Guías de Aprendizaje SENA, formato GFP
 
 ## Probar cambios
 1. `python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos <json> --programa <programa.json>`
-2. `python skills/guia-aprendizaje-sena/scripts/generar_guia.py --datos <json> --salida salidas/prueba.docx`
+2. `python skills/guia-aprendizaje-sena/scripts/generar_guia.py --datos <json> --salida salidas/prueba.docx` y `validar_guia.py --docx salidas/prueba.docx` (confirma que salió de la plantilla)
 3. Instrumentos: `validar_guia.py --datos <guia> --instrumentos <json> --programa <programa.json>` y `generar_instrumentos.py --datos <json> --salida salidas/instrumentos.docx`
 - Datos de prueba en `pruebas/` (ADSO 228118, competencia 220501096).
 

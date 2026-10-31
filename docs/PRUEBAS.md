@@ -26,7 +26,7 @@ Use un chat nuevo por caso. Escriba como instructor, sin mencionar el nombre de 
 - [ ] Competencia, RA y criterios coinciden con el currículo (sin redacción propia presentada como oficial).
 - [ ] El Word abre en Microsoft Word, conserva logo, pie «GFPI-F-135 V04» y los 8 apartados.
 - [ ] Horas de actividades = duración de la guía.
-- [ ] Se ejecutó `validar_guia.py` y se corrigieron errores.
+- [ ] Se ejecutó `validar_guia.py` (con `--docx`) y se corrigieron errores; el Word salió de la plantilla, no de python-docx.
 - [ ] No se entregó Word en preguntas conceptuales.
 
 ## Resultados

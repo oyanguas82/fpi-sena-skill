@@ -292,15 +292,46 @@ def validar_proyecto(d, proy, err, adv):
             adv.append(f"El RA {c}-{int(n):02d} no está planeado en AP{m.group(1)} del proyecto.")
 
 
+PLANTILLA = Path(__file__).resolve().parents[1] / "assets" / "GFPI-F-135 Formato Guia de Aprendizaje.docx"
+APARTADOS = ["1. IDENTIFICACI", "2. PRESENTACI", "3. FORMULACI", "3.1", "3.2", "3.3", "3.4", "4. PLANTEAMIENTO",
+             "5. GLOSARIO", "6. REFERENTES", "7. CONTROL DEL DOCUMENTO", "8. CONTROL DE CAMBIOS"]
+
+
+def validar_docx(ruta, err, adv):
+    """Comprueba que el Word de la guía salió de la plantilla GFPI-F-135 (vía generar_guia.py):
+    todos los componentes de la plantilla (logo, encabezados, pie, estilos, numeración) idénticos byte a byte."""
+    from zipfile import ZipFile, BadZipFile
+    try:
+        doc = ZipFile(ruta)
+    except (BadZipFile, OSError):
+        err.append(f"{ruta}: no es un archivo Word (.docx) válido.")
+        return
+    with ZipFile(PLANTILLA) as t:
+        nombres = set(doc.namelist())
+        distintos = [n for n in t.namelist() if n != "word/document.xml"
+                     and (n not in nombres or doc.read(n) != t.read(n))]
+    if distintos:
+        err.append("El Word NO se generó con la plantilla oficial GFPI-F-135 V04 (cambian o faltan: "
+                   + ", ".join(distintos[:5]) + ("…" if len(distintos) > 5 else "")
+                   + "). Genérelo con scripts/generar_guia.py; no lo cree con python-docx ni desde cero.")
+    texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", doc.read("word/document.xml").decode("utf-8", "ignore")))
+    faltan = [a for a in APARTADOS if a not in texto]
+    if faltan:
+        err.append("Al Word le faltan apartados del formato: " + ", ".join(faltan))
+    if PEND in texto:
+        adv.append(f"El Word tiene {texto.count(PEND)} campo(s) pendiente(s).")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--datos", help="JSON de la guía")
     ap.add_argument("--instrumentos", help="JSON de los instrumentos de evaluación")
     ap.add_argument("--programa")
     ap.add_argument("--proyecto", help="JSON del proyecto formativo (data/proyectos/<código>.json)")
+    ap.add_argument("--docx", help="Word de la guía generado: verifica que salió de la plantilla GFPI-F-135")
     a = ap.parse_args()
-    if not a.datos and not a.instrumentos:
-        ap.error("indique --datos, --instrumentos o ambos")
+    if not a.datos and not a.instrumentos and not a.docx:
+        ap.error("indique --datos, --instrumentos o --docx")
     err, adv = [], []
     prog = json.loads(Path(a.programa).read_text(encoding="utf-8")) if a.programa else None
     guia = json.loads(Path(a.datos).read_text(encoding="utf-8-sig")) if a.datos else None
@@ -314,6 +345,8 @@ def main():
         validar_guia(guia, prog, err, adv)
         if a.proyecto:
             validar_proyecto(guia, json.loads(Path(a.proyecto).read_text(encoding="utf-8")), err, adv)
+    if a.docx:
+        validar_docx(a.docx, err, adv)
     for e in err:
         print("ERROR:", e)
     for w in adv:

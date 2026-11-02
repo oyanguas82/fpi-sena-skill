@@ -84,7 +84,7 @@ Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de 
 
 Si sube el ZIP de la skill por «Complementos», ChatGPT responde *Expected a single plugin archive*: use el ZIP del plugin.
 
-**Word con la plantilla oficial en ChatGPT:** la plantilla viaja también incrustada en `scripts/plantilla.py`, así que basta con que ChatGPT ejecute los scripts del complemento; no hace falta adjuntar nada. Requiere la ejecución de código (análisis de datos) activada. Solo si ChatGPT no encuentra ningún script, adjunte [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) en la conversación o en los archivos del Proyecto. La subida de plugins puede requerir permisos de administrador del espacio de trabajo.
+**Archivos oficiales en ChatGPT (una sola vez):** el Python de ChatGPT no siempre recibe los scripts del complemento. Cree un **Proyecto** en ChatGPT y suba `dist/fpi-sena-plugin-chatgpt.zip` en **Archivos del proyecto**; desde los chats de ese Proyecto el agente encuentra y extrae el paquete solo (bloque «Ubicar el paquete» de cada `SKILL.md`) y genera guía, planeación, instrumentos, juicios y planes con las plantillas institucionales, sin pedir nada. Requiere la ejecución de código (análisis de datos) activada.
 
 Pasos de prueba en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 

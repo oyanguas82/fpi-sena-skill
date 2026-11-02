@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fpi-sena",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Planeación GFPI-F-134, guías GFPI-F-135, instrumentos, juicios y planes de mejoramiento SENA",
   "author": {
     "name": "OSCAR E YANGUAS A"

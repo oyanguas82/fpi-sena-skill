@@ -59,7 +59,10 @@
   - `empaquetar.py`: un `.skill`/`-skill.zip` por skill; plugin ChatGPT con las cinco. Página de descargas y workflow publican todos los ZIP.
   - Probado: instalación simulada con skills separadas (claude.ai) y solo `scripts/` sin `assets/` (ChatGPT): Excel idéntico. `claude plugin validate .` OK.
 
+- 2026-11-02 (v2.0.1): en ChatGPT real el complemento no dejó los scripts en el Python (pedía adjuntar el ZIP). Cada `SKILL.md` trae ahora el bloque «Ubicar el paquete»: busca la skill instalada (`/home/oai/skills`, `/mnt`, `/opt`, …) y, si no está, extrae el ZIP del paquete (`.zip`/`.skill`) que haya en el chat o en los archivos del Proyecto; solo si no hay nada lo dice en una línea. «Modo directo»: no se pregunta antes de generar; lo que falte se propone y se marca «propuesta, revisar». Instalación recomendada en ChatGPT: complemento + Proyecto con `fpi-sena-plugin-chatgpt.zip` en sus archivos. Probado simulando /mnt/data solo con el ZIP del plugin.
+
 ## Pendiente / ideas
+- Confirmar en ChatGPT dónde quedan (si quedan) los archivos del complemento en el Python, para que funcione sin el ZIP en el Proyecto.
 - v2: probar en claude.ai y ChatGPT las cuatro skills nuevas (casos 9–12 de `docs/PRUEBAS.md`).
 - Guía desde la planeación: que `generar_guia`/SKILL lea el JSON de planeación para llenar 3.3 y la tabla 4 automáticamente.
 - Juicios: importar el reporte de SOFIA Plus o del LMS (CSV) directamente.

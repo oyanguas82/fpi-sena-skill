@@ -25,11 +25,11 @@ jobs:
           TAG: ${{ inputs.tag || github.ref_name }}
         run: |
           cat > notas.md <<NOTAS
-          Skill de Guías de Aprendizaje SENA (GFPI-F-135 V04).
+          Agente FPI SENA: planeación pedagógica (GFPI-F-134), guías de aprendizaje (GFPI-F-135 V04), instrumentos de evaluación, juicios evaluativos y planes de mejoramiento.
 
           **Descargas**
-          - \`guia-aprendizaje-sena-skill.zip\` → Claude (web/escritorio): Configuración › Capacidades › Skills. ChatGPT: Plugins › Skills › Upload.
-          - \`fpi-sena-plugin-chatgpt.zip\` → ChatGPT: Complementos / Plugins › subir plugin.
+          - \`fpi-sena-plugin-chatgpt.zip\` → ChatGPT: Complementos / Plugins › subir plugin (trae las cinco skills).
+          - Claude (web/escritorio): Configuración › Capacidades › Skills › subir cada \`*-skill.zip\`. **\`guia-aprendizaje-sena-skill.zip\` es obligatoria** (catálogo curricular); luego \`asistente-fpi-sena\`, \`planeacion-pedagogica-sena\`, \`instrumentos-evaluacion-sena\` y \`juicios-evaluativos-sena\`.
 
           ⚠️ No descargue **Source code**: es el código del proyecto para desarrolladores y no se instala en Claude ni en ChatGPT.
 

@@ -1,0 +1,44 @@
+name: Publicar release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Etiqueta existente a publicar (p. ej. v1.4.3)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+      - name: Crear o actualizar el release con los paquetes de dist/
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          cat > notas.md <<NOTAS
+          Skill de Guías de Aprendizaje SENA (GFPI-F-135 V04).
+
+          **Descargas**
+          - \`guia-aprendizaje-sena-skill.zip\` → Claude (web/escritorio): Configuración › Capacidades › Skills. ChatGPT: Plugins › Skills › Upload.
+          - \`fpi-sena-plugin-chatgpt.zip\` → ChatGPT: Complementos / Plugins › subir plugin.
+
+          **Claude Code**
+          \`\`\`
+          /plugin marketplace add ${GITHUB_REPOSITORY}
+          /plugin install fpi-sena@fpi-sena-marketplace
+          \`\`\`
+          NOTAS
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/*.zip --clobber
+          else
+            gh release create "$TAG" dist/*.zip --title "FPI SENA $TAG" --notes-file notas.md
+          fi

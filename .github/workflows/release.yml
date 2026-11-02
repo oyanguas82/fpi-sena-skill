@@ -31,6 +31,8 @@ jobs:
           - \`guia-aprendizaje-sena-skill.zip\` → Claude (web/escritorio): Configuración › Capacidades › Skills. ChatGPT: Plugins › Skills › Upload.
           - \`fpi-sena-plugin-chatgpt.zip\` → ChatGPT: Complementos / Plugins › subir plugin.
 
+          ⚠️ No descargue **Source code**: es el código del proyecto para desarrolladores y no se instala en Claude ni en ChatGPT.
+
           **Claude Code**
           \`\`\`
           /plugin marketplace add ${GITHUB_REPOSITORY}

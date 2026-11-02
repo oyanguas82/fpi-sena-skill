@@ -2,6 +2,8 @@
 
 Skill (estándar SKILL.md) para Claude, Claude Code, Codex y ChatGPT que diseña guías de aprendizaje SENA en Word a partir de la estructura curricular oficial.
 
+**Página de descargas:** https://oyanguas82.github.io/fpi-sena-skill/
+
 ## Estructura
 ```
 plugin.json                      Manifiesto del plugin (Codex / ChatGPT, formato portátil)

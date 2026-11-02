@@ -1,0 +1,39 @@
+name: Publicar página de descargas
+
+on:
+  push:
+    branches: [main]
+    paths: ["pagina/**", "dist/**", "plugin.json", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Armar el sitio (solo página y paquetes)
+        run: |
+          mkdir -p _site
+          VERSION=$(python3 -c "import json;print(json.load(open('plugin.json'))['version'])")
+          sed "s/{{VERSION}}/$VERSION/g" pagina/index.html > _site/index.html
+          cp dist/guia-aprendizaje-sena-skill.zip dist/fpi-sena-plugin-chatgpt.zip _site/
+          touch _site/.nojekyll
+          ls -la _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

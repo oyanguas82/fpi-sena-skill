@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPI SENA · Descargas</title>
+<meta name="description" content="Descargue la skill FPI SENA para crear guías de aprendizaje GFPI-F-135 V04 en Claude y ChatGPT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--bg:#F4F7F1;--card:#FFFFFF;--ink:#00304D;--soft:#4A5B66;--green:#39A900;--green-ink:#2E7D00;--band:#00304D;--band-ink:#F4F7F1;--band-soft:#C9D8E0;--line:#DDE5D6;--code-bg:#0B4566;--code:#8FD14F;--warn:#FFF4D6;--warn-ink:#5C4300}
+@media (prefers-color-scheme:dark){:root{--bg:#0E1A22;--card:#16252F;--ink:#E6EEF2;--soft:#A9BAC4;--green-ink:#8FD14F;--line:#24384A;--band:#0A2A3F;--warn:#3A2F12;--warn-ink:#F3DFA6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Work Sans',Arial,sans-serif;line-height:1.5}
+header{background:var(--band);color:var(--band-ink);border-left:12px solid var(--green)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header .wrap{padding-top:56px;padding-bottom:56px}
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8FD14F;margin:0 0 12px}
+h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:0 0 16px;font-weight:800}
+header p.lead{font-size:clamp(17px,2.4vw,21px);color:var(--band-soft);max-width:720px;margin:0}
+.ver{display:inline-block;margin-top:20px;font-size:14px;font-weight:600;background:rgba(143,209,79,.15);color:#8FD14F;padding:6px 12px;border-radius:999px}
+main .wrap{padding-top:40px;padding-bottom:56px}
+h2{font-size:24px;margin:40px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--green);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card.alt{border-top-color:var(--ink)}
+.card h3{margin:0;font-size:21px}
+.card p{margin:0;color:var(--soft)}
+.card ol{margin:0;padding-left:20px;color:var(--soft)}
+.file{font-family:'JetBrains Mono','Courier New',monospace;font-size:13px;word-break:break-all;color:var(--ink)}
+.btn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#0B2A00;font-weight:700;text-decoration:none;padding:14px 18px;border-radius:10px;font-size:17px}
+.btn:hover{filter:brightness(1.07)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.warn{background:var(--warn);color:var(--warn-ink);border-radius:12px;padding:16px 20px;margin-top:24px}
+.code{background:var(--code-bg);color:var(--code);font-family:'JetBrains Mono','Courier New',monospace;font-size:14px;border-radius:12px;padding:18px 20px;overflow-x:auto;white-space:pre}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.step b{display:block;color:var(--green-ink);font-size:15px;margin-bottom:4px}
+footer{border-top:1px solid var(--line);color:var(--soft);font-size:14px}
+footer .wrap{padding-top:24px;padding-bottom:32px}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<p class="eyebrow">Formación Profesional Integral · SENA</p>
+<h1>Skill FPI SENA</h1>
+<p class="lead">Crea guías de aprendizaje en formato GFPI-F-135 V04, en Word, a partir de la estructura curricular oficial del programa. Funciona en Claude y en ChatGPT.</p>
+<span class="ver">Versión {{VERSION}}</span>
+</div>
+</header>
+<main>
+<div class="wrap">
+<h2>1. Descargue el archivo de su plataforma</h2>
+<div class="grid">
+<div class="card">
+<h3>Claude (web o escritorio)</h3>
+<p>También sirve para ChatGPT en <b>Plugins › Skills</b>.</p>
+<span class="file">guia-aprendizaje-sena-skill.zip</span>
+<ol>
+<li>Configuración › Capacidades: active la ejecución de código.</li>
+<li>En Skills, suba este archivo sin descomprimirlo.</li>
+</ol>
+<a class="btn" href="guia-aprendizaje-sena-skill.zip" download>Descargar para Claude</a>
+</div>
+<div class="card alt">
+<h3>ChatGPT (Complementos)</h3>
+<p>Para subirlo como complemento o plugin.</p>
+<span class="file">fpi-sena-plugin-chatgpt.zip</span>
+<ol>
+<li>Active el análisis de datos (ejecución de código).</li>
+<li>Complementos / Plugins › subir plugin › este archivo.</li>
+</ol>
+<a class="btn" href="fpi-sena-plugin-chatgpt.zip" download>Descargar para ChatGPT</a>
+</div>
+</div>
+<p class="warn"><b>No descomprima el .zip.</b> Claude y ChatGPT lo reciben completo. En cuentas institucionales, el administrador puede tener que autorizar la subida.</p>
+
+<h2>2. Pida su primera guía</h2>
+<div class="steps">
+<div class="step"><b>Escriba</b>«Crea una guía de aprendizaje para el programa 228118, competencia 220501096, resultado 01».</div>
+<div class="step"><b>Responda</b>Solo pregunta lo que falte: proyecto formativo, planeación, horas y ambiente.</div>
+<div class="step"><b>Reciba</b>El Word con la plantilla oficial y, si lo pide, los instrumentos de evaluación.</div>
+<div class="step"><b>Revise</b>La IA propone; el instructor revisa y ajusta antes de usar la guía.</div>
+</div>
+
+<h2>¿Usa Claude Code?</h2>
+<p>No necesita descargar nada. Escriba dentro de Claude Code:</p>
+<div class="code">/plugin marketplace add oyanguas82/fpi-sena-skill
+/plugin install fpi-sena@fpi-sena-marketplace</div>
+</div>
+</main>
+<footer>
+<div class="wrap">Skill FPI SENA · Guías de aprendizaje GFPI-F-135 V04 · Los nombres de los menús pueden variar según la versión de cada aplicación.</div>
+</footer>
+</body>
+</html>

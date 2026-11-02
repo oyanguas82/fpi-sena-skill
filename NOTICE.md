@@ -7,6 +7,7 @@ La licencia MIT de este repositorio (ver `LICENSE`) cubre únicamente la obra de
 | Material | Ubicación | Titular |
 |---|---|---|
 | Formato GFPI-F-135 V04 «Guía de Aprendizaje» (plantilla) | `skills/guia-aprendizaje-sena/assets/GFPI-F-135 Formato Guia de Aprendizaje.docx` | Servicio Nacional de Aprendizaje – SENA |
+| Formato GFPI-F-134 V05 «Planeación Pedagógica» (plantilla e instrucciones de diligenciamiento resumidas) | `skills/planeacion-pedagogica-sena/assets/`, `scripts/plantilla_f134.py`, `references/formato-gfpi-f-134.md` | Servicio Nacional de Aprendizaje – SENA |
 | Logo y marca SENA (incluidos en la plantilla y en los documentos generados) | plantilla y salidas Word | SENA (marca registrada) |
 | Diseños curriculares: competencias, resultados de aprendizaje, conocimientos y criterios de evaluación | `skills/guia-aprendizaje-sena/data/` | SENA (extraídos de los reportes de SOFIA Plus) |
 | Lineamientos del Formato Explicativo GFPI-F-135 y del Instructivo APA 7 del SENA, resumidos | `references/formato-gfpi-f-135.md`, `references/apa7.md` | SENA |

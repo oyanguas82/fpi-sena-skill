@@ -1,0 +1,4 @@
+interface:
+  display_name: FPI SENA – Planeación Pedagógica
+  short_description: Planeación GFPI-F-134 V05 desde el proyecto formativo
+  default_prompt: Ayúdame a hacer la planeación pedagógica de mi proyecto formativo

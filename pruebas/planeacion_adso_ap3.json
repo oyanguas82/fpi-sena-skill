@@ -1,0 +1,42 @@
+{
+  "identificacion": {
+    "fecha": "2026-11-01",
+    "programa": "Análisis y Desarrollo de Software",
+    "modalidad": "Presencial",
+    "codigo_version": "228118 V1",
+    "proyecto": "Análisis y desarrollo de software a la medida para el sector servicios en el municipio de Florencia",
+    "codigo_proyecto": "2480542",
+    "equipo": ["Instructor técnico de ejemplo", "Instructor de matemáticas de ejemplo"],
+    "regional_centro": "Regional Caquetá – Centro Tecnológico de la Amazonia"
+  },
+  "filas": [
+    {
+      "fase": "Planeación",
+      "actividad_proyecto": "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "competencia": "220501096",
+      "resultados": ["01"],
+      "actividad_aprendizaje": "GA1-220501096-AA1: Planear las actividades de construcción del software del proyecto a partir del informe de diseño, configurando las herramientas de desarrollo y versionamiento, demostrando responsabilidad y trabajo colaborativo.",
+      "horas_directas": 40,
+      "horas_independientes": 8,
+      "evidencia": "Desempeño: GA1-220501096-AA1-EV01 Configuración de herramientas de desarrollo y versionamiento.\nProducto: GA1-220501096-AA1-EV02 Plan de trabajo y estándar de codificación del proyecto.",
+      "estrategias": "Aprendizaje basado en proyectos; taller práctico guiado; trabajo colaborativo en equipos de proyecto.",
+      "ambiente": "Ambiente de sistemas (laboratorio de software)",
+      "materiales": "Computadores con IDE, Git y acceso a internet; informe de diseño del proyecto.",
+      "instructores": "1 instructor técnico"
+    },
+    {
+      "fase": "Planeación",
+      "actividad_proyecto": "AP3-Diseñar la arquitectura del software según las necesidades de la empresa",
+      "competencia": "240201528",
+      "resultados": ["02"],
+      "actividad_aprendizaje": "GA1-240201528-AA1: Plantear problemas matemáticos asociados a la estimación de tiempos y costos del proyecto de software, mediante modelos aritméticos, con rigor y disposición para el trabajo en equipo.",
+      "horas_directas": 6,
+      "horas_independientes": 2,
+      "evidencia": "Producto: GA1-240201528-AA1-EV01 Taller de planteamiento de problemas de estimación.",
+      "estrategias": "Resolución de problemas; estudio de caso.",
+      "ambiente": "Ambiente de sistemas (laboratorio de software)",
+      "materiales": "Hoja de cálculo; guía de problemas.",
+      "instructores": "1 instructor de matemáticas"
+    }
+  ]
+}

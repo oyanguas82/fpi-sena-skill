@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FPI SENA · Descargas</title>
-<meta name="description" content="Descargue la skill FPI SENA para crear guías de aprendizaje GFPI-F-135 V04 en Claude y ChatGPT.">
+<meta name="description" content="Descargue el agente FPI SENA: planeación pedagógica, guías de aprendizaje, instrumentos, juicios y planes de mejoramiento en Claude y ChatGPT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
@@ -44,8 +44,8 @@ footer .wrap{padding-top:24px;padding-bottom:32px}
 <header>
 <div class="wrap">
 <p class="eyebrow">Formación Profesional Integral · SENA</p>
-<h1>Skill FPI SENA</h1>
-<p class="lead">Crea guías de aprendizaje en formato GFPI-F-135 V04, en Word, a partir de la estructura curricular oficial del programa. Funciona en Claude y en ChatGPT.</p>
+<h1>Agente FPI SENA</h1>
+<p class="lead">Acompaña el ciclo de formación a partir de la estructura curricular y el proyecto formativo oficiales: planeación pedagógica (GFPI-F-134, Excel), guías de aprendizaje (GFPI-F-135 V04, Word), instrumentos de evaluación, juicios evaluativos y planes de mejoramiento. Funciona en Claude y en ChatGPT.</p>
 <span class="ver">Versión {{VERSION}}</span>
 </div>
 </header>
@@ -59,7 +59,8 @@ footer .wrap{padding-top:24px;padding-bottom:32px}
 <span class="file">guia-aprendizaje-sena-skill.zip</span>
 <ol>
 <li>Configuración › Capacidades: active la ejecución de código.</li>
-<li>En Skills, suba este archivo sin descomprimirlo.</li>
+<li>En Skills, suba este archivo sin descomprimirlo. Es obligatorio: trae el catálogo curricular que usan las demás.</li>
+<li>Suba también las skills que necesite (lista abajo).</li>
 </ol>
 <a class="btn" href="guia-aprendizaje-sena-skill.zip" download>Descargar para Claude</a>
 </div>
@@ -74,13 +75,21 @@ footer .wrap{padding-top:24px;padding-bottom:32px}
 <a class="btn" href="fpi-sena-plugin-chatgpt.zip" download>Descargar para ChatGPT</a>
 </div>
 </div>
+<h3>Skills adicionales para Claude (o ChatGPT › Skills)</h3>
+<ul>
+<li><a href="asistente-fpi-sena-skill.zip" download>asistente-fpi-sena-skill.zip</a> – asistente que orienta y encadena todo el ciclo.</li>
+<li><a href="planeacion-pedagogica-sena-skill.zip" download>planeacion-pedagogica-sena-skill.zip</a> – planeación pedagógica GFPI-F-134 en Excel.</li>
+<li><a href="instrumentos-evaluacion-sena-skill.zip" download>instrumentos-evaluacion-sena-skill.zip</a> – listas de chequeo, rúbricas y cuestionarios.</li>
+<li><a href="juicios-evaluativos-sena-skill.zip" download>juicios-evaluativos-sena-skill.zip</a> – juicios por RA y planes de mejoramiento.</li>
+</ul>
+<p>El complemento de ChatGPT ya trae las cinco.</p>
 <p class="warn"><b>No descomprima el .zip.</b> Claude y ChatGPT lo reciben completo. En cuentas institucionales, el administrador puede tener que autorizar la subida.</p>
 
-<h2>2. Pida su primera guía</h2>
+<h2>2. Pida su primer documento</h2>
 <div class="steps">
-<div class="step"><b>Escriba</b>«Crea una guía de aprendizaje para el programa 228118, competencia 220501096, resultado 01».</div>
+<div class="step"><b>Escriba</b>«Haz la planeación pedagógica de la AP3 del proyecto 2480542» o «Crea una guía de aprendizaje para el programa 228118, competencia 220501096, resultado 01».</div>
 <div class="step"><b>Responda</b>Solo pregunta lo que falte: proyecto formativo, planeación, horas y ambiente.</div>
-<div class="step"><b>Reciba</b>El Word con la plantilla oficial y, si lo pide, los instrumentos de evaluación.</div>
+<div class="step"><b>Reciba</b>El Excel o Word con la plantilla oficial; luego instrumentos, juicios y planes de mejoramiento.</div>
 <div class="step"><b>Revise</b>La IA propone; el instructor revisa y ajusta antes de usar la guía.</div>
 </div>
 
@@ -88,10 +97,11 @@ footer .wrap{padding-top:24px;padding-bottom:32px}
 <p>No necesita descargar nada. Escriba dentro de Claude Code:</p>
 <div class="code">/plugin marketplace add oyanguas82/fpi-sena-skill
 /plugin install fpi-sena@fpi-sena-marketplace</div>
+<p>Comandos: <code>/fpi</code>, <code>/planeacion</code>, <code>/guia</code>, <code>/instrumentos</code>, <code>/juicios</code>, y el agente <code>asistente-fpi</code>.</p>
 </div>
 </main>
 <footer>
-<div class="wrap">Skill FPI SENA · Guías de aprendizaje GFPI-F-135 V04 · Los nombres de los menús pueden variar según la versión de cada aplicación.</div>
+<div class="wrap">Agente FPI SENA · GFPI-F-134 V05 · GFPI-F-135 V04 · Los nombres de los menús pueden variar según la versión de cada aplicación.</div>
 </footer>
 </body>
 </html>

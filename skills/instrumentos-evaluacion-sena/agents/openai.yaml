@@ -1,0 +1,4 @@
+interface:
+  display_name: FPI SENA – Instrumentos de Evaluación
+  short_description: Listas de chequeo, rúbricas y cuestionarios por evidencia
+  default_prompt: Diseña los instrumentos de evaluación de las evidencias de mi guía

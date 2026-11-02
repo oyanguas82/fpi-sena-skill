@@ -1,6 +1,16 @@
-# FPI SENA – Skill de Guías de Aprendizaje (GFPI-F-135 V04)
+# FPI SENA – Agente de Formación Profesional Integral
 
-Skill (estándar SKILL.md) para Claude, Claude Code, Codex y ChatGPT que diseña guías de aprendizaje SENA en Word a partir de la estructura curricular oficial.
+Plugin con cinco skills (estándar SKILL.md) para Claude, Claude Code, Codex y ChatGPT que acompaña el ciclo FPI a partir de la estructura curricular y el proyecto formativo oficiales:
+
+| Skill | Produce |
+|---|---|
+| `guia-aprendizaje-sena` (núcleo: catálogo, buscadores, plantilla) | Guía GFPI-F-135 V04 en Word |
+| `planeacion-pedagogica-sena` | Planeación GFPI-F-134 V05 en Excel |
+| `instrumentos-evaluacion-sena` | Listas de chequeo/verificación, rúbricas y cuestionarios (Word) |
+| `juicios-evaluativos-sena` | Juicios por RA (Excel) y planes de mejoramiento (Word) |
+| `asistente-fpi-sena` | Orienta y encadena el ciclo |
+
+Las skills usan el catálogo de `guia-aprendizaje-sena`: instálela siempre. En Claude Code hay además el agente `asistente-fpi` y los comandos `/fpi`, `/planeacion`, `/guia`, `/instrumentos` y `/juicios`.
 
 **Página de descargas:** https://oyanguas82.github.io/fpi-sena-skill/
 
@@ -10,14 +20,20 @@ plugin.json                      Manifiesto del plugin (Codex / ChatGPT, formato
 .codex-plugin/plugin.json        Manifiesto Codex (compatibilidad)
 .agents/plugins/marketplace.json Marketplace para Codex / ChatGPT
 .claude-plugin/                  Plugin y marketplace para Claude Code
-dist/                            Skill (.zip, claude.ai y ChatGPT › Skills) y plugin (.zip, ChatGPT › Complementos)
+agents/asistente-fpi.md          Agente orquestador (Claude Code)
+commands/                        /fpi /planeacion /guia /instrumentos /juicios (Claude Code)
+dist/                            Una <skill>-skill.zip por skill (claude.ai y ChatGPT › Skills) y plugin (.zip, ChatGPT › Complementos)
+skills/planeacion-pedagogica-sena/   generar_planeacion, validar_planeacion; plantilla GFPI-F-134 (assets/ e incrustada)
+skills/instrumentos-evaluacion-sena/ flujo de instrumentos (usa los scripts del núcleo)
+skills/juicios-evaluativos-sena/     consolidar_juicios, generar_plan_mejoramiento
+skills/asistente-fpi-sena/           orquestador
 skills/guia-aprendizaje-sena/
   SKILL.md                       Instrucciones y flujo
   references/                    Reglas del formato, evaluación, estrategias, Bloom, APA
   scripts/                       generar_guia, generar_instrumentos, validar_guia, buscar_programa, buscar_proyecto, extraer_estructura, extraer_proyecto
   data/                          Catálogo curricular (68 programas) y proyectos formativos (37)
   assets/                        Plantilla GFPI-F-135
-pruebas/                         JSON de prueba (guía e instrumentos)
+pruebas/                         JSON de prueba (guía, instrumentos, planeación, juicios)
 ```
 
 ## Comandos
@@ -31,10 +47,14 @@ python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json -
 python skills/guia-aprendizaje-sena/scripts/generar_guia.py --datos datos.json --salida salidas/guia.docx
 python skills/guia-aprendizaje-sena/scripts/generar_instrumentos.py --datos instrumentos.json --salida salidas/instrumentos.docx
 python skills/guia-aprendizaje-sena/scripts/validar_guia.py --datos datos.json --instrumentos instrumentos.json --programa <programa.json>
+python skills/planeacion-pedagogica-sena/scripts/generar_planeacion.py --datos pruebas/planeacion_adso_ap3.json --salida salidas/planeacion.xlsx
+python skills/planeacion-pedagogica-sena/scripts/validar_planeacion.py --datos pruebas/planeacion_adso_ap3.json --proyecto skills/guia-aprendizaje-sena/data/proyectos/2480542.json --xlsx salidas/planeacion.xlsx
+python skills/juicios-evaluativos-sena/scripts/consolidar_juicios.py --datos pruebas/juicios_adso_ficha_prueba.json --salida salidas/juicios.xlsx --planes salidas/planes.json
+python skills/juicios-evaluativos-sena/scripts/generar_plan_mejoramiento.py --datos salidas/planes.json --salida salidas/planes.docx
 ```
 
 ## Empaquetar
-`python empaquetar.py` genera en `../entregables` el `.skill` (Claude), la skill `.zip` y el plugin `.zip` (ChatGPT), y actualiza `dist/` con la skill y el plugin. Ejecútelo tras cambiar la skill o el catálogo.
+`python empaquetar.py` regenera las plantillas incrustadas y genera en `../entregables` un `.skill` y un `-skill.zip` por skill y el plugin `.zip` (ChatGPT); actualiza `dist/`. Ejecútelo tras cambiar la skill o el catálogo.
 
 ## Instalación
 **Claude Code** (plugin)
@@ -54,7 +74,7 @@ codex plugin marketplace add oyanguas82/fpi-sena-skill
 ```
 Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de ChatGPT/Codex).
 
-**Claude (claude.ai web/escritorio)** (skill): descargue [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) y súbalo en Configuración › Capacidades › Skills. Requiere ejecución de código.
+**Claude (claude.ai web/escritorio)** (skills): descargue [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) (obligatoria) y las que necesite de `dist/` (`planeacion-pedagogica-sena`, `instrumentos-evaluacion-sena`, `juicios-evaluativos-sena`, `asistente-fpi-sena`); súbalas en Configuración › Capacidades › Skills. Requiere ejecución de código.
 
 **ChatGPT** — hay dos archivos distintos según la opción que use:
 | Opción en ChatGPT | Archivo | Contenido |
@@ -69,4 +89,4 @@ Si sube el ZIP de la skill por «Complementos», ChatGPT responde *Expected a si
 Pasos de prueba en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 
 ## Licencia
-Código y documentación propios: [MIT](LICENSE). La plantilla GFPI-F-135, el logo SENA, el catálogo curricular y los resúmenes de obras de terceros no están cubiertos: ver [NOTICE.md](NOTICE.md).
+Código y documentación propios: [MIT](LICENSE). Las plantillas GFPI-F-135 y GFPI-F-134, el logo SENA, el catálogo curricular y los resúmenes de obras de terceros no están cubiertos: ver [NOTICE.md](NOTICE.md).

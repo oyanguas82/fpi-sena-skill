@@ -1,0 +1,4 @@
+interface:
+  display_name: FPI SENA – Asistente
+  short_description: Ciclo FPI - planeación, guías, instrumentos y juicios
+  default_prompt: Ayúdame con la formación de mi ficha SENA

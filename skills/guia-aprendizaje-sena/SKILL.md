@@ -31,7 +31,7 @@ Lista las competencias del programa (`--programa <código> --competencias`) y, u
 
 ### Paso 4. Datos del instructor (pregunta solo lo que falte)
 - Proyecto formativo, fase y actividad de proyecto, si no salieron del catálogo de proyectos.
-- Actividades de aprendizaje de la **planeación pedagógica** (se copian textuales en 3.3).
+- Actividades de aprendizaje de la **planeación pedagógica** (se copian textuales en 3.3). Si existe la planeación GFPI-F-134 (JSON o Excel de la skill **planeacion-pedagogica-sena**), tómalas de ahí con sus horas y evidencias; si no hay planeación, ofrece hacerla primero.
 - Duración: horas directas y de trabajo independiente.
 - Ambiente de formación, modalidad (presencial / virtual / a distancia) y recursos disponibles.
 - Nombre, cargo y dependencia para el control del documento.
@@ -63,7 +63,7 @@ Reglas de alineación curricular:
 3. Valida datos **y** Word: `python <skill>/scripts/validar_guia.py --datos datos.json --programa <json_del_programa> [--proyecto <skill>/data/proyectos/<código>.json] --docx <ruta>/GA1-….docx`. Si dice que el Word no salió de la plantilla, vuelve a generarlo con el script. Corrige todo error antes de entregar.
 4. Si no puedes ejecutar Python, dilo y entrega el JSON. No entregues un Word hecho de otra forma.
 
-Si el instructor pide los instrumentos de evaluación, genéralos como anexo Word siguiendo [instrumentos.md](references/instrumentos.md).
+Si el instructor pide los instrumentos de evaluación, usa la skill **instrumentos-evaluacion-sena** si está instalada; si no, genéralos como anexo Word siguiendo [instrumentos.md](references/instrumentos.md).
 
 ### Paso 7. Entregar
 Adjunta el `.docx` real (enlace descargable; también el de instrumentos, si se generó) y en el chat: resumen de 3–5 líneas, matriz de cobertura y lista de pendientes. No afirmes revisión visual si no la hiciste.

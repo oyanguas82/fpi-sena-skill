@@ -1,0 +1,4 @@
+interface:
+  display_name: FPI SENA – Juicios y Planes de Mejoramiento
+  short_description: Juicios por RA y planes de mejoramiento
+  default_prompt: Ayúdame a consolidar los juicios evaluativos de mi ficha

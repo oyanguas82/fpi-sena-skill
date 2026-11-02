@@ -50,7 +50,20 @@
 - 2026-10-30 (v1.4.2): ChatGPT lee los textos de la skill pero no tiene la plantilla .docx ni los scripts en su Python, así que entregaba solo el JSON. SKILL.md paso 6: si no encuentra `generar_guia.py`, pide adjuntar `guia-aprendizaje-sena-skill.zip` (chat o archivos del Proyecto), lo descomprime en /mnt/data y genera desde ahí. `--plantilla` en generar_guia, generar_instrumentos y validar_guia para usar una plantilla adjunta. Probado simulando /mnt/data.
 - 2026-10-30 (v1.4.3): plantilla incrustada en `scripts/plantilla.py` (base64, la regenera `empaquetar.py`). Los generadores y el validador la reconstruyen si no ven `assets/` (entornos que solo exponen texto, como ChatGPT): basta con la carpeta `scripts/`. Probado copiando solo `scripts/`: Word con logo y estilos idénticos y `--docx` OK. SKILL.md ya no pide el ZIP salvo que no haya ningún script.
 
+- 2026-11-01 (v2.0.0): agente FPI SENA. El plugin pasa de una skill a cinco:
+  - `planeacion-pedagogica-sena`: formato GFPI-F-134 V05 (Excel). `generar_planeacion.py` llena la hoja FASE de la plantilla oficial editando su XML (una fila por RA, celdas combinadas por fase/AP/competencia/actividad, estilos con ajuste de texto, encabezado y clasificación); competencia, RA, saberes y criterios salen literales del catálogo a partir de códigos. `validar_planeacion.py`: catálogo, saberes/criterios literales, AA con verbo infinitivo y componente actitudinal, código GA/AA, horas vs RA/competencia, tipo de evidencia, AP y fase del proyecto, RA de la AP sin planear, Excel salido de la plantilla. Plantilla incrustada en `plantilla_f134.py`. Referencia `formato-gfpi-f-134.md` desde la hoja «Instrucciones».
+  - `instrumentos-evaluacion-sena`: flujo propio; reutiliza `generar_instrumentos.py`, `validar_guia.py` y referencias del núcleo.
+  - `juicios-evaluativos-sena`: `consolidar_juicios.py` (A/D/pendiente → APROBADO / NO APROBADO / POR EVALUAR por RA; Excel con Juicios, Evidencias y Resumen; JSON base de planes) y `generar_plan_mejoramiento.py` (Word con logo y estilos de la plantilla GFPI-F-135, pie propio). Plazos y reglas de mejoramiento: se preguntan al instructor (Reglamento del Aprendiz vigente).
+  - `asistente-fpi-sena`: orquestador del ciclo (planeación → guía → instrumentos → juicios).
+  - Claude Code: agente `agents/asistente-fpi.md` y comandos `/fpi`, `/planeacion`, `/guia`, `/instrumentos`, `/juicios`.
+  - `empaquetar.py`: un `.skill`/`-skill.zip` por skill; plugin ChatGPT con las cinco. Página de descargas y workflow publican todos los ZIP.
+  - Probado: instalación simulada con skills separadas (claude.ai) y solo `scripts/` sin `assets/` (ChatGPT): Excel idéntico. `claude plugin validate .` OK.
+
 ## Pendiente / ideas
+- v2: probar en claude.ai y ChatGPT las cuatro skills nuevas (casos 9–12 de `docs/PRUEBAS.md`).
+- Guía desde la planeación: que `generar_guia`/SKILL lea el JSON de planeación para llenar 3.3 y la tabla 4 automáticamente.
+- Juicios: importar el reporte de SOFIA Plus o del LMS (CSV) directamente.
+- Seguimiento de etapa productiva (bitácoras, GFPI-F-023) como skill futura.
 - Proyectos: 6 solo con verificación de viabilidad (sin planeación); Promotor de Salud sin códigos (borrador); 14 con AP numeradas por el extractor; 290 RA sin enlazar (213 de competencias de otra versión del programa: 112005 v101, 723105/723106 v102, 525203, 621201, 723107, 632305).
 - Confirmar instalación real: marketplace en Claude Code, `codex plugin marketplace add oyanguas82/fpi-sena-skill`, subida del zip en claude.ai y ChatGPT.
 - Programa 838200: criterios partidos palabra por palabra (falla de unión de líneas); otros ítems sueltos tipo «EMPRENDEDORES.», «(3)», «-UTILIZA …».

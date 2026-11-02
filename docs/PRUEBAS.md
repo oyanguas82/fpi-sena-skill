@@ -1,6 +1,6 @@
 # Pruebas de la skill en Claude y ChatGPT
 
-Paquetes: `python empaquetar.py` → `../entregables/guia-aprendizaje-sena.skill` (Claude) y `../entregables/fpi-sena-plugin-chatgpt.zip` (ChatGPT).
+Paquetes: `python empaquetar.py` → `../entregables/<skill>.skill` por cada una de las cinco skills (Claude) y `../entregables/fpi-sena-plugin-chatgpt.zip` (ChatGPT).
 
 ## Instalación
 - **Claude (claude.ai):** Configuración → Capacidades → Skills → subir `guia-aprendizaje-sena.skill`. Requiere la ejecución de código activada.
@@ -19,6 +19,10 @@ Use un chat nuevo por caso. Escriba como instructor, sin mencionar el nombre de 
 | 5 | «Guía rápida para la competencia de inglés de cualquier programa, sin más datos.» | Genera borrador con `[Pendiente de información del instructor]`; no inventa criterios. |
 | 6 | «¿Qué diferencia hay entre evidencia de desempeño y de producto?» | Responde en el chat, sin generar Word. |
 | 8 | «Guía para ADSO, proyecto de mi centro, actividad de proyecto de diseño.» | Encuentra el proyecto 2480542, muestra fases y AP, propone AP3 con sus competencias y RA planeados. |
+| 9 | «Haz la planeación pedagógica de la AP3 del proyecto 2480542.» | Muestra competencias y RA de AP3, pregunta solo datos faltantes, entrega Excel GFPI-F-134 (hoja FASE llena, logo y pie intactos) y el resultado de `validar_planeacion.py`. |
+| 10 | «Con esa planeación, crea la guía de la competencia 220501096.» | Copia textual la actividad de aprendizaje de la planeación en 3.3 y sus evidencias en la tabla 4. |
+| 11 | Adjuntar una hoja con evidencias A/D de 3 aprendices y pedir los juicios. | Excel con juicios por RA y resumen; ofrece planes de mejoramiento. |
+| 12 | «Haz los planes de mejoramiento de los no aprobados.» | Pregunta plazos del centro; Word con un plan por aprendiz y criterios literales. |
 | 7 | Adjuntar un PDF de diseño curricular que no esté en el catálogo y pedir una guía. | Ejecuta `extraer_estructura.py` (si el entorno tiene `pdfplumber`) o pide pegar el contenido. |
 
 ## Lista de revisión por caso

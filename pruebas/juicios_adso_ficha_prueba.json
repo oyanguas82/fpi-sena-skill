@@ -1,0 +1,14 @@
+{
+  "identificacion": {"programa": "Análisis y Desarrollo de Software", "codigo_version": "228118 V1",
+                     "ficha": "0000000", "competencia": "220501096 - Desarrollar la solución de software de acuerdo con el diseño y metodologías de desarrollo",
+                     "instructor": "Instructor de prueba", "fecha_corte": "2026-11-01"},
+  "resultados": [
+    {"codigo": "220501096-01", "evidencias": ["GA1-220501096-AA1-EV01", "GA1-220501096-AA1-EV02"]},
+    {"codigo": "240201528-02", "evidencias": ["GA1-240201528-AA1-EV01"]}
+  ],
+  "aprendices": [
+    {"documento": "1000000001", "nombre": "Aprendiz de prueba 1", "evidencias": {"GA1-220501096-AA1-EV01": "A", "GA1-220501096-AA1-EV02": "A", "GA1-240201528-AA1-EV01": "A"}},
+    {"documento": "1000000002", "nombre": "Aprendiz de prueba 2", "evidencias": {"GA1-220501096-AA1-EV01": "A", "GA1-220501096-AA1-EV02": "D", "GA1-240201528-AA1-EV01": "D"}},
+    {"documento": "1000000003", "nombre": "Aprendiz de prueba 3", "evidencias": {"GA1-220501096-AA1-EV01": "A", "GA1-240201528-AA1-EV01": ""}}
+  ]
+}

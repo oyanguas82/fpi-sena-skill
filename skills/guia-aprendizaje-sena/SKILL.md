@@ -64,10 +64,13 @@ Reglas de alineación curricular:
 # Ubicar el paquete FPI SENA (scripts, plantillas y catálogo). Ejecútalo tal cual, sin preguntar nada.
 import glob, os, zipfile, tempfile
 RAICES = ["/home/oai/skills", "/home/oai", "/mnt/data", "/mnt/user-data", "/mnt/skills", "/mnt", "/opt", "/workspace", os.getcwd(), os.path.expanduser("~"), "/tmp"]
-def buscar():
+def buscar():  # prefiere el paquete completo (con planeación y juicios junto a la guía)
+    hallados = []
     for r in RAICES:
-        for p in glob.glob(os.path.join(r, "**", "guia-aprendizaje-sena", "scripts", "generar_guia.py"), recursive=True):
-            return os.path.dirname(os.path.dirname(p))
+        hallados += glob.glob(os.path.join(r, "**", "guia-aprendizaje-sena", "scripts", "generar_guia.py"), recursive=True)
+    carpetas = [os.path.dirname(os.path.dirname(p)) for p in hallados]
+    completos = [c for c in carpetas if os.path.isdir(os.path.join(os.path.dirname(c), "planeacion-pedagogica-sena"))]
+    return (completos or carpetas or [None])[0]
 def extraer():  # paquetes .zip/.skill subidos al chat o a los archivos del Proyecto
     dest = os.path.join(tempfile.gettempdir(), "fpi-sena")
     for r in RAICES[:6]:

@@ -10,6 +10,8 @@ Plugin con cinco skills (estándar SKILL.md) para Claude, Claude Code, Codex y C
 | `juicios-evaluativos-sena` | Juicios por RA (Excel) y planes de mejoramiento (Word) |
 | `asistente-fpi-sena` | Orienta y encadena el ciclo |
 
+Para claude.ai, `empaquetar.py` arma además **`agente-fpi-sena`**: una sola skill (`unificada/SKILL.md` como enrutador) con los cuatro módulos dentro; sus `SKILL.md` van como `INSTRUCCIONES.md`.
+
 Las skills usan el catálogo de `guia-aprendizaje-sena`: instálela siempre. En Claude Code hay además el agente `asistente-fpi` y los comandos `/fpi`, `/planeacion`, `/guia`, `/instrumentos` y `/juicios`.
 
 **Página de descargas:** https://oyanguas82.github.io/fpi-sena-skill/
@@ -74,7 +76,7 @@ codex plugin marketplace add oyanguas82/fpi-sena-skill
 ```
 Luego instale **fpi-sena** desde el directorio de plugins (app de escritorio de ChatGPT/Codex).
 
-**Claude (claude.ai web/escritorio)** (skills): descargue [`dist/guia-aprendizaje-sena-skill.zip`](dist/guia-aprendizaje-sena-skill.zip) (obligatoria) y las que necesite de `dist/` (`planeacion-pedagogica-sena`, `instrumentos-evaluacion-sena`, `juicios-evaluativos-sena`, `asistente-fpi-sena`); súbalas en Configuración › Capacidades › Skills. Requiere ejecución de código.
+**Claude (claude.ai web/escritorio):** descargue [`dist/agente-fpi-sena-skill.zip`](dist/agente-fpi-sena-skill.zip) y súbalo en Configuración › Capacidades › Skills. Es una sola skill con los cuatro módulos (planeación, guía, instrumentos, juicios) y sus plantillas; requiere ejecución de código. Las skills sueltas de `dist/` siguen disponibles para quien las prefiera (siempre con `guia-aprendizaje-sena`).
 
 **ChatGPT** — hay dos archivos distintos según la opción que use:
 | Opción en ChatGPT | Archivo | Contenido |

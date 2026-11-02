@@ -61,6 +61,8 @@
 
 - 2026-11-02 (v2.0.1): en ChatGPT real el complemento no dejó los scripts en el Python (pedía adjuntar el ZIP). Cada `SKILL.md` trae ahora el bloque «Ubicar el paquete»: busca la skill instalada (`/home/oai/skills`, `/mnt`, `/opt`, …) y, si no está, extrae el ZIP del paquete (`.zip`/`.skill`) que haya en el chat o en los archivos del Proyecto; solo si no hay nada lo dice en una línea. «Modo directo»: no se pregunta antes de generar; lo que falte se propone y se marca «propuesta, revisar». Instalación recomendada en ChatGPT: complemento + Proyecto con `fpi-sena-plugin-chatgpt.zip` en sus archivos. Probado simulando /mnt/data solo con el ZIP del plugin.
 
+- 2026-11-02 (v2.1.0): en claude.ai la planeación no salió en el formato institucional (probablemente solo estaba instalada la skill de guías y Claude armó el Excel por su cuenta). Nueva skill única `agente-fpi-sena` (`unificada/SKILL.md` + los cuatro módulos con `INSTRUCCIONES.md`), recomendada para claude.ai; enrutador que obliga a usar los scripts del módulo y prohíbe openpyxl/python-docx/otras skills. El bloque «Ubicar el paquete» prefiere el paquete completo (guía con planeación al lado). GPT personalizado: `docs/gpt-instrucciones.md`. Probado simulando `/mnt/skills/user` en solo lectura con la skill única y una guía suelta antigua: planeación, juicios, plan y guía OK.
+
 ## Pendiente / ideas
 - Confirmar en ChatGPT dónde quedan (si quedan) los archivos del complemento en el Python, para que funcione sin el ZIP en el Proyecto.
 - v2: probar en claude.ai y ChatGPT las cuatro skills nuevas (casos 9–12 de `docs/PRUEBAS.md`).

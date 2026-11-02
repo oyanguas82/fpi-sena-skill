@@ -100,6 +100,22 @@ def main():
         dist.write_bytes(claude.read_bytes())
         generados += [claude, skill_zip, dist]
 
+    # Skill única para Claude (claude.ai): los cuatro módulos dentro de una sola carpeta.
+    # Los SKILL.md de los módulos van como INSTRUCCIONES.md (un solo SKILL.md por skill).
+    unica = salida / "agente-fpi-sena.skill"
+    with ZipFile(unica, "w", ZIP_DEFLATED) as z:
+        z.write(RAIZ / "unificada" / "SKILL.md", "agente-fpi-sena/SKILL.md")
+        for nombre in ORDEN[:-1]:
+            for f in archivos(SKILLS / nombre):
+                rel = f.relative_to(SKILLS / nombre)
+                destino = Path("agente-fpi-sena") / nombre / ("INSTRUCCIONES.md" if str(rel) == "SKILL.md" else rel)
+                z.write(f, destino)
+        for legal in ("LICENSE", "NOTICE.md"):
+            z.write(RAIZ / legal, Path("agente-fpi-sena") / legal)
+    (salida / "agente-fpi-sena-skill.zip").write_bytes(unica.read_bytes())
+    (RAIZ / "dist" / "agente-fpi-sena-skill.zip").write_bytes(unica.read_bytes())
+    generados += [unica, RAIZ / "dist" / "agente-fpi-sena-skill.zip"]
+
     chatgpt = salida / "fpi-sena-plugin-chatgpt.zip"
     with ZipFile(chatgpt, "w", ZIP_DEFLATED) as z:
         for nombre in ORDEN:
